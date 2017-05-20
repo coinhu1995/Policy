@@ -1,21 +1,19 @@
 package ptit.nhunh.tool;
 
-import java.awt.event.ActionEvent;
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-import ptit.nhunh.dao.CommentDAO;
+import ptit.nhunh.dao.SQLDAO;
+import ptit.nhunh.dao.SQLDAOFactory;
 import ptit.nhunh.model.Comment;
+import ptit.nhunh.model.Url;
 import ptit.nhunh.utils.Utils;
 
 public class AssignLabel extends javax.swing.JFrame {
@@ -44,21 +42,23 @@ public class AssignLabel extends javax.swing.JFrame {
 	private javax.swing.JTextField uid;
 	private javax.swing.JTextField ulb;
 	private javax.swing.JTextField url;
-	private CommentDAO commentDAO;
+	private SQLDAO commentDAO;
+	private SQLDAO urlDAO;
 	private int ma;
 	private int chay = 0;
-	private ArrayList<Comment> ac;
+	private ArrayList<Object> listCmt;
 	private BufferedWriter bw;
 
 	public AssignLabel() throws SQLException, IOException {
-		bw = new BufferedWriter(new OutputStreamWriter(
+		this.bw = new BufferedWriter(new OutputStreamWriter(
 				new FileOutputStream("C:\\Users\\uhn\\Desktop\\LogAssignLabel.txt", true),
 				StandardCharsets.UTF_8));
-		commentDAO = new CommentDAO("Capstone");
-		ac = commentDAO.getAllComment();
+		this.commentDAO = SQLDAOFactory.getDAO(SQLDAOFactory.COMMENT);
+		this.urlDAO = SQLDAOFactory.getDAO(SQLDAOFactory.URL);
+		this.listCmt = this.commentDAO.getAll();
 
-		initComponents();
-		load();
+		this.initComponents();
+		this.load();
 	}
 
 	public static void main(String[] args) throws SQLException, IOException {
@@ -89,6 +89,7 @@ public class AssignLabel extends javax.swing.JFrame {
 		}
 
 		java.awt.EventQueue.invokeLater(new Runnable() {
+			@Override
 			public void run() {
 				try {
 					new AssignLabel().setVisible(true);
@@ -104,162 +105,173 @@ public class AssignLabel extends javax.swing.JFrame {
 
 	private void initComponents() {
 
-		label = new javax.swing.JTextField();
-		b1 = new javax.swing.JButton();
-		b2 = new javax.swing.JButton();
-		jLabel1 = new javax.swing.JLabel();
-		jLabel2 = new javax.swing.JLabel();
-		jLabel3 = new javax.swing.JLabel();
-		url = new javax.swing.JTextField();
-		jScrollPane1 = new javax.swing.JScrollPane();
-		cmt = new javax.swing.JTextArea();
-		id = new javax.swing.JTextField();
-		ID = new javax.swing.JLabel();
-		b3 = new javax.swing.JButton();
-		b4 = new javax.swing.JButton();
-		b5 = new javax.swing.JButton();
-		b6 = new javax.swing.JButton();
-		jLabel4 = new javax.swing.JLabel();
-		ulb = new javax.swing.JTextField();
-		uid = new javax.swing.JTextField();
-		jButton1 = new javax.swing.JButton();
-		jButton2 = new javax.swing.JButton();
-		did = new javax.swing.JTextField();
+		this.label = new javax.swing.JTextField();
+		this.b1 = new javax.swing.JButton();
+		this.b2 = new javax.swing.JButton();
+		this.jLabel1 = new javax.swing.JLabel();
+		this.jLabel2 = new javax.swing.JLabel();
+		this.jLabel3 = new javax.swing.JLabel();
+		this.url = new javax.swing.JTextField();
+		this.jScrollPane1 = new javax.swing.JScrollPane();
+		this.cmt = new javax.swing.JTextArea();
+		this.id = new javax.swing.JTextField();
+		this.ID = new javax.swing.JLabel();
+		this.b3 = new javax.swing.JButton();
+		this.b4 = new javax.swing.JButton();
+		this.b5 = new javax.swing.JButton();
+		this.b6 = new javax.swing.JButton();
+		this.jLabel4 = new javax.swing.JLabel();
+		this.ulb = new javax.swing.JTextField();
+		this.uid = new javax.swing.JTextField();
+		this.jButton1 = new javax.swing.JButton();
+		this.jButton2 = new javax.swing.JButton();
+		this.did = new javax.swing.JTextField();
 
-		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-		setLocation(new java.awt.Point(150, 50));
-		setMinimumSize(new java.awt.Dimension(700, 400));
-		setPreferredSize(new java.awt.Dimension(1050, 500));
+		this.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+		this.setLocation(new java.awt.Point(150, 50));
+		this.setMinimumSize(new java.awt.Dimension(700, 400));
+		this.setPreferredSize(new java.awt.Dimension(1050, 500));
 
-		b1.setText("1");
-		b1.addActionListener(new java.awt.event.ActionListener() {
+		this.b1.setText("1");
+		this.b1.addActionListener(new java.awt.event.ActionListener() {
+			@Override
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				try {
-					b1ActionPerformed(evt);
+					AssignLabel.this.b1ActionPerformed(evt);
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
 		});
 
-		b2.setText("open url");
-		b2.addActionListener(new java.awt.event.ActionListener() {
+		this.b2.setText("open url");
+		this.b2.addActionListener(new java.awt.event.ActionListener() {
+			@Override
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				try {
-					b2ActionPerformed(evt);
+					AssignLabel.this.b2ActionPerformed(evt);
 				} catch (SQLException | IOException | InterruptedException e) {
 					e.printStackTrace();
 				}
 			}
 		});
 
-		jLabel1.setText("Comment");
+		this.jLabel1.setText("Comment");
 
-		jLabel2.setText("Label");
+		this.jLabel2.setText("Label");
 
-		jLabel3.setText("Url");
+		this.jLabel3.setText("Url");
 
-		cmt.setColumns(20);
-		cmt.setRows(5);
-		jScrollPane1.setViewportView(cmt);
+		this.cmt.setColumns(20);
+		this.cmt.setRows(5);
+		this.jScrollPane1.setViewportView(this.cmt);
 
-		ID.setText("id");
+		this.ID.setText("id");
 
-		b3.setText("2");
-		b3.addActionListener(new java.awt.event.ActionListener() {
+		this.b3.setText("2");
+		this.b3.addActionListener(new java.awt.event.ActionListener() {
+			@Override
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				try {
-					b3ActionPerformed(evt);
+					AssignLabel.this.b3ActionPerformed(evt);
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
 		});
 
-		b4.setText("3");
-		b4.addActionListener(new java.awt.event.ActionListener() {
+		this.b4.setText("3");
+		this.b4.addActionListener(new java.awt.event.ActionListener() {
+			@Override
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				try {
-					b4ActionPerformed(evt);
+					AssignLabel.this.b4ActionPerformed(evt);
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
 		});
 
-		b5.setText("write log");
-		b5.addActionListener(new java.awt.event.ActionListener() {
+		this.b5.setText("write log");
+		this.b5.addActionListener(new java.awt.event.ActionListener() {
+			@Override
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				try {
-					b5ActionPerformed(evt);
+					AssignLabel.this.b5ActionPerformed(evt);
 				} catch (SQLException | IOException | InterruptedException e) {
 					e.printStackTrace();
 				}
 			}
 		});
 
-		b6.setText("close log file");
-		b6.addActionListener(new java.awt.event.ActionListener() {
+		this.b6.setText("close log file");
+		this.b6.addActionListener(new java.awt.event.ActionListener() {
+			@Override
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				try {
-					b6ActionPerformed(evt);
+					AssignLabel.this.b6ActionPerformed(evt);
 				} catch (SQLException | IOException | InterruptedException e) {
 					e.printStackTrace();
 				}
 			}
 		});
 
-		jLabel4.setText("update");
+		this.jLabel4.setText("update");
 
-		jButton1.setText("update");
-		jButton1.addActionListener(new java.awt.event.ActionListener() {
+		this.jButton1.setText("update");
+		this.jButton1.addActionListener(new java.awt.event.ActionListener() {
+			@Override
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				try {
-					jButton1ActionPerformed(evt);
+					AssignLabel.this.jButton1ActionPerformed(evt);
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
 		});
 
-		jButton2.setText("delete");
-		jButton2.addActionListener(new java.awt.event.ActionListener() {
+		this.jButton2.setText("delete");
+		this.jButton2.addActionListener(new java.awt.event.ActionListener() {
+			@Override
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				try {
-					jButton2ActionPerformed(evt);
+					AssignLabel.this.jButton2ActionPerformed(evt);
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
 		});
 
-		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-		getContentPane().setLayout(layout);
+		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this.getContentPane());
+		this.getContentPane().setLayout(layout);
 		layout.setHorizontalGroup(layout
 				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(layout.createSequentialGroup().addGroup(layout
-						.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-						.addGroup(layout.createSequentialGroup().addGap(2, 2, 2)
-								.addComponent(jLabel1))
-						.addGroup(layout.createSequentialGroup().addContainerGap().addComponent(ID))
-						.addGroup(layout.createSequentialGroup().addContainerGap()
-								.addComponent(jLabel3))
-						.addGroup(layout.createSequentialGroup().addContainerGap()
-								.addComponent(jLabel2)))
+				.addGroup(layout.createSequentialGroup()
+						.addGroup(layout
+								.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+								.addGroup(layout.createSequentialGroup().addGap(2, 2, 2)
+										.addComponent(this.jLabel1))
+								.addGroup(layout.createSequentialGroup().addContainerGap()
+										.addComponent(this.ID))
+								.addGroup(layout.createSequentialGroup()
+										.addContainerGap().addComponent(this.jLabel3))
+								.addGroup(layout.createSequentialGroup().addContainerGap()
+										.addComponent(this.jLabel2)))
 						.addGap(18, 18, 18)
 						.addGroup(layout
 								.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 								.addGroup(layout.createSequentialGroup()
-										.addComponent(label, javax.swing.GroupLayout.PREFERRED_SIZE,
-												91, javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addComponent(this.label,
+												javax.swing.GroupLayout.PREFERRED_SIZE, 91,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
 										.addContainerGap())
 								.addGroup(layout.createSequentialGroup().addGroup(layout
 										.createParallelGroup(
 												javax.swing.GroupLayout.Alignment.LEADING, false)
-										.addComponent(jScrollPane1,
+										.addComponent(this.jScrollPane1,
 												javax.swing.GroupLayout.DEFAULT_SIZE, 606,
 												Short.MAX_VALUE)
-										.addComponent(url))
+										.addComponent(this.url))
 										.addGroup(layout
 												.createParallelGroup(
 														javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,46 +280,50 @@ public class AssignLabel extends javax.swing.JFrame {
 																javax.swing.LayoutStyle.ComponentPlacement.RELATED,
 																javax.swing.GroupLayout.DEFAULT_SIZE,
 																Short.MAX_VALUE)
-														.addComponent(b6))
+														.addComponent(this.b6))
 												.addGroup(layout.createSequentialGroup()
 														.addGap(95, 95, 95)
 														.addGroup(layout
 																.createParallelGroup(
 																		javax.swing.GroupLayout.Alignment.TRAILING)
-																.addComponent(jButton2)
-																.addComponent(did,
+																.addComponent(this.jButton2)
+																.addComponent(this.did,
 																		javax.swing.GroupLayout.PREFERRED_SIZE,
 																		77,
 																		javax.swing.GroupLayout.PREFERRED_SIZE))
 														.addContainerGap())))
-								.addGroup(layout.createSequentialGroup().addComponent(b1)
+								.addGroup(layout.createSequentialGroup().addComponent(this.b1)
 										.addPreferredGap(
 												javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-										.addComponent(b3)
+										.addComponent(this.b3)
 										.addPreferredGap(
 												javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-										.addComponent(b4).addGap(84, 84, 84).addComponent(b5)
+										.addComponent(this.b4).addGap(84, 84, 84)
+										.addComponent(this.b5)
 										.addPreferredGap(
 												javax.swing.LayoutStyle.ComponentPlacement.RELATED,
 												javax.swing.GroupLayout.DEFAULT_SIZE,
 												Short.MAX_VALUE)
-										.addComponent(b2).addGap(83, 83, 83))
+										.addComponent(this.b2).addGap(83, 83, 83))
 								.addGroup(layout.createSequentialGroup()
-										.addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE,
-												229, javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addComponent(this.id,
+												javax.swing.GroupLayout.PREFERRED_SIZE, 229,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
 										.addPreferredGap(
 												javax.swing.LayoutStyle.ComponentPlacement.RELATED,
 												347, Short.MAX_VALUE)
-										.addComponent(jLabel4).addGap(43, 43, 43)
-										.addComponent(uid, javax.swing.GroupLayout.PREFERRED_SIZE,
-												56, javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addComponent(this.jLabel4).addGap(43, 43, 43)
+										.addComponent(this.uid,
+												javax.swing.GroupLayout.PREFERRED_SIZE, 56,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
 										.addPreferredGap(
 												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-										.addComponent(ulb, javax.swing.GroupLayout.PREFERRED_SIZE,
-												62, javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addComponent(this.ulb,
+												javax.swing.GroupLayout.PREFERRED_SIZE, 62,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
 										.addPreferredGap(
 												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-										.addComponent(jButton1).addContainerGap()))));
+										.addComponent(this.jButton1).addContainerGap()))));
 		layout.setVerticalGroup(layout
 				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 				.addGroup(layout.createSequentialGroup().addGroup(layout
@@ -315,50 +331,54 @@ public class AssignLabel extends javax.swing.JFrame {
 						.addGroup(layout.createSequentialGroup().addGroup(layout
 								.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 								.addGroup(layout.createSequentialGroup().addGap(58, 58, 58)
-										.addComponent(jLabel1))
+										.addComponent(this.jLabel1))
 								.addGroup(layout.createSequentialGroup().addContainerGap()
-										.addComponent(jScrollPane1,
+										.addComponent(this.jScrollPane1,
 												javax.swing.GroupLayout.PREFERRED_SIZE, 217,
 												javax.swing.GroupLayout.PREFERRED_SIZE)))
 								.addGap(18, 18, 18))
-						.addGroup(layout.createSequentialGroup().addComponent(b6).addGap(47, 47, 47)
-								.addComponent(did, javax.swing.GroupLayout.PREFERRED_SIZE,
+						.addGroup(layout.createSequentialGroup().addComponent(this.b6)
+								.addGap(47, 47, 47)
+								.addComponent(this.did, javax.swing.GroupLayout.PREFERRED_SIZE,
 										javax.swing.GroupLayout.DEFAULT_SIZE,
 										javax.swing.GroupLayout.PREFERRED_SIZE)
 								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
 										javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(jButton2).addGap(83, 83, 83)))
+								.addComponent(this.jButton2).addGap(83, 83, 83)))
 						.addGroup(layout
 								.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 								.addGroup(layout
 										.createParallelGroup(
 												javax.swing.GroupLayout.Alignment.BASELINE)
-										.addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE,
+										.addComponent(this.id,
+												javax.swing.GroupLayout.PREFERRED_SIZE,
 												javax.swing.GroupLayout.DEFAULT_SIZE,
 												javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addComponent(ID))
+										.addComponent(this.ID))
 								.addGroup(layout
 										.createParallelGroup(
 												javax.swing.GroupLayout.Alignment.BASELINE)
-										.addComponent(ulb, javax.swing.GroupLayout.PREFERRED_SIZE,
+										.addComponent(this.ulb,
+												javax.swing.GroupLayout.PREFERRED_SIZE,
 												javax.swing.GroupLayout.DEFAULT_SIZE,
 												javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addComponent(uid, javax.swing.GroupLayout.PREFERRED_SIZE,
+										.addComponent(this.uid,
+												javax.swing.GroupLayout.PREFERRED_SIZE,
 												javax.swing.GroupLayout.DEFAULT_SIZE,
 												javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addComponent(jButton1))
-								.addComponent(jLabel4))
+										.addComponent(this.jButton1))
+								.addComponent(this.jLabel4))
 						.addGap(27, 27, 27)
 						.addGroup(layout
 								.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-								.addComponent(url, javax.swing.GroupLayout.PREFERRED_SIZE,
+								.addComponent(this.url, javax.swing.GroupLayout.PREFERRED_SIZE,
 										javax.swing.GroupLayout.DEFAULT_SIZE,
 										javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addComponent(jLabel3))
+								.addComponent(this.jLabel3))
 						.addGap(18, 18, 18)
 						.addGroup(layout
 								.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-								.addComponent(jLabel2).addComponent(label,
+								.addComponent(this.jLabel2).addComponent(this.label,
 										javax.swing.GroupLayout.PREFERRED_SIZE,
 										javax.swing.GroupLayout.DEFAULT_SIZE,
 										javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -366,18 +386,18 @@ public class AssignLabel extends javax.swing.JFrame {
 								javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addGroup(layout
 								.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-								.addComponent(b2).addComponent(b1).addComponent(b3).addComponent(b4)
-								.addComponent(b5))
+								.addComponent(this.b2).addComponent(this.b1).addComponent(this.b3)
+								.addComponent(this.b4).addComponent(this.b5))
 						.addGap(24, 24, 24)));
 
-		pack();
+		this.pack();
 	}
 
 	private void b1ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
-		commentDAO.updateData("update TblComment set label = 1 where id = " + ma);
-		if (chay < ac.size()) {
-			chay++;
-			load();
+		this.commentDAO.update("update TblComment set label = 1 where id = " + this.ma);
+		if (this.chay < this.listCmt.size()) {
+			this.chay++;
+			this.load();
 		} else {
 			JOptionPane.showMessageDialog(this, "het roi");
 		}
@@ -385,76 +405,77 @@ public class AssignLabel extends javax.swing.JFrame {
 
 	private void b2ActionPerformed(java.awt.event.ActionEvent evt)
 			throws SQLException, IOException, InterruptedException {
-		Runtime.getRuntime().exec(new String[] { "cmd", "/c", "start chrome " + url.getText() });
+		Runtime.getRuntime()
+				.exec(new String[] { "cmd", "/c", "start chrome " + this.url.getText() });
 	}
 
 	private void b3ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
-		commentDAO.updateData("update TblComment set label = 2 where id = " + ma);
-		if (chay < ac.size()) {
-			chay++;
-			load();
+		this.commentDAO.update("update TblComment set label = 2 where id = " + this.ma);
+		if (this.chay < this.listCmt.size()) {
+			this.chay++;
+			this.load();
 		} else {
 			JOptionPane.showMessageDialog(this, "het roi");
 		}
 	}
 
 	private void b4ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
-		commentDAO.updateData("update TblComment set label = 3 where id = " + ma);
-		if (chay < ac.size()) {
-			chay++;
-			load();
+		this.commentDAO.update("update TblComment set label = 3 where id = " + this.ma);
+		if (this.chay < this.listCmt.size()) {
+			this.chay++;
+			this.load();
 		} else {
 			JOptionPane.showMessageDialog(this, "het roi");
 		}
 	}
 
 	private void load() throws SQLException {
-		ma = ac.get(chay).getId();
-		String sql = "select * from TblUrl where url_id = '" + ac.get(chay).getPage_id() + "'";
-		ResultSet rs2 = commentDAO.getData(sql);
-		rs2.next();
-		String s = ac.get(chay).getContent();
+		Comment c = (Comment) this.listCmt.get(this.chay);
+		this.ma = c.getId();
+		String sql = "select * from TblUrl where url_id = '" + c.getPage_id() + "'";
+		ArrayList<Object> list = this.urlDAO.getData(sql);
+
+		String s = c.getContent();
 		String line = "";
 		while (s.length() > 80) {
 			line += s.substring(0, 80) + "\n";
 			s = s.substring(80);
 		}
 		line += s;
-		cmt.setText(line);
+		this.cmt.setText(line);
 		try {
-			url.setText(rs2.getString(2));
-			if(rs2.getString(6).equals("thanhnien")){
-				did.setText(Utils.getThanhNienPageId(rs2.getString(2)));
-			}else{
-				did.setText(Utils.getVnExpressPageId(rs2.getString(2)));
-			}
+			Url u = (Url) list.get(0);
+			this.did.setText(Utils.getThanhNienPageId(u.getUrl_id()));
 		} catch (Exception e) {
 
 		}
-		id.setText(ma + "");
+		this.id.setText(this.ma + "");
 	}
 
 	private void b5ActionPerformed(java.awt.event.ActionEvent evt)
 			throws SQLException, IOException, InterruptedException {
-		bw.write(ac.get(chay).getContent() + "\n");
-		bw.write(url.getText() + "\n");
+		Comment c = (Comment) this.listCmt.get(this.chay);
+		this.bw.write(c.getContent() + "\n");
+		this.bw.write(this.url.getText() + "\n");
 	}
 
 	private void b6ActionPerformed(java.awt.event.ActionEvent evt)
 			throws SQLException, IOException, InterruptedException {
-		bw.close();
+		this.bw.close();
 	}
 
 	private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
-		commentDAO.updateData(
-				"update TblComment set label = " + ulb.getText() + " where id = " + uid.getText());
+		this.commentDAO.update("update TblComment set label = " + this.ulb.getText()
+				+ " where id = " + this.uid.getText());
 	}
 
 	private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
-		commentDAO.updateData("delete from TblUrl where url_id = '" + did.getText() + "'");
-		commentDAO.updateData("delete from TblComment where page_id = '" + did.getText() + "'");
-		ac = commentDAO.getAllComment();
-		chay = 0;
-		load();
+		this.commentDAO
+				.update("delete from TblUrl where url_id = '" + this.did.getText() + "'");
+		this.commentDAO
+				.update("delete from TblComment where page_id = '" + this.did.getText() + "'");
+		this.listCmt = this.commentDAO.getAll();
+		this.chay = 0;
+		this.load();
 	}
 }

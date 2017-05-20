@@ -10,6 +10,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import ptit.nhunh.model.Comment;
+import ptit.nhunh.model.Url;
 import ptit.nhunh.model.Word;
 
 public class Utils {
@@ -52,7 +53,7 @@ public class Utils {
 			if (index > -1) {
 				listWord.get(index).setTF(listWord.get(index).getTF() + 1);
 			} else {
-				Word w = new Word(-1, words[i], 1, 0, 0, 0, 0);
+				Word w = new Word(-1, words[i], 1, 0, 0, 0, 0, 0);
 				listWord.add(w);
 			}
 		}
@@ -240,7 +241,13 @@ public class Utils {
 	}
 
 	public static String getVnExpressPageId(String url) {
-		return url.substring(url.lastIndexOf("-") + 1, url.lastIndexOf("-") + 8);
+		try {
+			return url.substring(url.lastIndexOf("-") + 1, url.lastIndexOf("-") + 8);
+		} catch (Exception e) {
+			System.out.println(url);
+			e.printStackTrace();
+			return "fail";
+		}
 	}
 
 	public ArrayList<Comment> record2Comment(ResultSet rs) throws SQLException {
@@ -254,5 +261,19 @@ public class Utils {
 			ac.add(c);
 		}
 		return ac;
+	}
+	
+	public static double round(double d){
+		return (int) (d * 100) / (double) 100;
+	}
+	
+	public static int contain(ArrayList<Object> urls, Url url){
+		for(int i = 0; i < urls.size(); i++){
+			Url u = (Url)urls.get(i); 
+			if(u.getUrl().equals(url.getUrl())){
+				return i;
+			}
+		}
+		return -1;
 	}
 }

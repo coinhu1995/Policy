@@ -6,83 +6,103 @@ public class Url {
 	private int id;
 	private String url;
 	private String url_id;
-	private String tittle;
+	private String titles;
 	private int needed;
 	private String source;
 	private int totalParComment;
 	private int totalComment;
 	private String tag;
-	public Url(int id, String url, String url_id, String tittle, int needed, String source,
+
+	public Url(int id, String url, String url_id, String titles, int needed, String source,
 			int totalParComment, int totalComment, String tag) {
 		super();
 		this.id = id;
 		this.url = url;
 		this.url_id = url_id;
-		this.tittle = tittle;
+		this.titles = titles;
 		this.needed = needed;
 		this.source = source;
 		this.totalParComment = totalParComment;
 		this.totalComment = totalComment;
 		this.tag = tag;
 	}
+
 	public Url() {
 		this.url = Constants.SPACE;
 		this.url_id = Constants.SPACE;
-		this.tittle = Constants.SPACE;
+		this.titles = Constants.SPACE;
 		this.source = Constants.SPACE;
 		this.tag = Constants.SPACE;
 	}
+
 	public int getId() {
-		return id;
+		return this.id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getUrl() {
-		return url;
+		return this.url;
 	}
+
 	public void setUrl(String url) {
 		this.url = url;
 	}
+
 	public String getUrl_id() {
-		return url_id;
+		return this.url_id;
 	}
+
 	public void setUrl_id(String url_id) {
 		this.url_id = url_id;
 	}
-	public String getTittle() {
-		return tittle;
+
+	public String getTitles() {
+		return this.titles;
 	}
-	public void setTittle(String tittle) {
-		this.tittle = tittle;
+
+	public void setTitles(String titles) {
+		this.titles = titles;
 	}
+
 	public int getNeeded() {
-		return needed;
+		return this.needed;
 	}
+
 	public void setNeeded(int needed) {
 		this.needed = needed;
 	}
+
 	public String getSource() {
-		return source;
+		return this.source;
 	}
+
 	public void setSource(String source) {
 		this.source = source;
 	}
+
 	public int getTotalParComment() {
-		return totalParComment;
+		return this.totalParComment;
 	}
+
 	public void setTotalParComment(int totalParComment) {
 		this.totalParComment = totalParComment;
 	}
+
 	public int getTotalComment() {
-		return totalComment;
+		return this.totalComment;
 	}
+
 	public void setTotalComment(int totalComment) {
 		this.totalComment = totalComment;
 	}
+
 	public String getTag() {
-		return tag;
+		return this.tag;
 	}
+
 	public void setTag(String tag) {
 		this.tag = tag;
 	}

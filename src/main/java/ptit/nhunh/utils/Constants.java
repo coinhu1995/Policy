@@ -14,4 +14,5 @@ public class Constants {
 	 * VD: http://thanhnien.vn/ajax/comment-657775-3-like.html
 	 */
 	public static final String TNURL = new String("http://thanhnien.vn/ajax/comment-");	
+	
 }

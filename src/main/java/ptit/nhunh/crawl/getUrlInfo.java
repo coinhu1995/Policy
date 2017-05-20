@@ -8,6 +8,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
+import ptit.nhunh.dao.SQLDAO;
+import ptit.nhunh.dao.SQLDAOFactory;
 import ptit.nhunh.dao.UrlDAO;
 import ptit.nhunh.model.ResponseObject;
 import ptit.nhunh.model.Url;
@@ -15,45 +17,51 @@ import ptit.nhunh.tool.ConvertJson2Java;
 import ptit.nhunh.utils.Utils;
 
 public class getUrlInfo {
-	private UrlDAO urlDAO = new UrlDAO("Capstone");
+	private SQLDAO urlDAO;
 	private String urlComment = "http://usi.saas.vnexpress.net/index/"
 			+ "get?offset=0&limit=500&objecttype=1&siteid=1000000&objectid=";
 
 	public static void main(String[] args) throws SQLException, IOException {
-		new Thread(){
+		new Thread() {
 			@Override
 			public void run() {
 				try {
-					new getUrlInfo().process();
+					new getUrlInfo().process(1, 17000);
 				} catch (SQLException | IOException e) {
 					e.printStackTrace();
 				}
 			}
 		}.start();
-//		new Thread(){
-//			@Override
-//			public void run() {
-//				try {
-//					new getUrlInfo().process(17001, 33608);
-//				} catch (SQLException | IOException e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		}.start();
+		new Thread() {
+			@Override
+			public void run() {
+				try {
+					new getUrlInfo().process(17000, 33608);
+				} catch (SQLException | IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}.start();
 	}
 
-	private void process() throws SQLException, IOException {
-		ArrayList<Url> listURL = this.urlDAO.getAllUrl();
-		for (Url u : listURL) {
+	public getUrlInfo() {
+		this.urlDAO = SQLDAOFactory.getDAO(SQLDAOFactory.URL);
+	}
+
+	private void process(int start, int end) throws SQLException, IOException {
+		ArrayList<Object> listURL = this.urlDAO.getData(
+				"select * from TblUrl where id >= " + start + " and id < " + end + "order by id");
+		for (Object o : listURL) {
+			Url url = (Url) o;
 			try {
-				Document doc = Utils.getHtml(u.getUrl());
+				Document doc = Utils.getHtml(url.getUrl());
 
 				// get tittle
-				u.setTittle(doc.getElementsByTag("title").get(0).text());
+				url.setTitles(doc.getElementsByTag("title").get(0).text().replaceAll("'", "\""));
 
 				// get total number comment
 				try {
-					Document doc2 = Jsoup.connect(this.urlComment + u.getUrl_id())
+					Document doc2 = Jsoup.connect(this.urlComment + url.getUrl_id())
 							.ignoreContentType(true).get();
 					String s = doc2.getElementsByTag("body").get(0).text();
 					s = s.replaceAll("\"Nhân dân tệ\"", "Nhân dân tệ");
@@ -61,29 +69,23 @@ public class getUrlInfo {
 					ConvertJson2Java cvt = new ConvertJson2Java();
 					ResponseObject data = cvt.convert(s);
 
-					u.setTotalParComment(Integer.parseInt(data.getData().getTotal()));
-					u.setTotalComment(Integer.parseInt(data.getData().getTotalitem()));
+					url.setTotalParComment(Integer.parseInt(data.getData().getTotal()));
+					url.setTotalComment(Integer.parseInt(data.getData().getTotalitem()));
 				} catch (Exception e1) {
-					System.out.println("crawl number comment. url: " + u.getUrl());
+					System.out.println("crawl number comment. url: " + url.getUrl());
 					e1.printStackTrace();
 				}
 
 				// get tags
 				Elements list = doc.getElementsByClass("block_tag");
-				String s = list.text();
-				u.setTag(s);
+				url.setTag(list.text().replaceAll("'", "\""));
 
-				// update to DB
-				String sql = "update TblUrl set title = N'" + u.getTittle().replaceAll("'", "\"")
-						+ "', totalCmt = " + u.getTotalComment() + ",totalParCmt = "
-						+ u.getTotalParComment() + " ,tag = N'" + u.getTag().replaceAll("'", "\"")
-						+ "' where id = " + u.getId();
-				this.urlDAO.updateData(sql);
+				this.urlDAO.update(url, UrlDAO.UPDATE_TITLES_AND_TAGS);
 
-				System.out.println(u.getId() + " done!");
+				System.out.println(url.getId() + " done!");
 			} catch (Exception e2) {
 				System.out.println(e2.getMessage());
-				System.out.println(u.getUrl());
+				System.out.println(url.getUrl());
 			}
 		}
 	}

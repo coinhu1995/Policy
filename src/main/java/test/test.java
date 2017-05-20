@@ -1,49 +1,35 @@
 package test;
 
 import java.io.IOException;
-import java.sql.ResultSet;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.ArrayList;
-
-import ptit.nhunh.dao.WordDAO;
 
 public class test {
+
+	private Connection con = null;
+	private PreparedStatement ps = null;
+	private String url = "jdbc:sqlserver://localhost:1433;databaseName=Capstone";
+	private String user = "sa";
+	private String pass = "123";
+
+	public test() {
+		try {
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			this.con = DriverManager.getConnection(this.url, this.user, this.pass);
+		} catch (ClassNotFoundException | SQLException ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	public void delete() throws SQLException {
+		this.ps = this.con.prepareStatement("update Tblabx set label = 1 where label = 100");
+		System.out.println(this.ps.executeUpdate());
+	}
+
 	public static void main(String[] args) throws IOException, SQLException {
-		WordDAO w = new WordDAO("Capstone");
-		ResultSet rs = w.getData("select * from TblWord");
-		
-		ArrayList<String> a = new ArrayList<>();
-		
-		while(rs.next()){
-			a.add(rs.getString(2));
-		}
-		
-		rs = w.getData("select * from TblWord order by id");
-		
-		ArrayList<String> b = new ArrayList<>();
-		
-		while(rs.next()){
-			b.add(rs.getString(2));
-		}
-		
-		long s = System.currentTimeMillis();
-		for(int i = 0; i < a.size(); i++){
-			for(int j = 0; j < b.size(); j++){
-				if(a.get(i).equals(b.get(j))){
-					System.out.println(j);
-					break;
-				}
-			}
-		}
-		long e = System.currentTimeMillis();
-		for(int i = 0; i < a.size(); i++){
-			rs = w.getData("select * from TblWord where word = N'"+a.get(i)+"'");
-			rs.next();
-			System.out.println(rs.getString(1));
-		}
-		long e2 = System.currentTimeMillis();
-		
-		System.out.println("run: "+ (e - s));
-		System.out.println("ds : "+ (e2 - e));
+		test t = new test();
+		t.delete();
 	}
 }

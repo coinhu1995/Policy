@@ -2,7 +2,7 @@ package ptit.nhunh.model;
 
 import java.io.Serializable;
 
-public class Word implements Serializable{
+public class Word implements Serializable {
 	/**
 	 * 
 	 */
@@ -10,11 +10,37 @@ public class Word implements Serializable{
 	private int id;
 	private String word;
 	private int TF;
-	private float DF;
+	private int DF;
 	private float IDF;
 	private double TFIDF;
 	private int isStop;
-	
+	private int cmt_id;
+
+	public Word(int id, String word, int tF, int dF, float iDF, double tFIDF, int isStop,
+			int cmt_id) {
+		super();
+		this.id = id;
+		this.word = word;
+		this.TF = tF;
+		this.DF = dF;
+		this.IDF = iDF;
+		this.TFIDF = tFIDF;
+		this.isStop = isStop;
+		this.cmt_id = cmt_id;
+	}
+
+	public Word() {
+		super();
+	}
+
+	public int getId() {
+		return this.id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getWord() {
 		return this.word;
 	}
@@ -27,38 +53,15 @@ public class Word implements Serializable{
 		return this.TF;
 	}
 
-	public void setTF(int quantity) {
-		this.TF = quantity;
+	public void setTF(int tF) {
+		this.TF = tF;
 	}
 
-	public int getId() {
-		return this.id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public Word() {
-		super();
-	}
-
-	public Word(int id, String word, int TF, float dF, float iDF, double tFIDF, int isStop) {
-		super();
-		this.id = id;
-		this.word = word;
-		this.TF = TF;
-		this.DF = dF;
-		this.IDF = iDF;
-		this.TFIDF = tFIDF;
-		this.isStop = isStop;
-	}
-
-	public float getDF() {
+	public int getDF() {
 		return this.DF;
 	}
 
-	public void setDF(float dF) {
+	public void setDF(int dF) {
 		this.DF = dF;
 	}
 
@@ -84,6 +87,18 @@ public class Word implements Serializable{
 
 	public void setIsStop(int isStop) {
 		this.isStop = isStop;
+	}
+
+	public int getCmt_id() {
+		return this.cmt_id;
+	}
+
+	public void setCmt_id(int cmt_id) {
+		this.cmt_id = cmt_id;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 }

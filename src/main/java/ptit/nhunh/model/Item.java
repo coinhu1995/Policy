@@ -28,7 +28,7 @@ public class Item {
 	private String parent_id;
 
 	public String getContent() {
-		return content;
+		return this.content;
 	}
 
 	public void setContent(String content) {
@@ -36,7 +36,7 @@ public class Item {
 	}
 
 	public String getComment_id() {
-		return comment_id;
+		return this.comment_id;
 	}
 
 	public void setComment_id(String comment_id) {
@@ -44,7 +44,7 @@ public class Item {
 	}
 
 	public String getTime() {
-		return time;
+		return this.time;
 	}
 
 	public void setTime(String time) {
@@ -52,7 +52,7 @@ public class Item {
 	}
 
 	public String getArticle_id() {
-		return article_id;
+		return this.article_id;
 	}
 
 	public void setArticle_id(String article_id) {
@@ -60,7 +60,7 @@ public class Item {
 	}
 
 	public String getAvatar_original() {
-		return avatar_original;
+		return this.avatar_original;
 	}
 
 	public void setAvatar_original(String avatar_original) {
@@ -68,7 +68,7 @@ public class Item {
 	}
 
 	public String getLike_ismember() {
-		return like_ismember;
+		return this.like_ismember;
 	}
 
 	public void setLike_ismember(String like_ismember) {
@@ -76,7 +76,7 @@ public class Item {
 	}
 
 	public String getUserid() {
-		return userid;
+		return this.userid;
 	}
 
 	public void setUserid(String userid) {
@@ -84,7 +84,7 @@ public class Item {
 	}
 
 	public String getCreation_time() {
-		return creation_time;
+		return this.creation_time;
 	}
 
 	public void setCreation_time(String creation_time) {
@@ -92,7 +92,7 @@ public class Item {
 	}
 
 	public String getAvatar() {
-		return avatar;
+		return this.avatar;
 	}
 
 	public void setAvatar(String avatar) {
@@ -100,7 +100,7 @@ public class Item {
 	}
 
 	public String getType() {
-		return type;
+		return this.type;
 	}
 
 	public void setType(String type) {
@@ -108,7 +108,7 @@ public class Item {
 	}
 
 	public String getUserlike() {
-		return userlike;
+		return this.userlike;
 	}
 
 	public void setUserlike(String userlike) {
@@ -116,7 +116,7 @@ public class Item {
 	}
 
 	public String getFull_name() {
-		return full_name;
+		return this.full_name;
 	}
 
 	public void setFull_name(String full_name) {
@@ -124,7 +124,7 @@ public class Item {
 	}
 
 	public String getParent_id() {
-		return parent_id;
+		return this.parent_id;
 	}
 
 	public void setParent_id(String parent_id) {
@@ -133,10 +133,33 @@ public class Item {
 
 	@Override
 	public String toString() {
-		return "ClassPojo [content = " + content + ", comment_id = " + comment_id + ", time = " + time
-				+ ", article_id = " + article_id + ", avatar_original = " + avatar_original + ", like_ismember = "
-				+ like_ismember + ", userid = " + userid + ", creation_time = " + creation_time + ", avatar = " + avatar
-				+ ", type = " + type + ", userlike = " + userlike + ", full_name = " + full_name + ", parent_id = "
-				+ parent_id + "]";
+		return "ClassPojo [content = " + this.content + ", comment_id = " + this.comment_id + ", time = " + this.time
+				+ ", article_id = " + this.article_id + ", avatar_original = " + this.avatar_original + ", like_ismember = "
+				+ this.like_ismember + ", userid = " + this.userid + ", creation_time = " + this.creation_time + ", avatar = " + this.avatar
+				+ ", type = " + this.type + ", userlike = " + this.userlike + ", full_name = " + this.full_name + ", parent_id = "
+				+ this.parent_id + "]";
+	}
+	
+	public Comment convert2Comment(){
+		Comment c = new Comment();
+		c.setAvatar(this.avatar);
+		c.setAvatar_original(this.avatar_original);
+		c.setCmt_id(this.comment_id);
+		c.setCmt_segment("");
+		c.setContent(this.content);
+		c.setCreate_time(this.creation_time);
+		c.setFullname(this.full_name);
+		c.setId(-1);
+		c.setLabel(0);
+		c.setLabel2(0);
+		c.setLike_ismember(this.like_ismember);
+		c.setPage_id(this.article_id);
+		c.setParent_id(this.parent_id);
+		c.setTime(this.time);
+		c.setType(Integer.parseInt(this.type));
+		c.setUser_id(this.userid);
+		c.setUserlike(Integer.parseInt(this.userlike));
+		
+		return c;
 	}
 }

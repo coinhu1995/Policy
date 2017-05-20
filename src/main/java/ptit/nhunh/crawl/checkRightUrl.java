@@ -1,14 +1,14 @@
 package ptit.nhunh.crawl;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-import ptit.nhunh.dao.DBDAO;
+import ptit.nhunh.dao.SQLDAO;
+import ptit.nhunh.dao.SQLDAOFactory;
 import ptit.nhunh.dao.UrlDAO;
+import ptit.nhunh.model.Url;
 
 public class checkRightUrl {
-	private static String[] failUrl = { "video", "tag", "error", "topic", "/sao/", "/nhac/",
-			"/truyen-hinh/", "/phim/", "bong-da" };
 	private static String[] title = { "chính sách", "quy định", "quyết định" };
 	private static String[] tags = { "chính sách", "chỉ đạo", "ra lệnh", "chiến dịch",
 			"đòi vỉa hè", "bộ nội vụ", "quyết định", "quy định", "đòi lại vỉa hè" };
@@ -18,18 +18,19 @@ public class checkRightUrl {
 	}
 	
 	private void process() throws SQLException {
-		UrlDAO dbc = new UrlDAO("Capstone");
-		ResultSet rs = dbc.getData("select * from TblUrl where totalCmt > 0 order by id");
-		while(rs.next()){
-			if(checkTag(rs.getString(10))){
-				dbc.updateData("update TblUrl set needed = 1 where id = "+rs.getInt(1));
+		SQLDAO urlDAO = SQLDAOFactory.getDAO(SQLDAOFactory.URL);
+		ArrayList<Object> urls = urlDAO.getData("select * from TblUrl where totalCmt > 0 order by id");
+		for(int i = 0; i < urls.size(); i++){
+			Url url = (Url) urls.get(i);
+			if(this.checkTag(url.getTag())){
+				urlDAO.update("update TblUrl set needed = 1 where id = "+url.getId(), UrlDAO.UPDATE_NEEDED);
 			}
 			
-			if(checkTitle(rs.getString(4))){
-				dbc.updateData("update TblUrl set needed = 1 where id = "+rs.getInt(1));
+			if(this.checkTitles(url.getTitles())){
+				urlDAO.update("update TblUrl set needed = 1 where id = "+url.getId(), UrlDAO.UPDATE_NEEDED);
 			}
 			
-			System.out.println(rs.getInt(1) + " done!");
+			System.out.println(url.getId() + " done!");
 		}
 	}
 		
@@ -44,7 +45,7 @@ public class checkRightUrl {
 		return false;
 	}
 	
-	private boolean checkTitle(String tit){
+	private boolean checkTitles(String tit){
 		for(int i = 0; i < title.length; i++){
 			if(tit.contains(title[i])){
 				return true;
