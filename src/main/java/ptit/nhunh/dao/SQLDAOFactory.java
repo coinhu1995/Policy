@@ -10,9 +10,9 @@ public class SQLDAOFactory {
 		case COMMENT:
 			return CommentDAO.getInstance();
 		case URL:
-			return CommentDAO.getInstance();
+			return UrlDAO.getInstance();
 		case WORD:
-			return CommentDAO.getInstance();
+			return WordDAO.getInstance();
 		}
 		return null;
 	}

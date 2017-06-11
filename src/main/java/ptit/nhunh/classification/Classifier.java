@@ -7,11 +7,12 @@ import java.sql.SQLException;
 import ptit.nhunh.Classify;
 
 public class Classifier {
-	public static void main(String[] args)
-			throws SQLException, FileNotFoundException, IOException, ClassNotFoundException {
+	public static void main(String[] args) throws SQLException, FileNotFoundException, IOException, ClassNotFoundException {
 		System.out.println("Processing...");
-		new Classify().classified("src\\main\\resource\\data\\2label\\20170518\\0028\\input.train",
-				"src\\main\\resource\\data\\2label\\20170518\\0028\\input.test",
-				"src\\main\\resource\\data\\2label\\20170518\\0028\\output");
+
+		String path = "20170609\\2049";
+
+		new Classify().classified("src\\main\\resource\\data\\2label\\" + path + "\\input.train", "src\\main\\resource\\data\\2label\\" + path + "\\input.test",
+				"src\\main\\resource\\data\\2label\\" + path + "\\output");
 	}
 }
