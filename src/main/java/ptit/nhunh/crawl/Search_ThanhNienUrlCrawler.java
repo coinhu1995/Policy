@@ -28,12 +28,12 @@ public class Search_ThanhNienUrlCrawler {
 
 		ArrayList<Object> urls = this.urlDAO.getAll();
 
-		for (int i = 1; i <= 99; i++) {
+		for (int i = 76; i <= 99; i++) {
 			System.out.println("--- Page " + i + " ---");
 			String url = this.sourceUrl + i + ".html";
 			Document doc = null;
 			try {
-				doc = Jsoup.connect(url).timeout(5000).get();
+				doc = Jsoup.connect(url).timeout(10000).get();
 			} catch (IOException e) {
 				System.out.println("--- Page " + i + " error to load ---");
 				return;

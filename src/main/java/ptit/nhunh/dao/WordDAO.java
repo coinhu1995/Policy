@@ -104,4 +104,10 @@ public class WordDAO implements SQLDAO {
 		}
 		return true;
 	}
+
+	@Override
+	public Object find(String id) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -125,4 +125,16 @@ public class UrlDAO implements SQLDAO {
 		}
 		return true;
 	}
+
+	@Override
+	public Object find(String id) throws SQLException {
+		String sql = "select * from TblUrl where url_id = ?";
+		this.ps = this.con.prepareStatement(sql);
+		this.ps.setString(1, id);
+		ResultSet rs = this.ps.executeQuery();
+		rs.next();
+		Url url = new Url(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4),
+				rs.getInt(5), rs.getNString(6), rs.getInt(7), rs.getInt(8), rs.getNString(9));
+		return url;
+	}
 }

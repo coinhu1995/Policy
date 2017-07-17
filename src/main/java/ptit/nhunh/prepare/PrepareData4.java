@@ -55,16 +55,22 @@ public class PrepareData4 {
 		this.commentDAO = SQLDAOFactory.getDAO(SQLDAOFactory.COMMENT);
 		this.wordDAO = SQLDAOFactory.getDAO(SQLDAOFactory.WORD);
 		this.vietToken = new VietTokenizer();
-		String path = "src\\main\\resource\\data\\" + this.labelCount + "label\\" + LocalDate.now().toString().replaceAll("-", "") + "\\" + LocalTime.now().toString().substring(0, 5).replace(":", "");
+		String path = "src\\main\\resource\\data\\" + this.labelCount + "label\\"
+				+ LocalDate.now().toString().replaceAll("-", "") + "\\"
+				+ LocalTime.now().toString().substring(0, 5).replace(":", "");
 		File folder = new File(path);
 		if (!folder.exists()) {
 			folder.mkdirs();
 		}
 
-		this.bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(path + "\\train.txt"))));
-		this.bw1 = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(path + "\\test"))));
-		this.bw2 = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(path + "\\input.train"))));
-		this.bw3 = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(path + "\\input.test"))));
+		this.bw = new BufferedWriter(
+				new OutputStreamWriter(new FileOutputStream(new File(path + "\\train.txt"))));
+		this.bw1 = new BufferedWriter(
+				new OutputStreamWriter(new FileOutputStream(new File(path + "\\test"))));
+		this.bw2 = new BufferedWriter(
+				new OutputStreamWriter(new FileOutputStream(new File(path + "\\input.train"))));
+		this.bw3 = new BufferedWriter(
+				new OutputStreamWriter(new FileOutputStream(new File(path + "\\input.test"))));
 
 		this.wordsOfTrainingData = new ArrayList<>();
 
@@ -72,7 +78,8 @@ public class PrepareData4 {
 		this.wordDAO.update("DBCC CHECKIDENT ('TblWord', RESEED, 0)");
 	}
 
-	public static void main(String[] args) throws FileNotFoundException, SQLException, IOException, InterruptedException {
+	public static void main(String[] args)
+			throws FileNotFoundException, SQLException, IOException, InterruptedException {
 		new PrepareData4().process();
 	}
 
@@ -90,8 +97,10 @@ public class PrepareData4 {
 
 		this.close();
 
-		System.out.println("Generate Training File   : " + (eGenTrainDataFile - sGenTrainDataFile) / (float) 60000);
-		System.out.println("Generate Testing File   : " + (eGenTestDataFile - eGenTrainDataFile) / (float) 60000);
+		System.out.println("Generate Training File   : "
+				+ (eGenTrainDataFile - sGenTrainDataFile) / (float) 60000);
+		System.out.println("Generate Testing File   : "
+				+ (eGenTestDataFile - eGenTrainDataFile) / (float) 60000);
 	}
 
 	/**
@@ -103,17 +112,21 @@ public class PrepareData4 {
 	 * @throws IOException
 	 * @throws InterruptedException
 	 */
-	private void genTrainingDataFile(int train) throws SQLException, IOException, InterruptedException {
+	private void genTrainingDataFile(int train)
+			throws SQLException, IOException, InterruptedException {
 		System.out.println("\t+> Training file Generating...");
 		this.collectTrainingWord(train);
-		ArrayList<Object> listCmt = this.commentDAO.getData("select * from TblComment where id <= " + train + " order by id ");
+		ArrayList<Object> listCmt = this.commentDAO
+				.getData("select * from TblComment where id <= " + train + " order by id ");
 
 		this.write(listCmt, this.wordsOfTrainingData, this.bw, this.bw2);
 	}
 
-	private void genTestingDataFile(int train, int test) throws SQLException, IOException, InterruptedException {
+	private void genTestingDataFile(int train, int test)
+			throws SQLException, IOException, InterruptedException {
 		System.out.println("\t+> Testing file Generating...");
-		ArrayList<Object> listCmt = this.commentDAO.getData("select * from TblComment where id > " + train + " and id <= " + test + " order by id ");
+		ArrayList<Object> listCmt = this.commentDAO.getData("select * from TblComment where id > "
+				+ train + " and id <= " + test + " order by id ");
 
 		this.wordsOfTrainingTestingData = SerializationUtils.clone(this.wordsOfTrainingData);
 
@@ -121,7 +134,8 @@ public class PrepareData4 {
 		this.checkStopWord(this.wordsOfTrainingTestingData);
 
 		for (int i = 0; i < this.wordsOfTrainingTestingData.size(); i++) {
-			this.wordsOfTrainingTestingData.get(i).setIDF((float) Math.log10((test) / (1 + this.wordsOfTrainingTestingData.get(i).getDF())));
+			this.wordsOfTrainingTestingData.get(i).setIDF((float) Math
+					.log10((test) / (1 + this.wordsOfTrainingTestingData.get(i).getDF())));
 		}
 
 		this.write(listCmt, this.wordsOfTrainingTestingData, this.bw1, this.bw3);
@@ -136,7 +150,8 @@ public class PrepareData4 {
 	 */
 	private void collectTrainingWord(int train) throws SQLException, IOException {
 		ArrayList<Word> listWord = new ArrayList<>();
-		ArrayList<Object> listCmt = this.commentDAO.getData("select * from TblComment where id <= " + train + " order by id");
+		ArrayList<Object> listCmt = this.commentDAO
+				.getData("select * from TblComment where id <= " + train + " order by id");
 
 		this.collect(listWord, listCmt);
 		this.checkStopWord(listWord);
@@ -160,7 +175,8 @@ public class PrepareData4 {
 	 * @param rs
 	 * @throws SQLException
 	 */
-	private void collect(ArrayList<Word> listAllWord, ArrayList<Object> listCmt) throws SQLException {
+	private void collect(ArrayList<Word> listAllWord, ArrayList<Object> listCmt)
+			throws SQLException {
 		Collator collator = Collator.getInstance();
 		collator.setStrength(Collator.TERTIARY);
 		for (Object o : listCmt) {
@@ -181,7 +197,7 @@ public class PrepareData4 {
 			}
 		}
 	}
-	
+
 	/**
 	 * <p>
 	 * Chuyển các câu ở trong rs thành dạng vector và ghi ra file
@@ -197,7 +213,8 @@ public class PrepareData4 {
 	 * @throws SQLException
 	 * @throws IOException
 	 */
-	public void write(ArrayList<Object> listCmt, ArrayList<Word> listAllWord, BufferedWriter bw1, BufferedWriter bw2) throws SQLException, IOException {
+	public void write(ArrayList<Object> listCmt, ArrayList<Word> listAllWord, BufferedWriter bw1,
+			BufferedWriter bw2) throws SQLException, IOException {
 		for (Object o : listCmt) {
 			Comment c = (Comment) o;
 			String line = "", line1 = "";
@@ -229,7 +246,8 @@ public class PrepareData4 {
 			for (int i = 0; i < words.size(); i++) {
 				if (words.get(i).getIsStop() != 1) {
 					line += words.get(i).getId() + ":" + Utils.round(words.get(i).getTFIDF()) + " ";
-					line1 += words.get(i).getId() + ":" + Utils.round(words.get(i).getTFIDF()) + " ";
+					line1 += words.get(i).getId() + ":" + Utils.round(words.get(i).getTFIDF())
+							+ " ";
 
 					// line += words.get(i).getId() + ":" + words.get(i).getTF()
 					// + " ";
@@ -252,7 +270,8 @@ public class PrepareData4 {
 	private void checkStopWord(ArrayList<Word> listCmt) throws IOException, SQLException {
 		Collator collator = Collator.getInstance();
 		collator.setStrength(Collator.TERTIARY);
-		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("stopword.txt")));
+		BufferedReader br = new BufferedReader(
+				new InputStreamReader(new FileInputStream("stopword.txt")));
 		String s = "";
 		while ((s = br.readLine()) != null) {
 			for (Word word : listCmt) {

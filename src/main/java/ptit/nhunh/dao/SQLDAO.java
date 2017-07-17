@@ -9,4 +9,5 @@ public interface SQLDAO {
 	public ArrayList<Object> getData(String sql) throws SQLException;
 	public boolean update(Object obj, int field);
 	public boolean update(String sql);
+	public Object find(String id) throws SQLException;
 }
