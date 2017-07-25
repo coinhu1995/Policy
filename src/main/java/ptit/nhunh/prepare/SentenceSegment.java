@@ -1,7 +1,11 @@
 package ptit.nhunh.prepare;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
 
 import ptit.nhunh.dao.CommentDAO;
 import ptit.nhunh.dao.SQLDAO;
@@ -13,22 +17,41 @@ import vn.hus.nlp.tokenizer.VietTokenizer;
 
 public class SentenceSegment {
 	private static final int TOTAL_CMT = 7888;
-	private static final int VNTOKENIZER = 1;
-	private static final int UETSEGMENT = 2;
+	public static final int VNTOKENIZER = 1;
+	public static final int UETSEGMENT = 2;
 
 	private VietTokenizer vietTokenizer;
 	private UETSegmenter segmenter;
 	private SQLDAO cmtDAO;
 
-	public SentenceSegment() {
+	private HashMap<String, String> acronymWords = new HashMap<>();
+	
+	public static void main(String[] args) {
+		try {
+			new SentenceSegment().process(VNTOKENIZER);
+		} catch (FileNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public SentenceSegment() throws FileNotFoundException {
 		this.cmtDAO = SQLDAOFactory.getDAO(SQLDAOFactory.COMMENT);
 		this.vietTokenizer = new VietTokenizer();
-		this.segmenter = new UETSegmenter("modelsUET");
+		// this.segmenter = new UETSegmenter("modelsUET");
+
+		Scanner scan = new Scanner(new File("acronyms.txt"));
+
+		while (scan.hasNextLine()) {
+			String line = scan.nextLine();
+			this.acronymWords.put(line.split(":")[0], line.split(":")[1]);
+		}
+		scan.close();
 	}
 
 	/**
 	 * <strong>VNTOKENIZER</strong>: to use vntokenizer
 	 * <strong>UETSEGMENT</strong>: to use UETsegment
+	 * 
 	 * @param kernel
 	 * @throws SQLException
 	 */
@@ -72,7 +95,8 @@ public class SentenceSegment {
 	 * @param sentence
 	 * @return
 	 */
-	private String sentence2SegmentSentence(String sentence, int kernel) {
+	public String sentence2SegmentSentence(String sentence, int kernel) {
+		sentence = this.replaceAcronymWord(sentence);
 		if (kernel == UETSEGMENT) {
 			sentence = this.segmenter.segment(sentence);
 		}
@@ -80,6 +104,23 @@ public class SentenceSegment {
 			sentence = this.vietTokenizer.tokenize(sentence)[0];
 		}
 		sentence = Utils.removeSymbol(sentence);
+		return sentence;
+	}
+
+	public String replaceAcronymWord(String sentence) {
+		for (String key : this.acronymWords.keySet()) {
+			sentence = sentence.replace(" " + key + " ", " " + this.acronymWords.get(key) + " ");
+
+			if (sentence.indexOf(" ") > 0
+					&& sentence.substring(0, sentence.indexOf(" ")).equals(key)) {
+				sentence = this.acronymWords.get(key) + sentence.substring(sentence.indexOf(" "));
+			}
+			if (sentence.indexOf(" ") > 0
+					&& sentence.substring(sentence.lastIndexOf(" ") + 1).equals(key)) {
+				sentence = sentence.substring(0, sentence.lastIndexOf(" ") + 1)
+						+ this.acronymWords.get(key);
+			}
+		}
 		return sentence;
 	}
 }

@@ -19,6 +19,7 @@ import java.util.Comparator;
 
 import org.apache.commons.lang3.SerializationUtils;
 
+import ptit.nhunh.context.Context;
 import ptit.nhunh.dao.SQLDAO;
 import ptit.nhunh.dao.SQLDAOFactory;
 import ptit.nhunh.model.Comment;
@@ -36,8 +37,10 @@ import vn.hus.nlp.tokenizer.VietTokenizer;
 public class PrepareData4 {
 	@SuppressWarnings("unused")
 	private VietTokenizer vietToken;
-	private SQLDAO commentDAO;
+	private SQLDAO cmtTestDao;
 	private SQLDAO wordDAO;
+
+	private Context context;
 
 	private BufferedWriter bw;
 	private BufferedWriter bw1;
@@ -47,17 +50,22 @@ public class PrepareData4 {
 	private ArrayList<Word> wordsOfTrainingData;
 	private ArrayList<Word> wordsOfTrainingTestingData;
 
-	private int train = 4500;
-	private int test = 5089;
 	private int labelCount = 2;
 
 	public PrepareData4() throws SQLException, IOException {
-		this.commentDAO = SQLDAOFactory.getDAO(SQLDAOFactory.COMMENT);
+		this.cmtTestDao = SQLDAOFactory.getDAO(SQLDAOFactory.COMMENTTEST);
 		this.wordDAO = SQLDAOFactory.getDAO(SQLDAOFactory.WORD);
 		this.vietToken = new VietTokenizer();
+		this.context = Context.getInstance();
+
+		String date = LocalDate.now().toString();
+		String time = LocalTime.now().toString();
+
 		String path = "src\\main\\resource\\data\\" + this.labelCount + "label\\"
-				+ LocalDate.now().toString().replaceAll("-", "") + "\\"
-				+ LocalTime.now().toString().substring(0, 5).replace(":", "");
+				+ date.replaceAll("-", "") + "\\" + time.substring(0, 5).replace(":", "");
+
+		System.out.println(date.replaceAll("-", "") + "\\\\" + time.substring(0, 5).replace(":", ""));
+
 		File folder = new File(path);
 		if (!folder.exists()) {
 			folder.mkdirs();
@@ -87,10 +95,10 @@ public class PrepareData4 {
 		System.out.println("\n--- Start Processing ---");
 
 		long sGenTrainDataFile = System.currentTimeMillis();
-		this.genTrainingDataFile(this.train);
+		this.genTrainingDataFile(this.context.getTrain());
 		long eGenTrainDataFile = System.currentTimeMillis();
 
-		this.genTestingDataFile(this.train, this.test);
+		this.genTestingDataFile(this.context.getTrain(), this.context.getTest());
 		long eGenTestDataFile = System.currentTimeMillis();
 
 		System.out.println("--- End Processing ---");
@@ -116,8 +124,8 @@ public class PrepareData4 {
 			throws SQLException, IOException, InterruptedException {
 		System.out.println("\t+> Training file Generating...");
 		this.collectTrainingWord(train);
-		ArrayList<Object> listCmt = this.commentDAO
-				.getData("select * from TblComment where id <= " + train + " order by id ");
+		ArrayList<Object> listCmt = this.cmtTestDao.getData("select * from "
+				+ this.context.getCommentTableName() + " where id <= " + train + " order by id ");
 
 		this.write(listCmt, this.wordsOfTrainingData, this.bw, this.bw2);
 	}
@@ -125,8 +133,9 @@ public class PrepareData4 {
 	private void genTestingDataFile(int train, int test)
 			throws SQLException, IOException, InterruptedException {
 		System.out.println("\t+> Testing file Generating...");
-		ArrayList<Object> listCmt = this.commentDAO.getData("select * from TblComment where id > "
-				+ train + " and id <= " + test + " order by id ");
+		ArrayList<Object> listCmt = this.cmtTestDao
+				.getData("select * from " + this.context.getCommentTableName() + " where id > "
+						+ train + " and id <= " + test + " order by id ");
 
 		this.wordsOfTrainingTestingData = SerializationUtils.clone(this.wordsOfTrainingData);
 
@@ -150,8 +159,8 @@ public class PrepareData4 {
 	 */
 	private void collectTrainingWord(int train) throws SQLException, IOException {
 		ArrayList<Word> listWord = new ArrayList<>();
-		ArrayList<Object> listCmt = this.commentDAO
-				.getData("select * from TblComment where id <= " + train + " order by id");
+		ArrayList<Object> listCmt = this.cmtTestDao.getData("select * from "
+				+ this.context.getCommentTableName() + " where id <= " + train + " order by id");
 
 		this.collect(listWord, listCmt);
 		this.checkStopWord(listWord);
@@ -257,6 +266,7 @@ public class PrepareData4 {
 			}
 			if (line.length() > 2) {
 				bw1.write(line);
+				bw1.write("\t\t" + c.getCmt_segment());
 				bw1.newLine();
 				bw2.write(line1);
 				bw2.newLine();

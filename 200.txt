@@ -1,10 +1,350 @@
-1 944783      thật tuyệt_vời vì chủ_quyền đất_nước tôi sẵn_sàng đóng_góp và hy_sinh xương_máu để bảo_vệ 
-1 944671      thật tuyệt_vời cám_ơn tất_cả các cơ_quan_chức_năng đã quan_tâm đầu_tư cho các vùng_biển đảo của đất_nước chiến_sĩ và đồng_bào đã hết_mình gây_dựng bảo_vệ những hòn đảo thiêng_liêng của tổ_quốc họ xứng_đáng được như_vậy 
-1 20040587    thông_tin tốt nhất mà tôi từng đọc xin cám_ơn 
-1 16053245    rất ủng_hộ bộ_trưởng tiến là người thật_sự tâm_huyết với nghề y 
-1 16053166    chúc_mừng cô rất vui khi cô tiếp_tục cương_vị bộ_trưởng bộ y_tế1 16056017    ủng_hộ bộ_trưởng tiến 
-1 16056089    chúc_mừng bà tôi tin bà sẽ làm tốt hơn
-1 16056055    chuc mừng cô cháu tin vào cô
-1 16056017    ủng_hộ bộ_trưởng tiến 
-1 16056089    chúc_mừng bà tôi tin bà sẽ làm tốt hơn
-1 16056055    chuc mừng cô cháu tin vào cô
+1 39          thật tuyệt_vời vì chủ_quyền đất_nước tôi sẵn_sàng đóng_góp và hy_sinh xương_máu để bảo_vệ 
+1 41          thật tuyệt_vời cám_ơn tất_cả các cơ_quan_chức_năng đã quan_tâm đầu_tư cho các vùng_biển đảo của đất_nước chiến_sĩ và đồng_bào đã hết_mình gây_dựng bảo_vệ những hòn đảo thiêng_liêng của tổ_quốc họ xứng_đáng được như_vậy 
+1 92          thông_tin tốt nhất mà tôi từng đọc xin cám_ơn 
+1 95          rất ủng_hộ bộ_trưởng tiến là người thật_sự tâm_huyết với nghề y 
+1 96          chúc_mừng cô rất vui khi cô tiếp_tục cương_vị bộ_trưởng bộ y_tế
+1 100         ủng_hộ bộ_trưởng tiến 
+1 101         chúc_mừng bà tôi tin bà sẽ làm tốt hơn
+1 102         chuc mừng cô cháu tin vào cô
+1 143         hoan_hô các anh công_an 
+1 202         nay đọc được tin bài naày thấy mừng quá 
+1 213         rất đồng_tình phải xử_lý hình_sự vì giống_nòi những_ai làm_giàu bất_lương phải bị trừng_trị thích_đáng như_thế mới răn_đe được_lòng tham của con_người vì lòng tham con_người tạo ra vô_số tội_ác với con_người 
+1 261         hoan_hô công_an vì dân bắc được bọn buôn chất tạo nạc vì lợi_ích của bản_thân mà bán những chất đầu_độc nhân_dân mình tôi đề_nghị nên tử_hình những kẻ này và phạt thật nặng điều_tra thêm về rau ngâm hóa_chất nửa để chúng_ta đi ăn hoạc mua một món gì không còn sợ ăn hóa_chất nữa 
+1 267         hoan_hô sự quyết_liệt này đây không_thể gọi_là chất tạo nạc mà phải gọi nó là chất đầu_độc đồng_loại tôi đề_nghị đưa tội_danh này có mức phạt hình_sự ngang với tội buôn_bán ma_túy có thế mới thực_sự là quyết_liệt 
+1 324         hoan_hô mấy anh cảnh_sát
+1 377         tuyệt_vời tôi hy_vọng đây sẽ là bước đột_phá giúp thu_hút nhân_tài để cống_hiến cho đất_nước trí_tuệ là vô_giá các nhân_tài hãy vì dân_tộc mà cống_hiến nhiều hơn_nữa những phát_minh sáng_chế cảm_ơn các đ c lãnh_đạo đã mở_rộng cho các nhân_tài nếu tốt hãy nhân rộng trên cả nước 
+1 380         rất tốt nhưng mong là những vị_trí đó đến đúng tay người xứng_đáng 
+1 386         thật tuyệt đây sẽ là một điểm sáng của việt nam trong lĩnh_vực thu_hút nhân_tài nhưng lương vẫn chỉ là một khía_cạnh còn cơ_sở vật_chất máy_móc nghiên_cứu nhưng dẫu_sao thông_tin này chắc_chắn sẽ có hiệu_quả 
+1 389         một hướng đi quá hay trong quá_trình thực_hiện cố_gắng bám sát cuộc_sống và nhu_cầu thực_tế của người_dân được nữa_là tuyệt_vời 
+1 390         một hành_động kịp_thời để tránh chảy_máu chất_xám rất hoan_nghênh lãnh_đạo tp 
+1 392         rất hay
+1 394         tin này quá tuyệt_vời cảm_ơn sự đúng_đắn của thành_phố 
+1 400         ủng_hộ quá tất_nhiên với những nhà_khoa_học thực_thụ không không đặt quyền_lợi cá_nhân lên trên không lạm_dụng đồng_tiền của dân nếu phát_hiện dù chỉ là một_triệu đồng thì cũng xin mời ra khỏi hội_đồng khoa_học và truy_thu gần hết số tiền đã lĩnh tất_nhiên là vẫn phải công_nhận những phát_minh và phải trừ những khoảng đó ra
+1 405         tôi rất ủng_hộ cách làm này 
+1 413         ủng_hộ bộ_trưởng
+1 417         rất thích cách làm_việc của bộ_trưởng   thăng ủng_hộ ông
+1 418         hoan_nghênh
+1 419         cháu ủng_hộ bộ_trưởng cần kiên_quyết dứt_khoát và mang tính triệt_để như_vậy
+1 423         rất cảm_ơn sự mạnh_mẽ và cương_quyết của bộ_trưởng 
+1 466         rất dũng_cảm
+1 467         hay
+1 474         đây là tin hay nhất trong năm mà tôi từng đọc có ai giống tôi ko ?
+1 1296		  tôi hưởng_ứng 
+1 1361        nhiệt_liệt ủng_hộ
+1 1601        một chính_sách hay hợp_lý phục_vụ nhân_dân
+1 1606        đối_với ôtô chở người từ 9 chỗ trở xuống nộp lệ_phí trước_bạ lần đầu với mức thu là 10 thật tuyệt_vời vì đã giảm gánh nặng cho người_dân các tỉnh_thành vẫn hiện phải đóng 12 phí trước_bạ
+1 1613        hoàn_toàn đồng_ý 
+1 1802        chế_độ hỗ_trợ nữ lao_động thật tuyệt_vời 
+1 2041        rất mạnh_mẽ
+1 2096        tổng_thống phải vậy nói là làm
+1 2099        bộ_trưởng nói rất đúng
+1 2100        đúng rồi phải để bản_thân hoặc người_thân mình vào thì mới biết là nó nhỏ hay to 
+1 2111        rất hay
+1 2121        chính_xác luôn 
+1 2122        chuẩn rồi bác ơi cần trừng_phạt thích_đáng
+1 2123        quá thích luôn 
+1 2139        bác nói chuẩn quá 
+1 2140        hay quá
+1 2336        luôn_luôn ủng_hộ bác
+1 2349        hay phải vậy chứ 
+1 2389        cố lên chú hải ơi người_dân thành_phố ủng_hộ chú
+1 2393        tiếp_tục ủng_hộ ông hải q1 cố lên 
+1 2442        hoàn_toàn ủng_hộ em hải cố lên em nhé 
+1 2443        rất tốt nếu các thành_phố đều làm như_vậy thì đất_nước thật văn_minh nếu cán_bộ nào cũng_như ông đoàn ngọc hải thì nước mạnh dân giầu
+1 2476        ông rất thẳng_thắn người_dân chúng_tôi vô_cùng cảm_ơn ông rất cảm_ơn  
+1 2500        ủng_hộ ạ
+1 2501        ủng_hộ anh làm quyết_liệt làm thường_xuyên và mạnh_mẽ hơn cái gì mà thường_xuyên nó sẽ thành thói_quen là văn_hóa 
+1 2502        rất cám_ơn ông hải ông là tam gương sáng để chúng_ta học_tập
+1 2539        tôi đồng_ý việc_làm của ông đoàn ngọc hải dẹp bỏ tất_cả những gì cản_trở lấn_chiếm vỉa_hè ở các đô_thị
+1 2542        nhiệt_liệt ủng_hộ vì cái chung để có được tp sạch đẹp văn_minh phải làm ngay hôm_nay để ngày_mai chúng_ta và con_cháu được hưởng 
+1 2552        tôi rất ủng_hộ cách làm bác hải việt nam rất cần những người như bác 
+1 2554        dân chúng_tôi ủng_hộ anh chúc anh sức_khoẻ
+1 2584        chúng_tôi rất ủng_hộ việc này vừa phục_vụ người đi bộ quan_trọng hơn là mỹ_quan thành_phố sẽ đẹp hơn 
+1 2585        sáng ra thấy tin này là phấn_khởi hẳn 
+1 2590        cảm_ơn bác hải 
+1 2591        thật tuyệt_vời khi cả nước ra_quân lập lại trật_tự vỉa_hè dành một phần thông_thoáng cho người đi bộ mong rằng sau đợt sắp_xếp này lãnh_đạo các địa_bàn khu_phố phường quận tiếp_tục chỉ_đạo để duy_trì được trật_tự thông_thoáng của các hè_phố 
+1 2596        đúng hướng rồi làm mạnh đi các bác ơi 
+1 2614        rất ủng_hộ phương_án này
+1 2624        nghe mừng quá hợp lòng dân hoan_nghênh các lãnh_đạo địa_phương hết_lòng với chủ_trương đúng_đắn nầy không biết quận tân phú thế_nào ? đường lb b con đường đẹp nhất quận có triển_khai không ? các cửa_tiệm buôn_bán tự lấn_chiếm hết vĩa hè của mình còn lấn luôn của nhà kế bên một_cách ngang_nhiên 
+1 2625        toàn dân đồng_lòng toàn dân ủng_hộ thì chẳng có_lý gì là không làm được 
+1 2628        ủng_hộ ủng_hộ đại ủng_hộ luôn huế ơi có làm không ?
+1 2633        rất hoan_nghênh các cấp các ngành đã sử lý quyết_liệt mong sao tất_cả người_dân đồng_tình ủng_hộ chính_quyền và chúng_ta nâng cao ý_thức để cs tươi_đẹp hơn 
+1 2635        rất phấn_khởi việc cả nước ra_quân giải_phóng vỉa_hè ông đoàn ngọc hải không cô_đơn nữa đâu 
+1 2818        cái này hoàn_toàn đúng phải làm gấp nếu có tuyến đường này kinh_tế việt nam sẽ cất_cánh 
+1 2819        con ủng_hộ 100 cho dự_án này mong sớm triển_khai để đưa đất_nước phát_triển 
+1 2831        tin_vui quá đất_nước mình sẽ phát_triển mạnh khi có tuyến đường này tuyệt_vời 
+1 2852        rất hoan_nghênh nhưng đừng để đội_giá
+1 2853        tuyệt_vời quá tuyệt_vời mong rằng 4 6 năm nữa sẽ hoàn_thành có tuyến đường tuyệt_vời nhất kết_nối phát_triển kinh_tế cả nước
+1 2887        rất tuyệt nhưng phải sử_dụng đúng đủ vốn đầu_tư  
+1 2892        lời_nói của bộ_trưởng quả chí_lý dĩ_hòa_vi_quý mà 
+1 2900        lời_nói của bộ_trưởng quả chí_lý tránh voi không xấu mặt chuột 
+1 2904        đồng_ý là tránh khiêu_khích các hacker nước_ngoài nhưng chúng_ta nên cần luôn_luôn nâng cao cảnh_giác để phòng_tránh và bảo_vệ đất_nước 
+1 2908        bộ_trưởng nói rất đúng không nên manh_động 
+1 2963        vỗ_tay quá_trời
+1 3018        phải vậy xh mới phát_triển được rất hoan_nghênh và ủng_hộ 
+1 3019        rất chặt_chẽ và nghiêm_khắc
+1 3020        ủng_hộ
+1 3023        phải vậy tôi rất ủng_hộ
+1 3050        hay
+1 3056        tôi là nam nhưng tôi đồng_ý với ý_kiến với bà 
+1 3057        tôi ủng_hộ luật cấm phá_thai với những thai_nhi bình_thường tội_lỗi tội_lỗi
+1 3236        ông nói đúng 
+1 3237        1000 like cho trump
+1 3238        đúng là vị lảnh đạo có tầm nhìn chiến_lược rất tuyệt_vời bác trump ạ
+1 3278        một tín_hiệu đáng mừng hy_vọng đẩy_mạnh và nhanh hơn_nữa công_tác cải_cách thủ_tục hành_chính tthc thực_hiện cơ_chế một cửa một cửa liên_thông tạo điều_kiện thuận_lợi nhất cho người_dân và doanh_nghiệp trong giải_quyết tthc 
+1 3280        vậy có phải là tốt cho dân không
+1 3282        hay quá mình cũng sắp mua nhà 
+1 3293        tuyệt_vời thật tuyệt_vời một hành_động mang tính tích_cực và rất nhân_văn 
+1 3296        rất nhân_văn xin ủng_hộ chủ_trương của đà nẵng và mong những cô_gái lầm_đường_lạc_lối sớm về với cộng_đồng 
+1 3297        phải công_nhận là trên cả tuyệt_vời đà nẵng là thành_phố đáng sống nhất việt nam cơ_mà 
+1 3301        tôi hoàn_toàn đồng_ý với cách làm của tp đà nẵng phàm làm người cần phải có một tấm_lòng bao_dung độ_lượng và vị_tha 
+1 3304        tuyệt_vời đà nẵng 
+1 3315        lời_nói thật tuyệt_vời cực_kỳ hoan_hô những_ai góp sức 
+1 3316        tôi rất hoan_nghênh việc_làm của lãnh_đạo tp đà nẵng đó là chính_sách hành_động rất nhân_văn cần được nhân rộng trên toàn_quốc 
+1 3318        quan_điểm của bác hùng thật đáng hoan_nghênh và nhân rộng ra cả nước tôi hoàn_toàn đồng_ý 
+1 3320        những lời_nói thật tuyệt_vời hoan_hô tấm_lòng nhân_đạo của tất_cả những_ai góp_phần làm_việc này 
+1 3322        ok cho tràng pháo tay ngay
+1 3324        tôi rất đồng_tình với chủ_trương của lãnh_đạo đà nẵng
+1 3326        một chính_sách đúng chúc đà nẵng thành_công 
+1 3327        hoan_hô đà nẵng nhưng cơ_bản nhất vẫn là tạo được công_ăn_việc_làm cho họ chứ không thì họ cũng chỉ biết quay lại con đường cũ để kiếm miếng cơm manh áo thôi mặt_khác sự cám_dỗ của nghề này cũng không ít 
+1 3330        quá tuyệt_vời
+1 3331        rất nhân_văn
+1 3343        ủng_hộ quyết_định này chạy toàn bị bắn ở 45km h đường xa chạy phát nản 
+1 3398        nói_chung là rất hay hãy làm như_thế đi
+1 3469        ủng_hộ tất_cả những nội_dung trên
+1 3542        nghe tin này cũng thích mẹ mình cũng được tăng rồi hihihhih 
+1 3544        đó là điều mà_cả xã_hội chờ_mong tuyệt_vời 
+1 3551        rất vui với những chính_sách và qui_định mở 
+1 3564        tốt quá bây h xây_dựng đang bị thiếu lương nhiều mong sẽ dc khắc_phục 
+1 3568        mang thai hộ rất nhân_đạo 
+1 3576        hay quá
+1 3577        đây là tín_hiệu đáng mừng hy_vọng điều này được đưa vào thực_tế
+1 3653        về lý_thuyết thì quá tuyệt_vời 
+1 3659        tán_thành xã_hội văn_minh phải như_vậy
+1 3671        quá hay đọc mà cảm_thấy vui cho những đối_tượng được lãnh tiền hỗ_trợ của thành_phố đúng là thành_phố mang tên bác
+1 3672        ngon rồi giáo_viên ở tây ninh gần 10 năm nay chỉ có 500 nghìn thôi
+1 3674        chúc_mừng các bạn 
+1 3677        quá hay tôi dạy 23 năm chưa biết thưởng tết là gì  
+1 3685        mừng quá
+1 3687        rất vui nhưng có_điều đọc luật nó ghi gì mà mình không_thể hiểu nổi 
+1 3701        hoàn_toàn đúng_đắn 
+1 3711        tuyệt_vời
+1 3712        rất mừng khi co 2 sự lựa_chọn ko cứng_nhắc như chỉ được đóng thêm cho đủ 20 năm mới được hưởng luơng hưu khi đủ tuổi nghỉ hưu
+1 3713        hợp_lý rồi
+1 3729        hợp với lòng người lao_động rùi 
+1 3763        vợ tôi chuẩn_bị sinh_đôi nay nghe tin giá giảm cũng rất mừng và mong rằng giá sữa ổn_định phù_hợp với người tiêu_dùng 
+1 3807        hay mong các em cố_gắng học để vượt khó
+1 3818        rất chuẩn không có thỏa_hiệp với bọn khủng_bố 
+1 3828        rất tuyệt toi nghĩ chúng_ta nên làm chậm và chắc là tot nhat
+1 3921        tôi cũng ủng_hộ đường_lối của nhật bản họ luôn có trách_nhiệm với hòa_bình ổn_định của khu_vực nhưng cũng biết cách tiết_kiệm nguồn_lực trong công_cuộc bảo_vệ chủ_quyền và lợi_ích quốc_gia 
+1 3925        tuyệt_vời cho đất_nước mặt_trời mọc 
+1 3927        nhật bản đi nước cờ này rất hay 
+1 3951        hoan_hô sự sáng_suốt nhanh_nhạy cương_quyết của nhật bản 
+1 3952        tôi ủng_hộ chính_sách này của nhật để kiềm_chế bớt tq
+1 3954        hoan_hô ông abe 
+1 3958        tuyệt_vời tôi yêu đất_nước và con_người nhật bản
+1 3961        hoan_hô nhật bản 
+1 3962        tuyệt_vời ông mặt_trời 
+1 3965        thật_sự tuyệt_vời 
+1 3995        thật tuyệt làm_sao hoan_hô quyết_định này 
+1 4007        hoan_nghênh quyết_định đột_phá của nhật bản trước hành_động ngang_ngược của bắc kinh 
+1 4012        tôi ủng_hộ điều này ủng_hộ nhật bản
+1 4042        tuyệt_vời ông mặt_trời 
+1 4067        tôi đưa hai tay giơ cao ủng_hộ nhật bản
+1 4068        việt nam nên ủng_hộ việc này của nhật 
+1 4072        ủng_hộ chính_sách quốc_phòng mới của nhật bản 
+1 4107        ý_kiến bộ_trưởng bùi quang_vinh rât hay 
+1 4118        ý_kiến thẳng_thắn trung_thực và rất hay
+1 4125        ý_kiến hay   trông_chờ hành_động thực_tế
+1 4127        tôi rất đồng_tình với ý_kiến của bộ_trưởng 
+1 4128        like cho bộ_trưởng ý_kiến hay
+1 4132        chuẩn_xác và khách_quan
+1 4133        hoan_nghênh bộ_trưởng nói_thẳng thật
+1 4134        chuẩn không cần chỉnh 
+1 4135        bộ_trưởng nói rất đúng cần phải nhìn thẳng sự_thật như_vậy thì mới có cách tháo_gỡ cũng_như đưa đất_nước phát_triển chúc bộ_trưởng khỏe_mạnh và thành_công 
+1 4140        rất cám_ơn bộ_trưởng vì bài phát_biểu quá đúng bắt đúng bệnh vậy thuốc chữa là gì mong các đại_biểu quốc_hội hãy cho thuốc mạnh để chữa sớm 
+1 4143        bộ_trưởng phân_tích rất đúng và xúc tích 
+1 4145        cám_ơn bộ_trưởng mong rằng đầu năm 2015 sẽ có chính_sách mới về kinh_tế hổ trợ nhiều hơn cho các doanh_nghiệp phát_triển 
+1 4161        tuyệt_vời hà_nội nên học theo kể_cả ngành giáo_dục giỏi mới dc nhận chứ ko phải giầu 
+1 4164        quá tốt rồi tôi chỉ lo không có người nào chịu về tỉnh_lẻ thôi mong các bác_sĩ cống_hiến hết_mình để lấy lại niềm_tin vào nghành y của tỉnh nhà 
+1 4188        quá chuẩn mỗi tháng được thêm 3 bát phở chưa thể_nào chết được 
+1 4200        có tăng là tốt lắm rồi nước ta đã rất cố_gắng thôi các bác đừng kêu_ca mà phải tự mình biết tiết_kiệm chi đi thôi 
+1 4208        bước điều_chỉnh hợp_lí trong hoàn_cảnh kinh_tế hiện_nay giúp doanh_nghiệp vừa và nhỏ refresh lại mình 
+1 4213        tăng thế_là tốt lắm rùi lương của tôi là 2 65 nay lên như_vậy cũng có thêm được gần 3 lít nữa rùi đó 
+1 4215        tôi thấy mừng lắm dù lương tăng không cao
+1 4245        ủng_hộ chính_sách mới
+1 4413        ủng_hộ thành_phố quy_hoạch 1 khu_phố hàng rong theo nguyện_vọng của bà_con 
+1 4415        tin_vui rồi sắp có phố hàng rong rồi tha_hồ mà ăn_hàng nha ủng_hộ q 1 tiến đến cả thành_phố đi
+1 4434        ấm lòng dân cảm_ơn các bác lãnh_đạo
+1 4436        một chủ_trương đúng_đắn mong rằng lãnh_đạo quận 1 cũng_như thành_phố thực_thi điều này đúng như những gì đã nói đồng_thời phải gấp_rút giải_quyết những vướng_mắc cho bà_con để mọi người yên_tâm
+1 4439        rất đồng_tình cách tiếp_cận với người_dân để thấu_hiểu tình_hình tuy_nhiên cần phải xác_định thành_phố tương_lai cần phải giữ hình_thức kinh_doanh hàng rong này không ? nếu_không thì cần hỗ_trợ người_dân bằng cách khác và xóa_bỏ hình_thức này
+1 4441		  tán_thành ý_kiến kẻ vạch cho vỉa_hè rộng hơn 3m vì họ thuê mặt_bằng phải cho họ có không_gian chút để buôn_bán làm cứng quá cũng khó cho người thuê_mướn mặt_bằng kinh_doanh vì diện_tích nhà tại tp đâu phải rộng mà phí thuê lại quá cao
+1 4444        rất hay và sâu_sắc mong tp hcm làm được đề_án này
+1 4445        quá tốt nên triển_khai ngay 
+1 4462        đúng là nhân_văn chủ_tịch có khác làm có_tình có_lý làm như_vậy thì chắc_chắn là hợp lòng dân 
+1 4463        rất hoan_nghênh các bước_tiến mới của quận 1 
+1 4467        tuyệt_vời 
+1 4471        đồng_tình với cách làm của quận 1 
+1 4472        lãnh_đạo có_tình có_lý
+1 4473        tin_vui nhất trong ngày 
+2 520         không_thể chấp_nhận
+2 637         người_dân chúng_tôi muốn nghe một lời giải_thích hoặc đính_chính của ngành đường_sắt nếu đây là một sự_thật thì quả_là một ý_tưởng siêu rồ_dại nhất trong năm 2016
+2 1521        sao không chủ_động tìm thị_trường các nước khác mà suất khẩu đi ăn mãi đc đâu mà_còn các mặt_hàng khác nữa chứ 
+2 1697        không hiểu nổi 
+2 1713        cái vô_lý nhất_là phí bảo_vệ môi_trường thu nhiều và chẳng làm_gì cho môi_trường cả 
+2 1714        xe chính chủ thật không hợp_lý hai vợ chông tôi có một chiếc xe lúc tôi đi lúc vợ đi không biết để tên ai chính chủ cũng không biết làm_sao cho khỏi bị phạt tiền không có tiền mua thêm xe còn bị phạt nữa
+2 1719        rầu nhất_là cái vụ xe không chính chủ thôi nhiều khi đâu phải muốn sang_tên là sang đâu 
+2 1734        không đồng_tình với việc phạt hành_vi không sang_tên xe mô_tô xe_gắn_máy khó có_thể chứng_minh được lỗi này vd như tôi mượn xe của một ông bạn giàu_có dư xe để mang sang tỉnh khác làm_việc thì chứng_minh thế_nào đây ?  
+2 1749        thật_sự là cái vụ sang_tên chính chủ k được hợp_lý 2 chị_em có cái xe lúc chị đi lúc tôi đi để tên ai cũng khó hay hộ_khẩu với xe_máy giờ là 2 vật bất_ly_thân ? ?
+2 1761        thôi xong
+2 1794        rất buồn với chính_sách bảo_hiểm những bệnh nặng như các bệnh ung_thư v v các bệnh mà tuyến huyện tuyến tỉnh trình_độ bác_sĩ ở đây không_thể điều_trị và chữa được nhưng bệnh_viện rất khoát không cho đi mà nếu đi được thì thủ_tục cực_kỳ phức_tạp gây ra muôn_vàn những khổ_cực cho người_nhà người_bệnh gia_đình nào có trong trường_hợp này mới thấy cơ_cực thậm trí có những trường_hợp sắp chết mới cho người_ta chuyển viện tuyến trên tôi rất mong bộ y_tế vào_cuộc giải_quyết giúp dân
+2 1834        cố_chấp giữ lại có vấn_đề gì hãng sẽ không chịu trách_nhiệm vì đã thông_báo thu_hồi rồi lỡ xui hại mình hại người cháy nhà 
+2 1945        không hợp_lý chút nào thời_gian điều_trị còn phụ_thuộc phần_lớn vào phương_pháp kĩ_thuật của bác_sĩ và máy_móc y_học nữa cùng 1 loại bệnh nếu điều_trị bằng các phương_pháp và kĩ_thuật máy_móc khác_nhau cũng sẽ khác_nhau về thời_gian điều_trị quy_định mới này có_thể tạo cơ_hội cho 1 bộ_phận y bác sỹ thiếu y_đức sẽ sách_nhiễu người_bệnh hoặc kéo_dài thời_gian 
+2 1946        chính_sách bảo_hiểm quá phức_tạp gây khó_khăn cho người_bệnh đã thế lại thiếu ổn_định và thực_tiễn ai đi đếm thời_gian 4 h đó ? tạo cơ_hội cho cán_bộ ngành y_tế và bảo_hiểm trục_lợi đây mà gọi_là bảo_hiểm ah ? chính_sách cho thì được ko cho ko được ko có một ràng_buộc rõ_ràng giữa người nhận bảo_hiểm và người được bảo_hiểm và phần thiệt luôn là người được bảo_hiểm
+2 1949        lúc nguy_hiểm nhất người_ta mới cần cấp_cứu vậy rồi chờ khám rồi mới được vào cấp_cứu thì toi_mạng rồi còn gì luật gì mà kì_cục vậy kinh_doanh trên tính_mạng con_người riết rồi dân ai cũng sợ cái chính_sách dở_hơi này đọc mà tức chịu k nổi hs đi học ép đóng bảo_hiểm 100 người đi làm bắt đóng bảo_hiểm 100 vậy tại_sao bảo_hiểm lại quy_định cho khung giờ cấp_cứu 
+2 1950        cấp_cứu mà tính giờ cạn_lời 
+2 1953        bảo_hiểm_y_tế sao cứ tìm cách bắt_chẹt người_bệnh hoài vậy ?
+2 1954        qui_định khó hiểu quá
+2 1956        bảo_hiểm_y_tế lại rơi vào vòng luẩn_quẩn rồi
+2 1971        quy_định thời_gian là chưa phù_hợp
+2 1981        quá nhiều điều phức_tạp kêu_gọi người_dân đóng bảo_hiểm 100 nhưng   làm_khó người_bệnh thất_vọng và không tin nổi vào bảo_hiểm
+2 1982        ôi bảo_hiểm_y_tế ngao_ngán quá đi thôi 
+2 1983        nói_tóm_lại điều_luật này không sát tình_hình thực_tế không hợp_tình không hợp hoàn_cảnh
+2 1984        bảo_hiểm_y_tế còn nhiều nhiêu_khê lắm cứ lòng_vòng chuyển tuyến bệnh_viện tuyến dưới không tìm ra bệnh đến khi lên đến tuyến trên thì ôi thôi rồi giai_đoạn cuối chỉ khổ cho người_bệnh thôi 
+2 1987        chờ kq xn máu đã 3h rồi còn gì rõ chán
+2 1999        pó tay cạn_lời
+2 2002        thật_sự đau_đầu lắm lắm 
+2 2022        thật khổ với cái quy_định này đã đi cấp_cứu vì bệnh thì ít có trường_hợp dưới 4 tiếng chỉ có trường_hợp cấp_cứu vì tai_nạn thì may_ra dưới 4 tiếng 
+2 2026        đã là bảo_hiểm cấp_cứu ai mà chọn giờ cấp_cứu được không biết các bác nhà mình nghĩ sao về vấn_đề này nửa 
+2 2029        không hiểu nổi trung quốc quá vô_lối
+2 2120        quá phẫn_nộ hành_động coi_thường pháp_luật 
+2 2133        đánh nhau là gây_rối đánh phụ_nữ là không_thể chấp_nhận 
+2 2150        không_thể chấp_nhận việc đánh phụ_nữ như_thế được 
+2 2215        ai đồng_ý xóa lịch âm và gộp tết cổ_truyền và tết tây làm một thì kệ chứ em nói thật_là e ko đồng_ý như_vậy
+2 2220        tôi nói không với việc đổi gộp lịch nét truyền_thống văn_hoá đón tết_âm_lịch không_thể mai_một trong tôi dù tôi đã hơn_nữa đời người nơi đất_khách_quê_người tôi đang cố_gắng dạy cho con tôi nhớ đến ngày tết cổ_truyền đây 
+2 2766        không cần_thiết muốn nhanh đầu_tư sân_bay tàu_bay là nhanh có quốc_lộ 1 rồi bay gio xe chạy cũng rần_rần xây thêm phí
+2 2922        đọc luật một hồi kết_quả chẳng hiểu là quyền_hạn được quy_định ntn nữa pó tay
+2 2925        quá rườm_rà và cực_kỳ khó hiểu 
+2 2966        không ổn 
+2 3107        thất_vọng ai sẽ là trục ở châu_á đây ?  
+2 3108        tôi đã bảo rồi mà thất_vọng trum  
+2 3113        thế_là thôi rồi
+2 3142        em phản_đối hôn_nhân đồng_tính vì nó đi ngược_lại cái tạo_hóa đã tạo ra cho mỗi người 
+2 3145        nếu phản_đối hôn_nhân đồng_tính tôi là người đầu_tiên làm_việc này thật_sự mà nói 100 người đồng_tính hiện_nay thì được bao_nhiêu người là bị đồng_tính từ nhỏ ? còn bao_nhiêu người là bị dụ_dỗ ? tôi khẳng_định là hơn 95 số người bị đồng_tính là bị dụ_dỗ nhiều người trẻ mới lớn còn bị lơ_mơ về giới_tính hay những người yếu bản_lĩnh bị dụ_dỗ và đã trả thành_đồng tính giới_tính thứ_ba đang gây rất nhiều bức_xúc cho xã_hội hiện_nay nếu_không lên_tiếng cản_ngăn rồi_đây khoảng 10 20 năm nữa thôi giới_tính thứ_ba sẽ chiếm tỉ_lệ rất lớn trong xã_hội chúng_ta mà những người đồng_tính nhiều nhất lại hoạt_động chủ_yếu trong giới nghệ_sĩ như ca_sĩ diễn_viên bọn họ rất dễ khiến cho giới trẻ lầm tưởng và noi theo chúng_ta phải chặn ngay_lập_tức hiện_tượng tệ_hại này 
+2 3146        tôi phản_đối nếu hợp_pháp_hoá thì sẽ ảnh_hưởng nghiêm_trọng đền sự tồn_vong của giống_nòi về sau_này 
+2 3227        đang ảo_tưởng à 
+2 3305        cáu này cần phải tìm_hiểu cho kỹ nếu đã là bảo_vệ vệ thì bảo_vệ khỏi cái gì người bán_dâm có đồng_ý với cách này không nếu_không thì nó là bắt nhốt nói bảo_vệ chỉ là để lách luật thôi tôi không đồng_ý với cách này
+2 3329        cách này không hay
+2 3422        đọc song thấy buồn quá ước_mơ có được chiếc xe ô_tô của những người trung_lưu việt ngày_càng xa_vời mình dám chắc người đi ô_tô sẽ có cách nghĩ cách làm nhìn xa khác với người đi xe_máy và người đi xe_đạp cứ đà này thấy khả_năng phát_triển nó cứ mờ_mịt quá trời_ơi trời_ơi 
+2 3429        ấp_ủ bao năm cố gòng gánh mua 1 con xe tầm 400 trả_góp đọc xog bài báo thật_sự rất nản đến bao_giờ oto được xem như mua chiec xe_máy như bây_giờ thật_sự rất nản 
+2 3431        tin_buồn cho thị_trường oto nước_nhà 
+2 3434        nghĩ tới việc mua được ô_tô ở vn mà buồn cả người haiz 
+2 3441        một mớ hỗn_độn 
+2 3451        sinh_viên hết được miễn giảm vé tàu_hỏa nghe mà nghẹn lòng xin_lỗi bố_mẹ đợt lễ này con không về 
+2 3453        tại_sao sinh_viên không được miễn_giảm mua vé tàu_hỏa chứ mỗi khi về quê là mình thường đi tàu nhà không có điều_kiện nên vẫn mua vé tàu cho tiết_kiệm mà cũng đâu phải ít sinh_viên đâu bạn_bè mình quê xa khi được về nhà ai cũng mua nếu không_thể giảm nhiều xin hãy giảm ít giờ học_phí tăng cao kinh_khủng tiết_kiệm khoản này khoản kia để còn đóng học chứ ?
+2 3454        thiết_nghĩ đời_sống sinh_viên của con_em nhà_nông còn vất_vả lắm sao lại ko tạo điều_kiện cho các em ấy 
+2 3457        buồn vg là sinh_viên nghèo lại càng khổ hơn rồi 
+2 3467        tôi thấy vô_lý khi còn phân_loại khuyết_tật là khuyết_tật nặng mới được sinh_viên và người khuyết_tật là những đối_tượng hợp_lý để được miễn_giảm không nên sữa đổi điều này không hay 
+2 3494        sinh_viên đã nghèo rồi mà giờ không được hỗ_trợ nữa 
+2 3501        chuyện về vé tàu_hỏa là không đồng_ý
+2 3502        sinh_viên phần_lớn xa quê và là con_em nông_dân công_nhân không có điều_kiện thế_mà không giảm_giá cho các em í @ @ thấy tội cho các em
+2 3505        những mặt_hàng nông_nghiệp như phân thuốc_trừ_sâu bình ỗn được chứ dân đang nghèo mùa_màng thất_bát tại_sao còn đưa gạo làm bình ỗn
+2 3509        những cái tốt sao hok duy_trì mà_lại hủy_bỏ là sao giảm_giá vé cho sv là việc_làm thiết_thực mà 
+2 3516        sinh_viên không được miễn giá vé tàu ntn là k thỏa_đáng đa_số sv đều ở quê ra tp học_tập đa_phần sv là gđ nông nghèo không giảm_giá tàu_xe cho sv về quê các đợt lễ tết và không đc học_phí thì tăng vé tàu_xe không giảm thế sv chúng_tôi sao mà đủ tiền tàu_xe 
+2 3517        đồng_ý hết nhưng sinh_viên không được miễn_giảm vé tàu là một vấn_đề cần phải xem_xét lại vì_sao 
+2 3525        ơ trước năm 45 là chống pháp đa_phần tuổi đã cao sức đã yếu còn đi đâu nữa mà miễn với không miễn ? tại_sao không miễn giãm cho tất_cả các thời_kỳ ? buồn_cười quá 
+2 3527        buồn thiết chứ không đội mũ_bảo_hiểm cho những bạn trẻ là tốt nên bắt_buộc sinh_viên xa quê nghèo lắm các bác ạ sao các bác nỡ lòng nào ? 
+2 3533        sinh_viên không được miễn giảm vé tàu_hỏa là chính_sách chưa phù_hợp để phát_triển đất_nước sinh_viên là những người cần được ưu_tiên hỗ_trợ phát_triển nước gần chúng_ta nhất trung quốc sinh_viên được miễn giảm_giá vé tầu vào hai lần là đi_về nghỉ_hè và nghỉ tết đề_nghị tăng_cường an_ninh tại các khu_vực bến_xe bến_tàu phòng_chống trộm_cắp cướp_giật lắp thiết_bị ghi_hình ghi tiếng và báo_động nhanh tại các khu_vực này 
+2 3538        thay_đổi mã vùng điện_thoại cố_định không khoa_học tí nào
+2 3539        mệt nhất_là chuyện đổi số điện_thoại mới_đầu năm đã hao_tài_tốn_của cho việc in_ấn giấy_tờ rồi 
+2 3546        tôi thấy đổi số đt và cho mang thai hộ là ko hay chút nào 
+2 3557        mã vùng điện_thoại thay_đổi kiểu gì mà đọc vào chả thấy khoa_học không biết_mấy bác phân_chia mã theo quy_luật nào nữa
+2 3563        xong tăng lương thì tiền đâu em mua rau thịt ăn đây lại mỳ tôm qua_ngày vậy
+2 3591        khổ lắm
+2 3615        vô_cùng ngang_ngược và trơ_tráo 
+2 3745        vô_lý nhất_là mình có nhà hợp_pháp chủ_quyền tên của mình mà phải tạm_trú trong nhà mình 2 năm mới được nhập hộ_khẩu thời_gian đó thì biết_bao_nhiêu rắc_rối cho con_cháu xin việc học_hành quyền_lợi bị hạn_chế 
+2 4098        buồn quá đi 
+2 4180        lương thấp quá xăng thì cứ tăng vù_vù nãn lòng công_chức 
+2 4201        trời_ơi tăng cái nọ lại tăng thêm 1 loạt các thứ khác ? xăng tăng điện tăng kêu lỗ cái khổ của người_dân thì ai kêu cho đây 
+2 4224        nghe lương tăng mà thấy buồn bởi chẳng thấm_tháp gì so với chi_tiêu tối thiếu hàng tháng của các gia_đình công_chức 
+2 4231        lương và giá_cả thị_trường làm thế_nào để đủ tiền nuôi hai đứa con mà không phải vay nợ 
+2 4234        lương ơi đừng tăng nữa 
+2 4280        vô_lý hình_ảnh rạp công_nhân sau khi đập 2 bậc thềm nhưng thay vào đó là 1 dãy xe_máy đậu trên vỉa_hè ? vậy mục_đích của việc đập 2 bậc thềm là gì ?
+2 4330        tôi phản_đối lấy vỉa_hè kinh_doanh hay làm_việc khác
+2 4331        ôi không được đâu mới khó_khăn mới dẹp được giờ mà bày ra là tùm_lum liền hà 
+2 4332        quyết_định thật khó hiểu tôi phản_đối việc này vi_phạm luật giao_thông đường_bộ đã cấm là cấm 
+2 4336        nếu cho kinh_doanh vỉa_hè rồi lại lộn_xộn thôi văn_hoá vỉa_hè sẽ tồn_tại mãi thế_này sao ? tận_dụng làm chỗ đỗ xe thì còn có_lý vì chỗ để xe hiện_nay rất thiếu còn cho thuê kinh_doanh là tôi không ủng_hộ 
+2 4337        lại bát_nháo thế_này bao_giờ mới khá nổi 
+2 4339        đã dọn_dẹp vỉa_hè để lấy lại không_gian đi_lại cho rộng_rãi vậy_mà còn đề suất cho thuê gì nữa vậy trời 
+2 4340        cho kinh_doanh rồi ai quản_lý nỗi nếu người kinh_doanh lấn_chiếm dẹp đi không đồng_ý
+2 4345        dẹp rồi lại cho bán trở_lại pó tay vậy_thì đừng có dẹp làm_gì 
+2 4346        không biết nói_gì hơn mới được mấy ngày mà đã có đề_xuất mới dứt_khoát không cho kinh_doanh vỉa_hè 
+2 4357        cạn_lời
+2 4363        phản_đối đề_xuất kinh_doanh trên vỉa_hè khi ý_thức người_dân còn quá kém kèm theo lòng tham tâm_lý số đông khi sử_dụng hộ này chật quá để thêm vật_dụng ra ngoài nghĩ cũng không sao người này thấy người kia để được cũng làm theo người người_làm theo cán_bộ đi kiểm_tra rất mỏng còn rất nhiều vấn_đề phát_sinh vỉa_hè phải dùng đúng mục_đích cho làm_việc này việc kia sẽ sinh_ra tiêu_cực mỹ_quan đô_thị và tất_cả sẽ mất kiểm_soát bát_nháo cho_đến vài chục năm sau 
+2 4370        không hiểu sao lại nảy ra ý_định này đã dẹp là dẹp hẳn luôn tốn bao công_sức để lấy lại vỉa_hè rồi loanh_quanh sẽ khó mà trở_thành 1 góc nhỏ của singapo 
+2 4374        bao_nhiêu công_sức tiền_của để đập phá dọn_dẹp lại vỉa_hè giờ mà thêm cái qđ này nữa khác_gì bữa giờ ném_tiền_qua_cửa_sổ 
+2 4375        vỉa_hè rộng quá thì mở_rộng thêm đường giải_quyết ùn ứ tắc đường 
+2 4387        ai bảo_đảm sẽ không tái_diễn cảnh lấn_chiếm lòng lề_đường nữa ? và người đi bộ lại phải xuống lòng_đường tôi không đồng_ý dự_thảo này 
+2 4388        không nên rất khó kiểm_soát tiêu_cực đã cấm là cấm hẵn lề_đường để giao_thông 
+2 4408        phản_đối sử_dụng vỉa_hè 3m kẻ sơn cho bán hàng rong đã làm thì làm cho tới nơi trước kẻ sơn cho để xe rồi kết_cục thế_nào mọi người đều đã biết
+2 4425        ko đồng_ý cách làm này đã buôn_bán thì_phải vào chợ còn nếu có mặt_bằng buôn_bán thì_phải có chỗ cho khách để xe làm nửa_vời thì đâu lại vào đó khó_khăn cho người thực_thi pháp_luật 
+2 4450        tôi phản_đối việc kẻ vạch hay lập phố hàng rong người_dân việt đã vốn thiếu ý_thức rồi thì việc lập chợ hàng rong chẳng khác_nào xóa chỗ này lập chỗ khác họ ngồi bán đúng chỗ đó nhưng người mua có ngồi đúng vạch không ? có tránh được_việc xả rác tùm_lum không ? lúc đó muốn đuổi dẹp có được nữa không khi mà họ buôn_bán đúng luật ? ? ? ? ? nên_chăng thì lập hẳn cái chợ hàng_hàng rong trên 1 khu đất trống cho mọi người tập_trung tại đó như trong chợ bến thành chứ không phải trên đường_phố nào nữa 
+2 4453        nhà dân ở đường hàng rong đó thì tính sao không_lẽ ngồi trước cửa_nhà người_ta bày bán ? cực_kỳ bất_hợp_lý 
+2 4457        không nên cho bán hàng rong đã dẹp thì_phải làm đến_cùng phố này có người bán được thì phố kia cũng có người bán được 
+2 4459        nếu vỉa_hè 3m cho kinh_doanh thì lại như cũ thôi vỉa_hè sẽ là cái chợ thôi dừng đòi vỉa_hè lại đi luẩn_quẩn rồi 
+2 4860        tôi nghĩ không nên bỏ vì ai có đang nuôi con dưới 12 tháng tuổi mới hiểu nỗi cực của người_làm cha làm mẹ tôi là nam mà đôi_lúc tôi còn mệt_mỏi khi chăm con tuổi đấy nữa_là phụ_nữ 
+2 4870        tôi k hiểu sao mà có người lại ủng_hộ chuyện hủy_bỏ quy_định này nhỉ chắc người_ta k phải là phụ_nữ nên k biết nỗi vất_vả của người phụ_nữ khi có con_nhỏ
+2 4876        nếu bỏ qui_định trên thi tàn_nhẫn với phụ_nữ quá
+2 4884        vì_sao phải bỏ ? có ai là không có người giúp_việc nhà không ? có ai không thuê người phụ nuôi con_nhỏ không ? với những người lao_động là nhân_viên văn_phòng là công_nhân sản_xuất thì_có mấy người thuê được người giúp_việc ?
+2 4885        tôi cũng đồng_ý với ý_kiến là không nên bỏ vì nuôi con_nhỏ rất là vất_vả mệt_nhọc ai đang nuoi con_nhỏ mới hiểu được 
+2 4886        tại_sao lại bỏ ? ? ? ?
+2 4892        tai sao lại phải mất thời_gian so_đo với người phụ_nữ vừa sinh con xong phải đi làm hãy nhìn ra thế_giới xem họ thế_nào ? ? thật buồn 
+2 4893        phản_đối kịch_liệt người_mẹ sinh_ra cả thế_giới này mà tại_sao lại bất_công với người_mẹ nuôi con dưới 12 tháng tuổi thế
+2 4898        mấy cái tăng trửơng an_sinh khác k so đi so cái này bó_tay ông doanh_nghiệp nào đề_xuất va đồg ý điều này thìnên cho đi nuôi con 1 năm 
+2 4901        tôi ko thể_nào chấp_nhận đc tôi chỉ là nam thanh_niên 24t nhưng thấy bức súc nếu bỏ quyền lời của chị_em phụ_nữ như_thế là không_thể đc tại_sao các doanh_nghiệp ko tác_động đồng_lương mà chĩ thích tác_động lợi_nhuận cho bản_thân thôi 
+2 6108        tôi phản_đối việc bỏ hộ_khẩu ta cần phải quản_lý thật chặt việc cư_trú của dân chứ để họ đi_lại di_cư loạn_xạ gây_rối mất trật_tự làm quá_tải hạ_tầng à tphcm nên bắt_chước thủ_đô hà_nội ngay cả trung quốc cũng phải dùng hộ_khẩu để quản_lý đấy 
+2 4925        không nên bỏ giữ nguyên như hiện_hành chăm_lo cho trẻ_em và bà_mẹ là truyền_thống rất tốt_đẹp của dân_tộc ta 
+2 4931        ko nên bỏ vợ tôi mới mang thai thôi mà đã thấy khổ cho cô ấy lắm rồi chưa nói đến chăm con sau sinh ai nói nhắm đẻ đc mà ko phiền người khác thì hả đẻ coi_chừng quả_báo có_thể anh_chị đã quá dư giả kinh_tế nên việc thuê người chăm con ko thành vấn_đề nhưng hãy xem_lại có bao_nhiêu người có điều_kiện như_vậy ? 
+2 4932        nghĩ sao mà bỏ các bạn thủ nuôi co đi rồi biết
+2 4934        không nên bỏ luật cho_phép phụ nử nuôi con dưới 1 tuổi nghỉ 1 giờ trong ngày có một năm thôi mà gần con trẻ_em sẻ ít bệnh ngành y_tế giảm tốn ngân_sách nên vì quyền trẻ_em cần được chăm_sóc khi mẹ bé quá mệt_mỏi những lúc tan ca đây là tính nhân_đạo cũa nước ta đừng so_sánh nước_ngoài làm_chi 
+2 4936        k nên bỏ tại_sao k quan_trọng là 1 tiếng_là nhiều nhưng đc về sớm hoặc đc đi làm trễ là 1 điều rất cần với nhiều người có con_nhỏ với trình trạng kẹt xe hiện_nay 
+2 4939        thật vô_lý khi bỏ chế_độ con_nhỏ cho lao_động thử_hỏi 1 người phụ_nữ trong đời thì_có bao_nhiêu lần hưởng chế_độ này ?
+2 4940        nếu bỏ chế_độ nghỉ thai_sản và 1 tiếng hàng ngày thì đó là một bước lùi của chất_lượng cuộc_sống và tiến_bộ xã_hội các bạn hãy xem thụy điển đi họ nghỉ thai_sản nhiều hơn chúng_ta nhiều tương_lai trẻ_em là tương_lai đất_nước đừng vì chút lợi_ích trước_mắt mà để các cháu thiệt_thòi
+2 4942        quá_đáng 
+2 4948        hãy đặt vợ_con mình là những người lao_động hết_lời 
+2 4951        không nên bỏ nếu là lý_do về phía doanh_nghiệp tôi thấy chưa đúng lắm cụ_thể 1 số doanh_nghiệp may_mặc ở thái_bình họ thực hiên rất nghiêm_túc không hề thấy có khó_khăn gì thậm_chí 1 số chị_em có nhu_cầu làm thêm cũng được phía doanh_nghiệp động_viên nghỉ nghơi chăm_sóc con cho tôt 
+2 4962        theo tôi không nên bỏ nghỉ 60 này khi lao_động nữ nuôi con dưới 12 tháng mà nên thay_đổi thai_sản nghỉ 6 tháng bằng nghỉ 5 tháng vì nó đảm_bảo lợi_ích của doanh_nghiệp và người lao_động 
+2 5636        nực_cười cho nhân_tình thế_sự  
+2 4964        không nên bỏ
+2 4975        không tăng thì_thôi còn muốn xóa_bỏ 
+2 4977        may quá đẻ được một đứa rồi mong đừng bỏ luật nhé vì tuy ảnh_hưởng đến sản_xuất nhưng tương_lai lại cung_cấp cho xã_hội những nhân_lực đủ trí_tuệ sức_khoẻ do được chăm_sóc chu_đáo từ nhỏ chứ ảnh_hưởng đến sản_xuất thì mấy đồng lợi_nhuận đó ko là j so với sức_khoẻ trẻ_thơ đâu 
+2 4991        theo tôi thì không nên bỏ quy_định này đối_với doanh_nghiệp sản_xuất kinh_doanh thì tính lương theo sản_phẩm nếu chị_em đi làm ít thời_gian nghiễm_nhiên sản_phẩm sẽ giảm thì tiền_lương thưởng cũng sẽ giảm doanh_nghiệp cũng không thiệt_thòi gì mà chị_em vẫn được nghỉ 60 để chăm con còn
+2 4992        những đề_xuất không hợp lòng dân tại_sao phải bỏ ?
+2 4994        không nên bỏ quy_định này đây là một quy_định mang tính nhân_văn cao thế_hệ trẻ việt nam đang cần được chăm_sóc gìn_giữ đào_tạo và phát_triển về thể_chất tinh_thần 
+2 4997        một đề_xuất ngớ_ngẩn và thiếu nhân_văn 
+2 4998        không bỏ vì đó là quyền của những mầm_non tương_lai chứ không phải là lợi_ích của riêng người phụ_nữ 
+2 4999        tất_cả vì giống_nòi sau_này không nên bỏ
+2 5018        một chính_sách tốt như vậy_sao lại bỏ đề_nghị xem_xét lại 
+2 5028        không nên bỏ vi hiên tại nhiều công_ty đang bóc_lột sức_lao_động của công_nhân mình với đồng_lương rẻ_mạt quá
+2 5038        ai nêu ra ý_kiến này vậy ? ? ? ? nhân_văn chút đi
+2 5039        thật phi_lý bấy_lâu_nay vẫn áp_dụng đó sao những người nào có suy_nghĩ nên bỏ chế_độ đó thì chắc họ k có vợ_con hoặc là chủ doanh_nghiệp có tiền thuê người giúp_việc nên họ k hiểu nổi khó_khăn hay nổi khổ của người phụ_nữ khi chăm con_nhỏ người lao_động lương 3 cộc 3 đồng làm_gì có tiền mà thuê người giúp_việc với_lại người giúp_việc có thay mẹ cho con bú bằng sữa mẹ không ?
+2 5115        không nên dựa vào độ tuổi để quy_định mức thưởng như_thế rất buồn_cười trên 18 tuổi không có nghĩa_là ông đã rèn_luyện đủ độ chín so với dưới 18t nếu một nhà_vô_địch dành huy_chương vàng và mang về cho vn dù ở độ tuổi nào cũng_nên được tưởng_thưởng xứng_đáng vì điều đó là để tôn_vinh tổ_quốc 
+2 5125        phải xem_lại 
+2 5179        phải có chổ cho xe đậu chứ cứ như_thế_này ko lẻ ra đường là chạy suốt luôn à ?
+2 5346        đã vi_phạm luật còn được hỗ_trợ có phải nghịch_lý không ? như_vậy pháp_luật là để làm_gì mà không có tính răng đe hay áp_dụng gì cả còn phải vận_động năn_nỉ chỉ_thị này ra xong sẽ có thêm quán chè khác mọc lên 
+2 5578        trừ lương là sai luật rồi  
+2 5594        phản_đối là hoàn_toàn đúng tổ_chức công_đoàn đại_diện hợp_pháp cho công_nhân đâu ? công_đoàn cần có ý_kiến trực_tiếp với gđ công_ty để đòi quyền_lợi hợp_pháp nếu_không được công_đoàn có văn_bản gửi sở công_thương và ubnd tỉnh đề_nghị can_thiệp
+2 5607        nực_cười
+2 5608        chuyện thật như đùa 
+2 5619        thật không_thể tin nổi 
+2 5621        thật không_thể hiểu nổi 
+2 5622        buồn
+2 5623        vâng xin_lỗi chúng_tôi sẽ rút tiếp sợi dây kinh_nghiệm 
+2 5635        làm_việc như_là trẻ_con 
+2 5636        nực_cười cho nhân_tình thế_sự
+2 5640        trời
+2 5644        nhận_thức pháp_luật yếu_kém mà_lại đc làm bên luật_pháp vậy rồi mấy ông làm_việc kiểu gì ? pó tay với các ông 
+2 5654        chán 
+2 5769        tôi thấy không công_bằng về chuyện tuyển công_chức vào biên_chế nhà_nước ở huyện tôi khi sinh_viên cử_tuyển hỏi huyện sao không bố_trí việc_làm cho các em sinh_viên cử_tuyển huyện trả_lời giờ đang thực_hiện theo chủ trường của chính_phủ về việc tinh giãn biên_chế nhiều cơ_quan đơn_vị trên địa_bàn huyện điều đã hết chỗ trống nên không tuyển thêm trong khi đó tháng 12 2015 huyện vẫn tổ_chức thi_tuyển công_chức bình_thường hàng trăm sinh_viên ngoài cử_tuyển đã vô được biên_chế nhà_nước còn hồ_sơ xin việc của các em cử_tuyển không xem_xét giải_quyết như_vậy có công_bằng không ?
+2 5801        miễn học_phí chỉ là điều_kiện_cần còn điều kiên đủ là lương giáo_viên thì không thấy bộ_trưởng nhắc đến thật_là buồn thay 
+2 5829        buồn 

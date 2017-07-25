@@ -143,8 +143,21 @@ public class CommentDAO implements SQLDAO {
 	}
 
 	@Override
-	public Object find(String id) throws SQLException {
+	public Object findByItemId(String id) throws SQLException {
 		this.ps = this.con.prepareStatement("select * from TblComment where cmt_id = ?");
+		this.ps.setString(1, id);
+		ResultSet rs = this.ps.executeQuery();
+		rs.next();
+		Comment c = new Comment(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4),
+				rs.getNString(5), rs.getNString(6), rs.getNString(7), rs.getNString(8),
+				rs.getNString(9), rs.getNString(10), rs.getNString(11), rs.getInt(12),
+				rs.getInt(13), rs.getNString(14), rs.getNString(15), rs.getInt(16), rs.getInt(17));
+		return c;
+	}
+	
+	@Override
+	public Object findById(String id) throws SQLException {
+		this.ps = this.con.prepareStatement("select * from TblComment where id = ?");
 		this.ps.setString(1, id);
 		ResultSet rs = this.ps.executeQuery();
 		rs.next();

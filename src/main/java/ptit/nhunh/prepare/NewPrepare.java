@@ -23,58 +23,64 @@ public class NewPrepare {
 				new OutputStreamWriter(new FileOutputStream("200.txt", true)));
 		SQLDAO dao = SQLDAOFactory.getDAO(SQLDAOFactory.COMMENT);
 		ArrayList<Object> listCmt = dao.getAll();
-		int dem_1 = 0, dem_2 = 0, dem_3 = 0;
-		int a = 96;
-		for (int i = a; i < listCmt.size(); i++) {
+		int dem_1 = 184, dem_2 = 144, dem_3 = 0;
+		int a1 = 4442;
+		int a2 = 5522;
+		int a3 = 0;
+		// for (int i = a1; i < listCmt.size(); i++) {
+		// Comment c = (Comment) listCmt.get(i);
+		// if (c.getLabel() == 1) {
+		// System.out.println(c.getId() + " " + c.getContent());
+		// if (scan.nextLine().trim().equals("1") && dem_1 < 201) {
+		// bw.write(String.format("1 " + "%-12s", c.getId()) +
+		// c.getCmt_segment());
+		// bw.newLine();
+		// bw.flush();
+		// dem_1++;
+		// System.out.println("dem: " + dem_1);
+		// }
+		// if (dem_1 > 191) {
+		// break;
+		// }
+		// scan.reset();
+		// }
+		// }
+		for (int i = a2; i < listCmt.size(); i++) {
 			Comment c = (Comment) listCmt.get(i);
-			if (c.getLabel() == 1) {
-				System.out.println(c.getContent());
-				if (scan.nextLine().trim().equals("1") && dem_1 < 201) {
-					bw.write(String.format("1 " + "%-12s", c.getCmt_id()) + c.getCmt_segment());
-					bw.newLine();
-					bw.flush();
-					dem_1++;
-					System.out.println(dem_1);
+			if (c.getLabel() == 2 || c.getLabel() == 0) {
+				if (c.getContent().length() > 100) {
+					System.out.println(c.getId() + " " + c.getContent().substring(0, 100) + "\n"
+							+ c.getContent().substring(100));
+				} else {
+					System.out.println(c.getId() + "  " + c.getContent());
 				}
-				if (dem_1 > 200) {
-					break;
-				}
-			}
-			System.out.println("i = " + i);
-		}
-		for (int i = 0; i < listCmt.size(); i++) {
-			Comment c = (Comment) listCmt.get(i);
-			if (c.getLabel() == 2) {
-				System.out.println(c.getContent());
 				if (scan.nextLine().trim().equals("2") && dem_2 < 201) {
-					bw.write(String.format("2 " + "%-12s", c.getCmt_id()) + c.getCmt_segment());
+					bw.write(String.format("2 " + "%-12s", c.getId()) + c.getCmt_segment());
 					bw.newLine();
 					bw.flush();
 					dem_2++;
-					System.out.println(dem_2);
+					System.out.println("dem: " + dem_2);
 				}
 				if (dem_2 > 200) {
 					break;
 				}
 			}
-			System.out.println("i = " + i);
 		}
-		for (int i = 0; i < listCmt.size(); i++) {
+		for (int i = a3; i < listCmt.size(); i++) {
 			Comment c = (Comment) listCmt.get(i);
 			if (c.getLabel() == 3) {
-				System.out.println(c.getContent());
+				System.out.println(c.getId() + " " + c.getContent());
 				if (scan.nextLine().trim().equals("3") && dem_3 < 201) {
-					bw.write(String.format("3 " + "%-12s", c.getCmt_id()) + c.getCmt_segment());
+					bw.write(String.format("3 " + "%-12s", c.getId()) + c.getCmt_segment());
 					bw.newLine();
 					bw.flush();
 					dem_3++;
-					System.out.println(dem_3);
+					System.out.println("dem: " + dem_3);
 				}
 				if (dem_3 > 200) {
 					break;
 				}
 			}
-			System.out.println("i = " + i);
 		}
 
 		scan.close();

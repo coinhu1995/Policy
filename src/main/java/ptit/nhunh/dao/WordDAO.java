@@ -45,6 +45,7 @@ public class WordDAO implements SQLDAO {
 			this.ps.executeUpdate();
 			return true;
 		} catch (SQLException e) {
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -106,7 +107,13 @@ public class WordDAO implements SQLDAO {
 	}
 
 	@Override
-	public Object find(String id) throws SQLException {
+	public Object findByItemId(String id) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Object findById(String id) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}

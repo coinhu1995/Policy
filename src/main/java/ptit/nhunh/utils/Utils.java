@@ -1,15 +1,21 @@
 package ptit.nhunh.utils;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.sql.ResultSet;
+import java.io.OutputStreamWriter;
 import java.sql.SQLException;
 import java.text.Collator;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-import ptit.nhunh.model.Comment;
+import com.google.gson.Gson;
+
+import ca.uwo.csd.ai.nlp.libsvm.svm_model;
 import ptit.nhunh.model.Url;
 import ptit.nhunh.model.Word;
 
@@ -250,30 +256,34 @@ public class Utils {
 		}
 	}
 
-	public ArrayList<Comment> record2Comment(ResultSet rs) throws SQLException {
-		ArrayList<Comment> ac = new ArrayList<>();
-		while (rs.next()) {
-			Comment c = new Comment(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-					rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8),
-					rs.getString(9), rs.getString(10), rs.getString(11), rs.getInt(12),
-					rs.getInt(13), rs.getString(14), rs.getString(15), rs.getInt(16),
-					rs.getInt(17));
-			ac.add(c);
-		}
-		return ac;
-	}
-	
-	public static double round(double d){
+	public static double round(double d) {
 		return (int) (d * 100) / (double) 100;
 	}
-	
-	public static int contain(ArrayList<Object> urls, Url url){
-		for(int i = 0; i < urls.size(); i++){
-			Url u = (Url)urls.get(i); 
-			if(u.getUrl().equals(url.getUrl())){
+
+	public static int contain(ArrayList<Object> urls, Url url) {
+		for (int i = 0; i < urls.size(); i++) {
+			Url u = (Url) urls.get(i);
+			if (u.getUrl().equals(url.getUrl())) {
 				return i;
 			}
 		}
 		return -1;
+	}
+
+	public static void writeSvmModel(svm_model model) throws IOException {
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(
+				new File("src\\main\\resource\\svmmodel\\model.txt"))));
+		bw.write(new Gson().toJson(model));
+		bw.close();
+	}
+	
+	public static svm_model readSvmModel(svm_model model) throws IOException {
+		Scanner scan = new Scanner(new File("src\\main\\resource\\svmmodel\\model.txt"));
+		String json = "";
+		while(scan.hasNext()){
+			json = json + scan.nextLine();
+		}
+		scan.close();
+		return new Gson().fromJson(json, svm_model.class);
 	}
 }

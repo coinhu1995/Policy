@@ -1,5 +1,9 @@
-e			em
-h 			giờ
-đc 			được
-ko			không
-vd			ví_dụ
+e:em
+h:giờ
+đc:được
+ko:không
+k:không
+vd:ví_dụ
+pó:bó
+vn:việt_nam
+ng:người
