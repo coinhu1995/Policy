@@ -5,7 +5,7 @@
 1 96          chúc_mừng cô rất vui khi cô tiếp_tục cương_vị bộ_trưởng bộ y_tế
 1 100         ủng_hộ bộ_trưởng tiến 
 1 101         chúc_mừng bà tôi tin bà sẽ làm tốt hơn
-1 7891        tôi tán_thành với chính_sách này
+1 102         chuc mừng cô cháu tin vào cô
 1 143         hoan_hô các anh công_an 
 1 202         nay đọc được tin bài naày thấy mừng quá 
 1 213         rất đồng_tình phải xử_lý hình_sự vì giống_nòi những_ai làm_giàu bất_lương phải bị trừng_trị thích_đáng như_thế mới răn_đe được_lòng tham của con_người vì lòng tham con_người tạo ra vô_số tội_ác với con_người 
@@ -26,7 +26,7 @@
 1 418         hoan_nghênh
 1 419         cháu ủng_hộ bộ_trưởng cần kiên_quyết dứt_khoát và mang tính triệt_để như_vậy
 1 423         rất cảm_ơn sự mạnh_mẽ và cương_quyết của bộ_trưởng 
-1 7892        chính_sách hay tôi tán_thành
+1 466         rất dũng_cảm
 1 467         hay
 1 474         đây là tin hay nhất trong năm mà tôi từng đọc có ai giống tôi ko ?
 1 1296		  tôi hưởng_ứng 
@@ -103,7 +103,7 @@
 1 3316        tôi rất hoan_nghênh việc_làm của lãnh_đạo tp đà nẵng đó là chính_sách hành_động rất nhân_văn cần được nhân rộng trên toàn_quốc 
 1 3318        quan_điểm của bác hùng thật đáng hoan_nghênh và nhân rộng ra cả nước tôi hoàn_toàn đồng_ý 
 1 3320        những lời_nói thật tuyệt_vời hoan_hô tấm_lòng nhân_đạo của tất_cả những_ai góp_phần làm_việc này 
-1 7890        chính_sách rất nhân_đạo
+1 3322        ok cho tràng pháo tay ngay
 1 3324        tôi rất đồng_tình với chủ_trương của lãnh_đạo đà nẵng
 1 3326        một chính_sách đúng chúc đà nẵng thành_công 
 1 3327        hoan_hô đà nẵng nhưng cơ_bản nhất vẫn là tạo được công_ăn_việc_làm cho họ chứ không thì họ cũng chỉ biết quay lại con đường cũ để kiếm miếng cơm manh áo thôi mặt_khác sự cám_dỗ của nghề này cũng không ít 
