@@ -5,7 +5,7 @@
 1 96          chúc_mừng cô rất vui khi cô tiếp_tục cương_vị bộ_trưởng bộ y_tế
 1 100         ủng_hộ bộ_trưởng tiến 
 1 101         chúc_mừng bà tôi tin bà sẽ làm tốt hơn
-1 102         chuc mừng cô cháu tin vào cô
+1 7890        chính sách rất nhân đạo
 1 143         hoan_hô các anh công_an 
 1 202         nay đọc được tin bài naày thấy mừng quá 
 1 213         rất đồng_tình phải xử_lý hình_sự vì giống_nòi những_ai làm_giàu bất_lương phải bị trừng_trị thích_đáng như_thế mới răn_đe được_lòng tham của con_người vì lòng tham con_người tạo ra vô_số tội_ác với con_người 
@@ -28,6 +28,7 @@
 1 423         rất cảm_ơn sự mạnh_mẽ và cương_quyết của bộ_trưởng 
 1 466         rất dũng_cảm
 1 467         hay
+1 3568        mang thai hộ rất nhân_đạo
 1 474         đây là tin hay nhất trong năm mà tôi từng đọc có ai giống tôi ko ?
 1 1296		  tôi hưởng_ứng 
 1 1361        nhiệt_liệt ủng_hộ
@@ -51,8 +52,8 @@
 1 2393        tiếp_tục ủng_hộ ông hải q1 cố lên 
 1 2442        hoàn_toàn ủng_hộ em hải cố lên em nhé 
 1 2443        rất tốt nếu các thành_phố đều làm như_vậy thì đất_nước thật văn_minh nếu cán_bộ nào cũng_như ông đoàn ngọc hải thì nước mạnh dân giầu
-1 2476        ông rất thẳng_thắn người_dân chúng_tôi vô_cùng cảm_ơn ông rất cảm_ơn  
-1 2500        ủng_hộ ạ
+1 2476        ông rất thẳng_thắn người_dân chúng_tôi vô_cùng cảm_ơn ông rất cảm_ơn
+1 7891        tôi tán_thành với chính_sách này  
 1 2501        ủng_hộ anh làm quyết_liệt làm thường_xuyên và mạnh_mẽ hơn cái gì mà thường_xuyên nó sẽ thành thói_quen là văn_hóa 
 1 2502        rất cám_ơn ông hải ông là tam gương sáng để chúng_ta học_tập
 1 2539        tôi đồng_ý việc_làm của ông đoàn ngọc hải dẹp bỏ tất_cả những gì cản_trở lấn_chiếm vỉa_hè ở các đô_thị
@@ -116,13 +117,12 @@
 1 3544        đó là điều mà_cả xã_hội chờ_mong tuyệt_vời 
 1 3551        rất vui với những chính_sách và qui_định mở 
 1 3564        tốt quá bây h xây_dựng đang bị thiếu lương nhiều mong sẽ dc khắc_phục 
-1 3568        mang thai hộ rất nhân_đạo 
 1 3576        hay quá
 1 3577        đây là tín_hiệu đáng mừng hy_vọng điều này được đưa vào thực_tế
 1 3653        về lý_thuyết thì quá tuyệt_vời 
 1 3659        tán_thành xã_hội văn_minh phải như_vậy
 1 3671        quá hay đọc mà cảm_thấy vui cho những đối_tượng được lãnh tiền hỗ_trợ của thành_phố đúng là thành_phố mang tên bác
-1 3672        ngon rồi giáo_viên ở tây ninh gần 10 năm nay chỉ có 500 nghìn thôi
+1 2500        ủng_hộ ạ
 1 3674        chúc_mừng các bạn 
 1 3677        quá hay tôi dạy 23 năm chưa biết thưởng tết là gì  
 1 3685        mừng quá
