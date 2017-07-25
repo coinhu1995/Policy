@@ -84,7 +84,7 @@
 1 2963        vỗ_tay quá_trời
 1 3018        phải vậy xh mới phát_triển được rất hoan_nghênh và ủng_hộ 
 1 3019        rất chặt_chẽ và nghiêm_khắc
-1 3020        ủng_hộ
+1 7892        chính_sách hay tôi tán_thành
 1 3023        phải vậy tôi rất ủng_hộ
 1 3050        hay
 1 3056        tôi là nam nhưng tôi đồng_ý với ý_kiến với bà 
@@ -126,10 +126,10 @@
 1 3674        chúc_mừng các bạn 
 1 3677        quá hay tôi dạy 23 năm chưa biết thưởng tết là gì  
 1 3685        mừng quá
-1 3687        rất vui nhưng có_điều đọc luật nó ghi gì mà mình không_thể hiểu nổi 
+1 4012        tôi ủng_hộ điều này ủng_hộ nhật bản
 1 3701        hoàn_toàn đúng_đắn 
 1 3711        tuyệt_vời
-1 3712        rất mừng khi co 2 sự lựa_chọn ko cứng_nhắc như chỉ được đóng thêm cho đủ 20 năm mới được hưởng luơng hưu khi đủ tuổi nghỉ hưu
+1 4445        quá tốt nên triển_khai ngay 
 1 3713        hợp_lý rồi
 1 3729        hợp với lòng người lao_động rùi 
 1 3763        vợ tôi chuẩn_bị sinh_đôi nay nghe tin giá giảm cũng rất mừng và mong rằng giá sữa ổn_định phù_hợp với người tiêu_dùng 
