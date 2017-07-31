@@ -237,7 +237,7 @@ public class PrepareData5 {
 				int index = Utils.indexOf(listAllWord, words.get(i));
 				words.get(i).setId(listAllWord.get(index).getId());
 				words.get(i).setIDF(listAllWord.get(index).getIDF());
-				words.get(i).setTFIDF(words.get(i).getIDF() * Math.log10(words.get(i).getTF() + 1));
+				words.get(i).setTFIDF(words.get(i).getIDF() * Math.log10(words.get(i).getFrequency() + 1));
 				words.get(i).setIsStop(listAllWord.get(index).getIsStop());
 			}
 

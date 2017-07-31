@@ -57,11 +57,15 @@ public class Utils {
 		for (int i = 0; i < words.length; i++) {
 			int index = Utils.indexOf(listWord, words[i]);
 			if (index > -1) {
-				listWord.get(index).setTF(listWord.get(index).getTF() + 1);
+				listWord.get(index).setFrequency(listWord.get(index).getFrequency() + 1);
 			} else {
-				Word w = new Word(-1, words[i], 1, 0, 0, 0, 0, 0);
+				Word w = new Word(-1, words[i], 1, 0, 0, 0, 0, 0, 0);
 				listWord.add(w);
 			}
+		}
+
+		for (int i = 0; i < listWord.size(); i++) {
+			listWord.get(i).setTF(listWord.get(i).getFrequency() / (float) listWord.size());
 		}
 
 		return listWord;
@@ -271,16 +275,16 @@ public class Utils {
 	}
 
 	public static void writeSvmModel(svm_model model) throws IOException {
-		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(
-				new File("src\\main\\resource\\svmmodel\\model.txt"))));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
+				new FileOutputStream(new File("src\\main\\resource\\svmmodel\\model.txt"))));
 		bw.write(new Gson().toJson(model));
 		bw.close();
 	}
-	
+
 	public static svm_model readSvmModel(svm_model model) throws IOException {
 		Scanner scan = new Scanner(new File("src\\main\\resource\\svmmodel\\model.txt"));
 		String json = "";
-		while(scan.hasNext()){
+		while (scan.hasNext()) {
 			json = json + scan.nextLine();
 		}
 		scan.close();

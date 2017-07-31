@@ -64,7 +64,8 @@ public class PrepareData4 {
 		String path = "src\\main\\resource\\data\\" + this.labelCount + "label\\"
 				+ date.replaceAll("-", "") + "\\" + time.substring(0, 5).replace(":", "");
 
-		System.out.println(date.replaceAll("-", "") + "\\\\" + time.substring(0, 5).replace(":", ""));
+		System.out
+				.println(date.replaceAll("-", "") + "\\\\" + time.substring(0, 5).replace(":", ""));
 
 		File folder = new File(path);
 		if (!folder.exists()) {
@@ -139,10 +140,10 @@ public class PrepareData4 {
 
 		this.collect(this.wordsOfTrainingTestingData, listCmt);
 		this.checkStopWord(this.wordsOfTrainingTestingData);
-
 		for (int i = 0; i < this.wordsOfTrainingTestingData.size(); i++) {
-			this.wordsOfTrainingTestingData.get(i).setIDF((float) Math
-					.log10((test) / (1 + this.wordsOfTrainingTestingData.get(i).getDF())));
+			this.wordsOfTrainingTestingData.get(i)
+					.setIDF(Math.log10((test)
+							/ (float) this.wordsOfTrainingTestingData.get(i).getDF()));
 		}
 
 		this.write(listCmt, this.wordsOfTrainingTestingData, this.bw1, this.bw3);
@@ -163,10 +164,16 @@ public class PrepareData4 {
 		this.collect(listWord, listCmt);
 		this.checkStopWord(listWord);
 		// Thêm các từ đã tách được từ tập huấn luyện vào CSDL
+		System.out.println(String.format("%25s", "Word") + String.format("%10s", "DF")
+				+ String.format("%10s", "TF") + String.format("%20s", "IDF"));
 		for (int i = 0; i < listWord.size(); i++) {
 			try {
-				listWord.get(i).setIDF((float) Math.log10((train) / (1 + listWord.get(i).getDF())));
+				// listWord.get(i).setIDF((float) Math.log10((train) / (1 +
+				// listWord.get(i).getDF())));
+				listWord.get(i).setIDF(Math.log10(
+						(train) / (float) listWord.get(i).getDF()));
 				this.wordDAO.insert(listWord.get(i));
+				listWord.get(i).print();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -234,7 +241,11 @@ public class PrepareData4 {
 				int index = Utils.indexOf(listAllWord, words.get(i));
 				words.get(i).setId(listAllWord.get(index).getId());
 				words.get(i).setIDF(listAllWord.get(index).getIDF());
-				words.get(i).setTFIDF(words.get(i).getIDF() * Math.log10(words.get(i).getTF() + 1));
+				// words.get(i).setTFIDF(words.get(i).getIDF() *
+				// Math.log10(words.get(i).getTF() + 1));
+				// words.get(i).setTFIDF(words.get(i).getIDF() *
+				// words.get(i).getTF());
+				words.get(i).setTFIDF(words.get(i).getIDF());
 				words.get(i).setIsStop(listAllWord.get(index).getIsStop());
 			}
 
@@ -248,20 +259,26 @@ public class PrepareData4 {
 					return 0;
 				}
 			});
-			
-			if(this.context.getTypeOfFrequence().equals("TFIDF")){
-			for (int i = 0; i < words.size(); i++) {
-				if (words.get(i).getIsStop() != 1) {
-					line += words.get(i).getId() + ":" + Utils.round(words.get(i).getTFIDF()) + " ";
-					line1 += words.get(i).getId() + ":" + Utils.round(words.get(i).getTFIDF())
-							+ " ";
-				}
-			}
-			}else if(this.context.getTypeOfFrequence().equals("TF")){
+
+			if (this.context.getTypeOfFrequence().equals("TFIDF")) {
 				for (int i = 0; i < words.size(); i++) {
 					if (words.get(i).getIsStop() != 1) {
-						line += words.get(i).getId() + ":" + words.get(i).getTF() + " ";
-						line1 += words.get(i).getId() + ":" + words.get(i).getTF() + " ";
+						// line += words.get(i).getId() + ":" +
+						// Utils.round(words.get(i).getTFIDF())
+						// + " ";
+						// line1 += words.get(i).getId() + ":" +
+						// Utils.round(words.get(i).getTFIDF())
+						// + " ";
+						line += words.get(i).getId() + ":" + words.get(i).getTFIDF() + " ";
+						line1 += words.get(i).getId() + ":" + words.get(i).getTFIDF() + " ";
+
+					}
+				}
+			} else if (this.context.getTypeOfFrequence().equals("TF")) {
+				for (int i = 0; i < words.size(); i++) {
+					if (words.get(i).getIsStop() != 1) {
+						line += words.get(i).getId() + ":" + words.get(i).getFrequency() + " ";
+						line1 += words.get(i).getId() + ":" + words.get(i).getFrequency() + " ";
 					}
 				}
 			}

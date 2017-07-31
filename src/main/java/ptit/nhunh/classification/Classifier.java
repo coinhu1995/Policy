@@ -8,7 +8,7 @@ public class Classifier {
 	public static void main(String[] args) throws SQLException, FileNotFoundException, IOException, ClassNotFoundException {
 		System.out.println("Processing...");
 
-		String path = "20170727\\2301";
+		String path = "20170731\\2339";
 
 		new Classify().classified("src\\main\\resource\\data\\2label\\" + path + "\\input.train", "src\\main\\resource\\data\\2label\\" + path + "\\input.test",
 				"src\\main\\resource\\data\\2label\\" + path + "\\output");

@@ -1,0 +1,3 @@
+DF:				số comment chứa từ đấy.
+TF:				số lần xuất hiện trong comment / số từ trong comment.
+IDF:			log10( num_of_comment / (1 + DF) )

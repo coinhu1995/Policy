@@ -39,7 +39,7 @@ public class WordDAO implements SQLDAO {
 			this.ps = this.con.prepareStatement(sql);
 			this.ps.setNString(1, word.getWord());
 			this.ps.setInt(2, word.getDF());
-			this.ps.setFloat(3, word.getIDF());
+			this.ps.setDouble(3, word.getIDF());
 			this.ps.setInt(4, word.getIsStop());
 			this.ps.setInt(5, word.getCmt_id());
 			this.ps.executeUpdate();
@@ -56,7 +56,7 @@ public class WordDAO implements SQLDAO {
 		this.ps = this.con.prepareStatement("select * from TblWord order by id");
 		ResultSet rs = this.ps.executeQuery();
 		while (rs.next()) {
-			Word word = new Word(rs.getInt(1), rs.getNString(2), 0, rs.getInt(3), rs.getInt(4),
+			Word word = new Word(rs.getInt(1), rs.getNString(2), 0, 0, rs.getInt(3), rs.getInt(4),
 					rs.getFloat(5), 0, rs.getInt(6));
 			ac.add(word);
 		}
@@ -69,7 +69,7 @@ public class WordDAO implements SQLDAO {
 		this.ps = this.con.prepareStatement(sql);
 		ResultSet rs = this.ps.executeQuery();
 		while (rs.next()) {
-			Word word = new Word(rs.getInt(1), rs.getNString(2), 0, rs.getInt(3), rs.getInt(4),
+			Word word = new Word(rs.getInt(1), rs.getNString(2), 0, 0, rs.getInt(3), rs.getInt(4),
 					rs.getFloat(5), 0, rs.getInt(6));
 			ac.add(word);
 		}
@@ -94,7 +94,7 @@ public class WordDAO implements SQLDAO {
 			return false;
 		}
 	}
-	
+
 	@Override
 	public boolean update(String sql) {
 		try {
