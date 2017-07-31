@@ -103,8 +103,6 @@ public class PrepareData4 {
 
 		System.out.println("--- End Processing ---");
 
-		this.close();
-
 		System.out.println("Generate Training File   : "
 				+ (eGenTrainDataFile - sGenTrainDataFile) / (float) 60000);
 		System.out.println("Generate Testing File   : "
@@ -228,7 +226,6 @@ public class PrepareData4 {
 			Comment c = (Comment) o;
 			String line = "", line1 = "";
 			line += c.getId() + " ";
-
 			line += c.getLabel2() + " ";
 			line1 += c.getLabel2() + " ";
 			ArrayList<Word> words = Utils.string2ListWord(c.getCmt_segment());
@@ -251,17 +248,21 @@ public class PrepareData4 {
 					return 0;
 				}
 			});
-
+			
+			if(this.context.getTypeOfFrequence().equals("TFIDF")){
 			for (int i = 0; i < words.size(); i++) {
 				if (words.get(i).getIsStop() != 1) {
 					line += words.get(i).getId() + ":" + Utils.round(words.get(i).getTFIDF()) + " ";
 					line1 += words.get(i).getId() + ":" + Utils.round(words.get(i).getTFIDF())
 							+ " ";
-
-					// line += words.get(i).getId() + ":" + words.get(i).getTF()
-					// + " ";
-					// line1 += words.get(i).getId() + ":" +
-					// words.get(i).getTF() + " ";
+				}
+			}
+			}else if(this.context.getTypeOfFrequence().equals("TF")){
+				for (int i = 0; i < words.size(); i++) {
+					if (words.get(i).getIsStop() != 1) {
+						line += words.get(i).getId() + ":" + words.get(i).getTF() + " ";
+						line1 += words.get(i).getId() + ":" + words.get(i).getTF() + " ";
+					}
 				}
 			}
 			if (line.length() > 2) {
@@ -293,16 +294,4 @@ public class PrepareData4 {
 		}
 		br.close();
 	}
-
-	private void close() throws IOException {
-		// this.bw.flush();
-		// this.bw1.flush();
-		// this.bw2.flush();
-		// this.bw3.flush();
-		// this.bw.close();
-		// this.bw1.close();
-		// this.bw2.close();
-		// this.bw3.close();
-	}
-
 }

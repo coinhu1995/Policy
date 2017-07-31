@@ -18,7 +18,16 @@ public class Context {
 	@Getter
 	@Setter
 	private int test = 300;
-
+	
+	/**
+	 * TFIDF
+	 * TF
+	 * DF
+	 */
+	@Getter
+	@Setter
+	private String typeOfFrequence = "TFIDF" ;
+	
 	private Context() {
 
 	}
