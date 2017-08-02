@@ -241,11 +241,12 @@ public class PrepareData4 {
 				int index = Utils.indexOf(listAllWord, words.get(i));
 				words.get(i).setId(listAllWord.get(index).getId());
 				words.get(i).setIDF(listAllWord.get(index).getIDF());
+				words.get(i).setTF(listAllWord.get(index).getTF());
 				// words.get(i).setTFIDF(words.get(i).getIDF() *
 				// Math.log10(words.get(i).getTF() + 1));
 				// words.get(i).setTFIDF(words.get(i).getIDF() *
 				// words.get(i).getTF());
-				words.get(i).setTFIDF(words.get(i).getIDF());
+				words.get(i).setTFIDF(words.get(i).getIDF() * words.get(i).getTF());
 				words.get(i).setIsStop(listAllWord.get(index).getIsStop());
 			}
 

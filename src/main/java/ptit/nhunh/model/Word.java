@@ -18,7 +18,7 @@ public class Word implements Serializable {
 	private int frequency;
 	@Getter
 	@Setter
-	private float TF;
+	private double TF;
 	@Getter
 	@Setter
 	private int DF;
@@ -35,7 +35,7 @@ public class Word implements Serializable {
 	@Setter
 	private int cmt_id;
 
-	public Word(int id, String word, int frequency, float tF, int dF, double iDF, double tFIDF,
+	public Word(int id, String word, int frequency, double tF, int dF, double iDF, double tFIDF,
 			int isStop, int cmt_id) {
 		super();
 		this.id = id;
