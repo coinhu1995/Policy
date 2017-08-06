@@ -40,45 +40,28 @@ public class Utils {
 	}
 
 	/**
-	 * Chuyển một sentence đã được phân đoạn thành 1 List các từ. Các từ này là
-	 * duy nhất trong List. Các từ đã có các thông số như quantity, df, tfidf.
+	 * Chuyển một sentence đã được phân đoạn thành 1 List các từ. 
 	 * 
 	 * @param segmentSentence
 	 * @return
 	 * @throws SQLException
 	 */
-	public static ArrayList<Word> string2ListWord(String segmentSentence) throws SQLException {
+	public static ArrayList<Word> sentence2Words(String segmentSentence) throws SQLException {
 		Collator collator = Collator.getInstance();
 		collator.setStrength(Collator.TERTIARY);
 
 		ArrayList<Word> listWord = new ArrayList<>();
-		String[] words = segment(segmentSentence);
+		String[] words = segmentSentence.split(" ");
 
 		for (int i = 0; i < words.length; i++) {
 			int index = Utils.indexOf(listWord, words[i]);
 			if (index > -1) {
-				listWord.get(index).setFrequency(listWord.get(index).getFrequency() + 1);
+				listWord.get(index).setTimesOccur(listWord.get(index).getTimesOccur() + 1);
 			} else {
-				Word w = new Word(-1, words[i], 1, 0, 0, 0, 0, 0, 0);
+				Word w = new Word(-1, words[i], 0, 1, 0, 0, 0);
 				listWord.add(w);
 			}
 		}
-
-		for (int i = 0; i < listWord.size(); i++) {
-			listWord.get(i).setTF(listWord.get(i).getFrequency() / (float) listWord.size());
-		}
-
-		return listWord;
-	}
-
-	/**
-	 * Phân tách một câu thành danh sách các từ. Theo JVNTextPro
-	 * 
-	 * @param sentence
-	 * @return
-	 */
-	public static String[] segment(String segmentSentence) {
-		String[] listWord = segmentSentence.split(" ");
 
 		return listWord;
 	}
@@ -101,7 +84,7 @@ public class Utils {
 	}
 
 	/**
-	 * Kiểm tra String w có thuộc listWord hay không
+	 * Kiểm tra String w có thuộc listWord hay không nếu có thì return lại vị trí từ chứa String đấy.
 	 * 
 	 * @param listWord
 	 * @param w

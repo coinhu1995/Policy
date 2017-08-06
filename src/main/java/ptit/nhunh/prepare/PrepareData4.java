@@ -17,8 +17,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-import org.apache.commons.lang3.SerializationUtils;
-
+import ptit.nhunh.classification.Classifier;
 import ptit.nhunh.context.Context;
 import ptit.nhunh.dao.SQLDAO;
 import ptit.nhunh.dao.SQLDAOFactory;
@@ -34,38 +33,41 @@ import vn.hus.nlp.tokenizer.VietTokenizer;
  * @author uhn
  *
  */
+@SuppressWarnings("unused")
 public class PrepareData4 {
-	@SuppressWarnings("unused")
 	private VietTokenizer vietToken;
 	private SQLDAO cmtTestDao;
-	private SQLDAO wordDAO;
-
-	private Context context;
+	private SQLDAO cmtDao;
+	private SQLDAO wordDao;
 
 	private BufferedWriter bw;
 	private BufferedWriter bw1;
 	private BufferedWriter bw2;
 	private BufferedWriter bw3;
 
-	private ArrayList<Word> wordsOfTrainingData;
-	private ArrayList<Word> wordsOfTrainingTestingData;
+	private ArrayList<Object> listTrainCmt;
+	private ArrayList<Object> listTestCmt;
+
+	private ArrayList<Word> listWord;
 
 	private int labelCount = 2;
 
 	public PrepareData4() throws SQLException, IOException {
 		this.cmtTestDao = SQLDAOFactory.getDAO(SQLDAOFactory.COMMENTTEST);
-		this.wordDAO = SQLDAOFactory.getDAO(SQLDAOFactory.WORD);
-		this.vietToken = new VietTokenizer();
-		this.context = Context.getInstance();
+		this.cmtDao = SQLDAOFactory.getDAO(SQLDAOFactory.COMMENT);
+		this.wordDao = SQLDAOFactory.getDAO(SQLDAOFactory.WORD);
+		// this.vietToken = new VietTokenizer();
+		this.listWord = new ArrayList<>();
 
 		String date = LocalDate.now().toString();
 		String time = LocalTime.now().toString();
 
 		String path = "src\\main\\resource\\data\\" + this.labelCount + "label\\"
 				+ date.replaceAll("-", "") + "\\" + time.substring(0, 5).replace(":", "");
-
-		System.out
-				.println(date.replaceAll("-", "") + "\\\\" + time.substring(0, 5).replace(":", ""));
+		BufferedWriter pathWriter = new BufferedWriter(
+				new OutputStreamWriter(new FileOutputStream(new File("path.txt"))));
+		pathWriter.write(path);
+		pathWriter.close();
 
 		File folder = new File(path);
 		if (!folder.exists()) {
@@ -73,7 +75,7 @@ public class PrepareData4 {
 		}
 
 		this.bw = new BufferedWriter(
-				new OutputStreamWriter(new FileOutputStream(new File(path + "\\train.txt"))));
+				new OutputStreamWriter(new FileOutputStream(new File(path + "\\train"))));
 		this.bw1 = new BufferedWriter(
 				new OutputStreamWriter(new FileOutputStream(new File(path + "\\test"))));
 		this.bw2 = new BufferedWriter(
@@ -81,37 +83,39 @@ public class PrepareData4 {
 		this.bw3 = new BufferedWriter(
 				new OutputStreamWriter(new FileOutputStream(new File(path + "\\input.test"))));
 
-		this.wordsOfTrainingData = new ArrayList<>();
-
-		this.wordDAO.update("delete from TblWord");
-		this.wordDAO.update("DBCC CHECKIDENT ('TblWord', RESEED, 0)");
+		this.listTrainCmt = this.cmtTestDao.getData(
+				"select * from TblCommentTest where id <= " + Context.TRAINSIZE + " order by id");
+		this.listTestCmt = this.cmtTestDao.getData(
+				"select * from TblCommentTest where id <= " + (Context.TESTSIZE + Context.TRAINSIZE)
+						+ " and id > " + Context.TRAINSIZE + " order by id");
+		this.wordDao.update("delete from TblWord");
+		this.wordDao.update("DBCC CHECKIDENT ('TblWord', RESEED, 0)");
 	}
 
-	public static void main(String[] args)
-			throws FileNotFoundException, SQLException, IOException, InterruptedException {
+	public static void main(String[] args) throws FileNotFoundException, SQLException, IOException,
+			InterruptedException, ClassNotFoundException {
 		new PrepareData4().process();
+		new Classifier().execute();
 	}
 
 	public void process() throws SQLException, IOException, InterruptedException {
 		System.out.println("\n--- Start Processing ---");
 
-		long sGenTrainDataFile = System.currentTimeMillis();
-		this.genTrainingDataFile(this.context.getTrain());
-		long eGenTrainDataFile = System.currentTimeMillis();
+		long t1 = System.currentTimeMillis();
+		this.genTrainingDataFile(Context.TRAINSIZE);
+		long t2 = System.currentTimeMillis();
 
-		this.genTestingDataFile(this.context.getTrain(), this.context.getTest());
-		long eGenTestDataFile = System.currentTimeMillis();
+		this.genTestingDataFile(Context.TRAINSIZE, Context.TESTSIZE + Context.TRAINSIZE);
+		long t3 = System.currentTimeMillis();
 
 		System.out.println("--- End Processing ---");
 
-		System.out.println("Generate Training File   : "
-				+ (eGenTrainDataFile - sGenTrainDataFile) / (float) 60000);
-		System.out.println("Generate Testing File   : "
-				+ (eGenTestDataFile - eGenTrainDataFile) / (float) 60000);
+		System.out.println("Generate Training File   : " + (t2 - t1) / (float) 60000);
+		System.out.println("Generate Testing File   : " + (t3 - t2) / (float) 60000);
 	}
 
 	/**
-	 * Tạo các file training data (input.train).
+	 * Tạo các file train data (input.train, train).
 	 * 
 	 * @param train
 	 * @param test
@@ -122,91 +126,58 @@ public class PrepareData4 {
 	private void genTrainingDataFile(int train)
 			throws SQLException, IOException, InterruptedException {
 		System.out.println("\t+> Training file Generating...");
-		this.collectTrainingWord(train);
-		ArrayList<Object> listCmt = this.cmtTestDao.getData("select * from "
-				+ this.context.getCommentTableName() + " where id <= " + train + " order by id ");
 
-		this.write(listCmt, this.wordsOfTrainingData, this.bw, this.bw2);
-	}
+		this.collect(this.listWord, this.listTrainCmt);
+		this.checkStopWord(this.listWord);
 
-	private void genTestingDataFile(int train, int test)
-			throws SQLException, IOException, InterruptedException {
-		System.out.println("\t+> Testing file Generating...");
-		ArrayList<Object> listCmt = this.cmtTestDao
-				.getData("select * from " + this.context.getCommentTableName() + " where id > "
-						+ train + " and id <= " + test + " order by id ");
-
-		this.wordsOfTrainingTestingData = SerializationUtils.clone(this.wordsOfTrainingData);
-
-		this.collect(this.wordsOfTrainingTestingData, listCmt);
-		this.checkStopWord(this.wordsOfTrainingTestingData);
-		for (int i = 0; i < this.wordsOfTrainingTestingData.size(); i++) {
-			this.wordsOfTrainingTestingData.get(i)
-					.setIDF(Math.log10((test)
-							/ (float) this.wordsOfTrainingTestingData.get(i).getDF()));
-		}
-
-		this.write(listCmt, this.wordsOfTrainingTestingData, this.bw1, this.bw3);
+		this.write(this.listTrainCmt, this.bw, this.bw2, Context.TRAINSIZE);
 	}
 
 	/**
-	 * Collect các từ ở trong limit comments đầu tiên. Và thêm vào Database.
+	 * Tạo các file test data (input.test, test).
 	 * 
 	 * @param train
+	 * @param test
 	 * @throws SQLException
 	 * @throws IOException
+	 * @throws InterruptedException
 	 */
-	private void collectTrainingWord(int train) throws SQLException, IOException {
-		ArrayList<Word> listWord = new ArrayList<>();
-		ArrayList<Object> listCmt = this.cmtTestDao.getData("select * from "
-				+ this.context.getCommentTableName() + " where id <= " + train + " order by id");
+	private void genTestingDataFile(int train, int test)
+			throws SQLException, IOException, InterruptedException {
+		System.out.println("\t+> Testing file Generating...");
 
-		this.collect(listWord, listCmt);
-		this.checkStopWord(listWord);
-		// Thêm các từ đã tách được từ tập huấn luyện vào CSDL
-		System.out.println(String.format("%25s", "Word") + String.format("%10s", "DF")
-				+ String.format("%10s", "TF") + String.format("%20s", "IDF"));
-		for (int i = 0; i < listWord.size(); i++) {
-			try {
-				// listWord.get(i).setIDF((float) Math.log10((train) / (1 +
-				// listWord.get(i).getDF())));
-				listWord.get(i).setIDF(Math.log10(
-						(train) / (float) listWord.get(i).getDF()));
-				this.wordDAO.insert(listWord.get(i));
-				listWord.get(i).print();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		this.wordsOfTrainingData = SerializationUtils.clone(listWord);
+		this.collect(this.listWord, this.listTestCmt);
+		this.checkStopWord(this.listWord);
+
+		this.write(this.listTestCmt, this.bw1, this.bw3, Context.TRAINSIZE + Context.TESTSIZE);
 	}
 
 	/**
 	 * Collect các từ trong <strong>rs</strong> mà chưa có trong
 	 * <strong>listAllWord</strong>. Kết hợp tính DF của mỗi từ.
 	 * 
-	 * @param listAllWord
+	 * @param listWord
 	 * @param rs
 	 * @throws SQLException
 	 */
-	private void collect(ArrayList<Word> listAllWord, ArrayList<Object> listCmt)
-			throws SQLException {
+	private void collect(ArrayList<Word> listWord, ArrayList<Object> listCmt) throws SQLException {
 		Collator collator = Collator.getInstance();
 		collator.setStrength(Collator.TERTIARY);
 		for (Object o : listCmt) {
 			Comment c = (Comment) o;
 			String segmentCmt = c.getCmt_segment();
 
-			ArrayList<Word> aw = Utils.string2ListWord(segmentCmt);
+			ArrayList<Word> aw = Utils.sentence2Words(segmentCmt);
 			for (int i = 0; i < aw.size(); i++) {
-				int pos = Utils.indexOf(listAllWord, aw.get(i));
+				int pos = Utils.indexOf(listWord, aw.get(i));
 				if (pos == -1) {
+					aw.get(i).setId(listWord.size() + 1);
 					aw.get(i).setDF(1);
-					aw.get(i).setId(listAllWord.size() + 1);
+					aw.get(i).setId(listWord.size() + 1);
 					aw.get(i).setCmt_id(c.getId());
-					listAllWord.add(aw.get(i));
+					listWord.add(aw.get(i));
 				} else {
-					listAllWord.get(pos).setDF(listAllWord.get(pos).getDF() + 1);
+					listWord.get(pos).setDF(listWord.get(pos).getDF() + 1);
 				}
 			}
 		}
@@ -227,27 +198,23 @@ public class PrepareData4 {
 	 * @throws SQLException
 	 * @throws IOException
 	 */
-	public void write(ArrayList<Object> listCmt, ArrayList<Word> listAllWord, BufferedWriter bw1,
-			BufferedWriter bw2) throws SQLException, IOException {
+	public void write(ArrayList<Object> listCmt, BufferedWriter bw1, BufferedWriter bw2, int size)
+			throws SQLException, IOException {
 		for (Object o : listCmt) {
 			Comment c = (Comment) o;
-			String line = "", line1 = "";
-			line += c.getId() + " ";
-			line += c.getLabel2() + " ";
-			line1 += c.getLabel2() + " ";
-			ArrayList<Word> words = Utils.string2ListWord(c.getCmt_segment());
+			String show = "", line1 = "";
+			show += c.getId() + " ";
+			show += c.getLabel() + " ";
+			line1 += c.getLabel() + " ";
+			ArrayList<Word> words = Utils.sentence2Words(c.getCmt_segment());
 
+			int numOfWord = c.getCmt_segment().split(" ").length;
 			for (int i = 0; i < words.size(); i++) {
-				int index = Utils.indexOf(listAllWord, words.get(i));
-				words.get(i).setId(listAllWord.get(index).getId());
-				words.get(i).setIDF(listAllWord.get(index).getIDF());
-				words.get(i).setTF(listAllWord.get(index).getTF());
-				// words.get(i).setTFIDF(words.get(i).getIDF() *
-				// Math.log10(words.get(i).getTF() + 1));
-				// words.get(i).setTFIDF(words.get(i).getIDF() *
-				// words.get(i).getTF());
-				words.get(i).setTFIDF(words.get(i).getIDF() * words.get(i).getTF());
-				words.get(i).setIsStop(listAllWord.get(index).getIsStop());
+				int index = Utils.indexOf(this.listWord, words.get(i));
+				if (index > -1) {
+					words.get(i).setDF(this.listWord.get(index).getDF());
+				}
+				words.get(i).setId(this.listWord.get(index).getId());
 			}
 
 			Collections.sort(words, new Comparator<Word>() {
@@ -261,30 +228,15 @@ public class PrepareData4 {
 				}
 			});
 
-			if (this.context.getTypeOfFrequence().equals("TFIDF")) {
-				for (int i = 0; i < words.size(); i++) {
-					if (words.get(i).getIsStop() != 1) {
-						// line += words.get(i).getId() + ":" +
-						// Utils.round(words.get(i).getTFIDF())
-						// + " ";
-						// line1 += words.get(i).getId() + ":" +
-						// Utils.round(words.get(i).getTFIDF())
-						// + " ";
-						line += words.get(i).getId() + ":" + words.get(i).getTFIDF() + " ";
-						line1 += words.get(i).getId() + ":" + words.get(i).getTFIDF() + " ";
-
-					}
-				}
-			} else if (this.context.getTypeOfFrequence().equals("TF")) {
-				for (int i = 0; i < words.size(); i++) {
-					if (words.get(i).getIsStop() != 1) {
-						line += words.get(i).getId() + ":" + words.get(i).getFrequency() + " ";
-						line1 += words.get(i).getId() + ":" + words.get(i).getFrequency() + " ";
-					}
+			for (int i = 0; i < words.size(); i++) {
+				if (words.get(i).getIsStop() != 1) {
+					show += words.get(i).getWord() + ":" + words.get(i).getTimesOccur() + ":"
+							+ words.get(i).getDF() + ":" + words.get(i).getTFIDF(size) + " ";
+					line1 += words.get(i).getId() + ":" + words.get(i).getTFIDF(size) + " ";
 				}
 			}
-			if (line.length() > 2) {
-				bw1.write(line);
+			if (show.length() > 2) {
+				bw1.write(show);
 				bw1.write("\t\t" + c.getCmt_segment());
 				bw1.newLine();
 				bw2.write(line1);

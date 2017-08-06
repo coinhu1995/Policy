@@ -4,54 +4,92 @@ import java.io.Serializable;
 
 import lombok.Getter;
 import lombok.Setter;
+import ptit.nhunh.context.Context;
 
 public class Word implements Serializable {
 	private static final long serialVersionUID = 1L;
+
 	@Getter
 	@Setter
 	private int id;
+
 	@Getter
 	@Setter
 	private String word;
+
 	@Getter
 	@Setter
-	private int frequency;
+	private float frequency;
+
 	@Getter
 	@Setter
-	private double TF;
+	private int timesOccur;
+
 	@Getter
 	@Setter
 	private int DF;
-	@Getter
-	@Setter
-	private double IDF;
-	@Getter
-	@Setter
-	private double TFIDF;
+
 	@Getter
 	@Setter
 	private int isStop;
+
 	@Getter
 	@Setter
 	private int cmt_id;
 
-	public Word(int id, String word, int frequency, double tF, int dF, double iDF, double tFIDF,
-			int isStop, int cmt_id) {
+	public float getTF() {
+		if (Context.TYPEOFTF == 1) {
+			return 1;
+		} else if (Context.TYPEOFTF == 2) {
+			return this.timesOccur;
+		} else if (Context.TYPEOFTF == 3) {
+			return (float) (1 + Math.log10(this.timesOccur));
+		} else {
+			return 0;
+		}
+	}
+
+	/**
+	 * get IDF.
+	 * 
+	 * @param totalComment
+	 *            so luong ban ghi trong tap.
+	 * @return
+	 */
+	public float getIDF(int totalComment) {
+		if (Context.TYPEOFIDF == 1) {
+			return (float) Math.log10(totalComment / (float) this.DF);
+		} else if (Context.TYPEOFIDF == 2) {
+			return (float) Math.log10(1 + totalComment / (float) this.DF);
+		} else {
+			return 1;
+		}
+	}
+
+	/**
+	 * get TFIDF.
+	 * 
+	 * @param N
+	 *            so luong ban ghi trong tap.
+	 * @return
+	 */
+	public float getTFIDF(int N) {
+		return this.getTF() * this.getIDF(N);
+	}
+
+	public Word(int id, String word, float frequency, int timesOccur, int dF, int isStop,
+			int cmt_id) {
 		super();
 		this.id = id;
 		this.word = word;
 		this.frequency = frequency;
-		this.TF = tF;
+		this.timesOccur = timesOccur;
 		this.DF = dF;
-		this.IDF = iDF;
-		this.TFIDF = tFIDF;
 		this.isStop = isStop;
 		this.cmt_id = cmt_id;
 	}
 
-	public void print() {
-		System.out.println(String.format("%25s", this.word) + String.format("%10s", this.DF)
-				+ String.format("%20s", this.TF) + String.format("%20s", this.IDF));
+	public Word() {
+		super();
 	}
-
 }

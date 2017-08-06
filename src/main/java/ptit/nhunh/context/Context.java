@@ -1,38 +1,28 @@
 package ptit.nhunh.context;
 
-import lombok.Getter;
-import lombok.Setter;
-
 public class Context {
+	public static String COMMENTTABLENAME = "TblCommentTest";
+	public static int TRAINSIZE = 200;
+	public static int TESTSIZE = 100;
 
-	private static Context instance = new Context();
+	/**
+	 * 1: binary : 0, 1 <br>
+	 * 2: times_occur
+	 * 3: 1 + log (times_occur)
+	 */
+	public static int TYPEOFTF = 2;
 
-	@Getter
-	@Setter
-	private String commentTableName = "TblCommentTest";
-
-	@Getter
-	@Setter
-	private int train = 200;
-
-	@Getter
-	@Setter
-	private int test = 300;
+	/**
+	 * 1: inverse document frequency : log(N/DF) <br>
+	 * 2: inverse document frequency smooth : log(1 + N/DF)
+	 */
+	public static int TYPEOFIDF = 2;
 	
 	/**
-	 * TFIDF
-	 * TF
-	 * DF
+	 *    TRAIN/TEST
+	 * 1: 200/100
+	 * 2: 100/100
 	 */
-	@Getter
-	@Setter
-	private String typeOfFrequence = "TFIDF" ;
+	public static int TYPEOFCOPYDATA2DATABASE = 1;
 	
-	private Context() {
-
-	}
-
-	public static Context getInstance() {
-		return Context.instance;
-	}
 }
