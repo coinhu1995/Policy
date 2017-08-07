@@ -6,16 +6,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/coinh/Desktop/Capstone/libsvm-3.22/java/libsvm.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="D:/WORK/library/Jsoup/jsoup-1.8.3.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
 		<attributes>
 			<attribute name="optional" value="true"/>
@@ -28,17 +18,7 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/coinh/Desktop/Capstone/vntokenizer/vn.hus.nlp.tokenizer-4.1.1-bin/vn.hus.nlp.tokenizer-4.1.1.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="D:/WORK/library/commonlang/commons-lang3-3.5/commons-lang3-3.5.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="D:/WORK/library/database/sqljdbc4.jar">
+	<classpathentry kind="lib" path="D:/WORK/library/lombok/lombok-1.16.4.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
@@ -50,7 +30,10 @@
 	</classpathentry>
 	<classpathentry combineaccessrules="false" kind="src" path="/JVnTextPro-v.2.0"/>
 	<classpathentry kind="lib" path="lib/uetsegmenter.jar"/>
-	<classpathentry kind="lib" path="D:/WORK/library/lombok/lombok-1.16.4.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/SVM"/>
+	<classpathentry kind="lib" path="D:/WORK/library/commonlang/commons-lang3-3.5/commons-lang3-3.5.jar"/>
+	<classpathentry kind="lib" path="D:/WORK/library/Jsoup/jsoup-1.8.3.jar"/>
+	<classpathentry kind="lib" path="D:/WORK/library/database/sqljdbc4.jar"/>
+	<classpathentry kind="lib" path="D:/WORK/library/vntokenizer/vn.hus.nlp.tokenizer-4.1.1-bin/vn.hus.nlp.tokenizer-4.1.1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

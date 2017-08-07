@@ -31,8 +31,8 @@ public class Word implements Serializable {
 
 	@Getter
 	@Setter
-	private int isStop;
-
+	private int isStopWord;
+	
 	@Getter
 	@Setter
 	private int cmt_id;
@@ -85,7 +85,7 @@ public class Word implements Serializable {
 		this.frequency = frequency;
 		this.timesOccur = timesOccur;
 		this.DF = dF;
-		this.isStop = isStop;
+		this.isStopWord = isStop;
 		this.cmt_id = cmt_id;
 	}
 
