@@ -17,7 +17,6 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Scanner;
 
 import ptit.nhunh.classification.Classifier;
 import ptit.nhunh.context.Context;
@@ -55,17 +54,17 @@ public class PrepareData4 {
 	private int labelCount = 2;
 
 	public PrepareData4() throws SQLException, IOException {
-		// this.cmtTestDao = SQLDAOFactory.getDAO(SQLDAOFactory.COMMENTTEST);
-		// this.cmtDao = SQLDAOFactory.getDAO(SQLDAOFactory.COMMENT);
-		// this.wordDao = SQLDAOFactory.getDAO(SQLDAOFactory.WORD);
-		// this.vietToken = new VietTokenizer();
+		this.cmtTestDao = SQLDAOFactory.getDAO(SQLDAOFactory.COMMENTTEST);
+		this.cmtDao = SQLDAOFactory.getDAO(SQLDAOFactory.COMMENT);
+		this.wordDao = SQLDAOFactory.getDAO(SQLDAOFactory.WORD);
+//		this.vietToken = new VietTokenizer();
 		this.listWord = new ArrayList<>();
 
 		String date = LocalDate.now().toString();
 		String time = LocalTime.now().toString();
 
-		String path = "src\\main\\resource\\data\\" + this.labelCount + "label\\" + date.replaceAll("-", "") + "\\"
-				+ time.substring(0, 5).replace(":", "");
+		String path = "src\\main\\resource\\data\\" + this.labelCount + "label\\"
+				+ date.replaceAll("-", "") + "\\" + time.substring(0, 5).replace(":", "");
 		BufferedWriter pathWriter = new BufferedWriter(
 				new OutputStreamWriter(new FileOutputStream(new File("path.txt"))));
 		pathWriter.write(path);
@@ -76,33 +75,31 @@ public class PrepareData4 {
 			folder.mkdirs();
 		}
 
-		this.bw = new BufferedWriter(
-				new OutputStreamWriter(new FileOutputStream(new File(path + "\\train")), StandardCharsets.UTF_8));
-		this.bw1 = new BufferedWriter(
-				new OutputStreamWriter(new FileOutputStream(new File(path + "\\test")), StandardCharsets.UTF_8));
-		this.bw2 = new BufferedWriter(
-				new OutputStreamWriter(new FileOutputStream(new File(path + "\\input.train")), StandardCharsets.UTF_8));
-		this.bw3 = new BufferedWriter(
-				new OutputStreamWriter(new FileOutputStream(new File(path + "\\input.test")), StandardCharsets.UTF_8));
+		this.bw = new BufferedWriter(new OutputStreamWriter(
+				new FileOutputStream(new File(path + "\\train")), StandardCharsets.UTF_8));
+		this.bw1 = new BufferedWriter(new OutputStreamWriter(
+				new FileOutputStream(new File(path + "\\test")), StandardCharsets.UTF_8));
+		this.bw2 = new BufferedWriter(new OutputStreamWriter(
+				new FileOutputStream(new File(path + "\\input.train")), StandardCharsets.UTF_8));
+		this.bw3 = new BufferedWriter(new OutputStreamWriter(
+				new FileOutputStream(new File(path + "\\input.test")), StandardCharsets.UTF_8));
 
 		this.listTestCmt = new ArrayList<>();
 		this.listTrainCmt = new ArrayList<>();
-		// this.listTrainCmt = this.cmtTestDao
-		// .getData("select * from TblCommentTest where id <= " +
-		// Context.TRAINSIZE + " order by id");
-		// this.listTestCmt = this.cmtTestDao.getData("select * from
-		// TblCommentTest where id <= "
-		// + (Context.TESTSIZE + Context.TRAINSIZE) + " and id > " +
-		// Context.TRAINSIZE + " order by id");
-		this.read();
+		this.listTrainCmt = this.cmtTestDao.getData(
+				"select * from TblCommentTest where id <= " + Context.TRAINSIZE + " order by id");
+		this.listTestCmt = this.cmtTestDao.getData(
+				"select * from TblCommentTest where id <= " + (Context.TESTSIZE + Context.TRAINSIZE)
+						+ " and id > " + Context.TRAINSIZE + " order by id");
+		// this.read();
 		this.checkAcronymsWord(this.listTestCmt);
 		this.checkAcronymsWord(this.listTrainCmt);
-		// this.wordDao.update("delete from TblWord");
-		// this.wordDao.update("DBCC CHECKIDENT ('TblWord', RESEED, 0)");
+		this.wordDao.update("delete from TblWord");
+		this.wordDao.update("DBCC CHECKIDENT ('TblWord', RESEED, 0)");
 	}
 
-	public static void main(String[] args)
-			throws FileNotFoundException, SQLException, IOException, InterruptedException, ClassNotFoundException {
+	public static void main(String[] args) throws FileNotFoundException, SQLException, IOException,
+			InterruptedException, ClassNotFoundException {
 		new PrepareData4().process();
 		new Classifier().execute();
 	}
@@ -132,7 +129,8 @@ public class PrepareData4 {
 	 * @throws IOException
 	 * @throws InterruptedException
 	 */
-	private void genTrainingDataFile(int train) throws SQLException, IOException, InterruptedException {
+	private void genTrainingDataFile(int train)
+			throws SQLException, IOException, InterruptedException {
 		System.out.println("\t+> Training file Generating...");
 
 		this.collect(this.listWord, this.listTrainCmt);
@@ -149,7 +147,8 @@ public class PrepareData4 {
 	 * @throws IOException
 	 * @throws InterruptedException
 	 */
-	private void genTestingDataFile(int train, int test) throws SQLException, IOException, InterruptedException {
+	private void genTestingDataFile(int train, int test)
+			throws SQLException, IOException, InterruptedException {
 		System.out.println("\t+> Testing file Generating...");
 
 		this.collect(this.listWord, this.listTestCmt);
@@ -236,8 +235,8 @@ public class PrepareData4 {
 
 			for (int i = 0; i < words.size(); i++) {
 				if (words.get(i).getIsStopWord() != 1) {
-					show += words.get(i).getWord() + ":" + words.get(i).getTimesOccur() + ":" + words.get(i).getDF()
-							+ ":" + words.get(i).getTFIDF(size) + " ";
+					show += words.get(i).getWord() + ":" + words.get(i).getTimesOccur() + ":"
+							+ words.get(i).getDF() + ":" + words.get(i).getTFIDF(size) + " ";
 					line1 += words.get(i).getId() + ":" + words.get(i).getTFIDF(size) + " ";
 				}
 			}
@@ -285,14 +284,16 @@ public class PrepareData4 {
 				if (cmt.getCmt_segment().indexOf(word) >= 0) {
 					cmt.setCmt_segment(cmt.getCmt_segment().replace(word, " " + replaceWord + " "));
 				}
-				if (cmt.getCmt_segment().substring(0, acronyms.length() + 1).equals(acronyms + " ")) {
-					cmt.setCmt_segment(replaceWord + cmt.getCmt_segment().substring(acronyms.length()));
-				}
-				if (cmt.getCmt_segment().substring(cmt.getCmt_segment().length() - acronyms.length() - 1).trim()
-						.equals(" " + acronyms)) {
+				if (cmt.getCmt_segment().substring(0, acronyms.length() + 1)
+						.equals(acronyms + " ")) {
 					cmt.setCmt_segment(
-							cmt.getCmt_segment().substring(0, cmt.getCmt_segment().length() - acronyms.length())
-									+ replaceWord);
+							replaceWord + cmt.getCmt_segment().substring(acronyms.length()));
+				}
+				if (cmt.getCmt_segment()
+						.substring(cmt.getCmt_segment().length() - acronyms.length() - 1).trim()
+						.equals(" " + acronyms)) {
+					cmt.setCmt_segment(cmt.getCmt_segment().substring(0,
+							cmt.getCmt_segment().length() - acronyms.length()) + replaceWord);
 				}
 			}
 		}
@@ -302,19 +303,19 @@ public class PrepareData4 {
 	private void read() throws NumberFormatException, IOException {
 		BufferedReader br1 = null, br2 = null;
 		if (Context.TYPEOFCOPYDATA2DATABASE == 1) {
-			br1 = new BufferedReader(
-					new InputStreamReader(new FileInputStream(new File("src\\main\\resource\\data\\100\\1_150.txt")),
-							StandardCharsets.UTF_8));
-			br2 = new BufferedReader(
-					new InputStreamReader(new FileInputStream(new File("src\\main\\resource\\data\\100\\2_150.txt")),
-							StandardCharsets.UTF_8));
+			br1 = new BufferedReader(new InputStreamReader(
+					new FileInputStream(new File("src\\main\\resource\\data\\100\\1_150.txt")),
+					StandardCharsets.UTF_8));
+			br2 = new BufferedReader(new InputStreamReader(
+					new FileInputStream(new File("src\\main\\resource\\data\\100\\2_150.txt")),
+					StandardCharsets.UTF_8));
 		} else if (Context.TYPEOFCOPYDATA2DATABASE == 2) {
-			br1 = new BufferedReader(
-					new InputStreamReader(new FileInputStream(new File("src\\main\\resource\\data\\100\\1_100.txt")),
-							StandardCharsets.UTF_8));
-			br2 = new BufferedReader(
-					new InputStreamReader(new FileInputStream(new File("src\\main\\resource\\data\\100\\2_100.txt")),
-							StandardCharsets.UTF_8));
+			br1 = new BufferedReader(new InputStreamReader(
+					new FileInputStream(new File("src\\main\\resource\\data\\100\\1_100.txt")),
+					StandardCharsets.UTF_8));
+			br2 = new BufferedReader(new InputStreamReader(
+					new FileInputStream(new File("src\\main\\resource\\data\\100\\2_100.txt")),
+					StandardCharsets.UTF_8));
 		}
 		ArrayList<Comment> label1 = new ArrayList<>();
 		ArrayList<Comment> label2 = new ArrayList<>();
