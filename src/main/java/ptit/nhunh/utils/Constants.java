@@ -15,4 +15,6 @@ public class Constants {
 	 */
 	public static final String TNURL = new String("http://thanhnien.vn/ajax/comment-");	
 	
+	public static final String LOG_PATH = "src\\main\\resource\\log\\";
+	public static final String DATA_PATH = "src\\main\\resource\\data\\";
 }

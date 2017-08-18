@@ -57,7 +57,7 @@ public class PrepareData4 {
 		this.cmtTestDao = SQLDAOFactory.getDAO(SQLDAOFactory.COMMENTTEST);
 		this.cmtDao = SQLDAOFactory.getDAO(SQLDAOFactory.COMMENT);
 		this.wordDao = SQLDAOFactory.getDAO(SQLDAOFactory.WORD);
-//		this.vietToken = new VietTokenizer();
+		// this.vietToken = new VietTokenizer();
 		this.listWord = new ArrayList<>();
 
 		String date = LocalDate.now().toString();
@@ -206,6 +206,7 @@ public class PrepareData4 {
 			throws SQLException, IOException {
 		for (Object o : listCmt) {
 			Comment c = (Comment) o;
+			int sumWord = c.getCmt_segment().trim().split(" ").length;
 			String show = "", line1 = "";
 			show += c.getId() + " ";
 			show += c.getLabel() + " ";
@@ -236,8 +237,8 @@ public class PrepareData4 {
 			for (int i = 0; i < words.size(); i++) {
 				if (words.get(i).getIsStopWord() != 1) {
 					show += words.get(i).getWord() + ":" + words.get(i).getTimesOccur() + ":"
-							+ words.get(i).getDF() + ":" + words.get(i).getTFIDF(size) + " ";
-					line1 += words.get(i).getId() + ":" + words.get(i).getTFIDF(size) + " ";
+							+ words.get(i).getDF() + ":" + words.get(i).getTFIDF(size, sumWord) + " ";
+					line1 += words.get(i).getId() + ":" + words.get(i).getTFIDF(size, sumWord) + " ";
 				}
 			}
 			if (show.length() > 2) {
@@ -281,19 +282,22 @@ public class PrepareData4 {
 			for (Object obj : listCmt) {
 				Comment cmt = (Comment) obj;
 				String word = " " + acronyms + " ";
-				if (cmt.getCmt_segment().indexOf(word) >= 0) {
-					cmt.setCmt_segment(cmt.getCmt_segment().replace(word, " " + replaceWord + " "));
-				}
-				if (cmt.getCmt_segment().substring(0, acronyms.length() + 1)
-						.equals(acronyms + " ")) {
-					cmt.setCmt_segment(
-							replaceWord + cmt.getCmt_segment().substring(acronyms.length()));
-				}
-				if (cmt.getCmt_segment()
-						.substring(cmt.getCmt_segment().length() - acronyms.length() - 1).trim()
-						.equals(" " + acronyms)) {
-					cmt.setCmt_segment(cmt.getCmt_segment().substring(0,
-							cmt.getCmt_segment().length() - acronyms.length()) + replaceWord);
+				if (cmt.getCmt_segment().length() > acronyms.length()) {
+					if (cmt.getCmt_segment().indexOf(word) >= 0) {
+						cmt.setCmt_segment(
+								cmt.getCmt_segment().replace(word, " " + replaceWord + " "));
+					}
+					if (cmt.getCmt_segment().substring(0, acronyms.length() + 1)
+							.equals(acronyms + " ")) {
+						cmt.setCmt_segment(
+								replaceWord + cmt.getCmt_segment().substring(acronyms.length()));
+					}
+					if (cmt.getCmt_segment()
+							.substring(cmt.getCmt_segment().length() - acronyms.length() - 1).trim()
+							.equals(" " + acronyms)) {
+						cmt.setCmt_segment(cmt.getCmt_segment().substring(0,
+								cmt.getCmt_segment().length() - acronyms.length()) + replaceWord);
+					}
 				}
 			}
 		}

@@ -37,13 +37,15 @@ public class Word implements Serializable {
 	@Setter
 	private int cmt_id;
 
-	public float getTF() {
+	public float getTF(int sumWord) {
 		if (Context.TYPEOFTF == 1) {
 			return 1;
 		} else if (Context.TYPEOFTF == 2) {
 			return this.timesOccur;
 		} else if (Context.TYPEOFTF == 3) {
 			return (float) (1 + Math.log10(this.timesOccur));
+		} else if (Context.TYPEOFTF == 4) {
+			return this.timesOccur / (float)sumWord;
 		} else {
 			return 0;
 		}
@@ -73,8 +75,8 @@ public class Word implements Serializable {
 	 *            so luong ban ghi trong tap.
 	 * @return
 	 */
-	public float getTFIDF(int N) {
-		return this.getTF() * this.getIDF(N);
+	public float getTFIDF(int N, int sumWord) {
+		return this.getTF(sumWord) * this.getIDF(N);
 	}
 
 	public Word(int id, String word, float frequency, int timesOccur, int dF, int isStop,

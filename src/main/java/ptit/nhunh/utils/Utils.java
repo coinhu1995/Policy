@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.sql.SQLException;
 import java.text.Collator;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -21,7 +22,7 @@ import ptit.nhunh.model.Word;
 
 public class Utils {
 	public static Document getHtml(String url) throws IOException {
-		return Jsoup.connect(url).get();
+		return Jsoup.connect(url).timeout(15000).get();
 	}
 
 	public static String removeSymbol(String sentence) {
@@ -272,5 +273,11 @@ public class Utils {
 		}
 		scan.close();
 		return new Gson().fromJson(json, svm_model.class);
+	}
+	
+	public static String getCurrentTime(){
+		long currentTimeMillis = System.currentTimeMillis();
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		return sdf.format(new java.util.Date(currentTimeMillis));
 	}
 }

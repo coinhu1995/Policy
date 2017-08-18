@@ -51,7 +51,7 @@ public class AssignLabel extends javax.swing.JFrame {
 
 	public AssignLabel() throws SQLException, IOException {
 		this.bw = new BufferedWriter(new OutputStreamWriter(
-				new FileOutputStream("C:\\Users\\uhn\\Desktop\\LogAssignLabel.txt", true),
+				new FileOutputStream("C:\\Users\\coinh\\Desktop\\LogAssignLabel.txt", true),
 				StandardCharsets.UTF_8));
 		this.commentDAO = SQLDAOFactory.getDAO(SQLDAOFactory.COMMENT);
 		this.urlDAO = SQLDAOFactory.getDAO(SQLDAOFactory.URL);

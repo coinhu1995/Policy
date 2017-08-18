@@ -7,3 +7,4 @@ vd:ví_dụ
 pó:bó
 vn:việt_nam
 ng:người
+ntn:như_thế_nào
