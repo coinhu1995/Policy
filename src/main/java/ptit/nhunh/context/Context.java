@@ -2,7 +2,7 @@ package ptit.nhunh.context;
 
 public class Context {
 	public static String COMMENTTABLENAME = "TblCommentTest";
-	public static int TRAINSIZE = 100;
+	public static int TRAINSIZE = 200;
 	public static int TESTSIZE = 100;
 
 	/**
@@ -11,7 +11,7 @@ public class Context {
 	 * 3: 1 + log (times_occur)
 	 * 4: frequency
 	 */
-	public static int TYPEOFTF = 4;
+	public static int TYPEOFTF = 2;
 
 	/**
 	 * 1: inverse document frequency : log(N/DF) <br>

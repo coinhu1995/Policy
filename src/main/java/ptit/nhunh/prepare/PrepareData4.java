@@ -238,7 +238,7 @@ public class PrepareData4 {
 				if (words.get(i).getIsStopWord() != 1) {
 					show += words.get(i).getWord() + ":" + words.get(i).getTimesOccur() + ":"
 							+ words.get(i).getDF() + ":" + words.get(i).getTFIDF(size, sumWord) + " ";
-					line1 += words.get(i).getId() + ":" + words.get(i).getTFIDF(size, sumWord) + " ";
+					line1 += words.get(i).getId() + ":" + String.valueOf(words.get(i).getTFIDF(size, sumWord)).substring(0, 3) + " ";
 				}
 			}
 			if (show.length() > 2) {

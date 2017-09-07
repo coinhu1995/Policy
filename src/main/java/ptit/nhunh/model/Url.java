@@ -1,5 +1,7 @@
 package ptit.nhunh.model;
 
+import lombok.Getter;
+import lombok.Setter;
 import ptit.nhunh.utils.Constants;
 
 public class Url {
@@ -12,9 +14,11 @@ public class Url {
 	private int totalParComment;
 	private int totalComment;
 	private String tag;
-
+	@Getter
+	@Setter
+	private String category;
 	public Url(int id, String url, String url_id, String titles, int needed, String source,
-			int totalParComment, int totalComment, String tag) {
+			int totalParComment, int totalComment, String tag, String category) {
 		super();
 		this.id = id;
 		this.url = url;
@@ -25,6 +29,7 @@ public class Url {
 		this.totalParComment = totalParComment;
 		this.totalComment = totalComment;
 		this.tag = tag;
+		this.category = category;
 	}
 
 	public Url() {
@@ -33,6 +38,7 @@ public class Url {
 		this.titles = Constants.SPACE;
 		this.source = Constants.SPACE;
 		this.tag = Constants.SPACE;
+		this.category = Constants.SPACE;
 	}
 
 	public int getId() {

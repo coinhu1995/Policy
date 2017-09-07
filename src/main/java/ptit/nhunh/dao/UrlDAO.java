@@ -37,7 +37,7 @@ public class UrlDAO implements SQLDAO {
 	public boolean insert(Object obj) {
 		try {
 			Url url = (Url) obj;
-			this.ps = this.con.prepareStatement("insert into TblUrl values(?,?,?,?,?,?,?,?) ");
+			this.ps = this.con.prepareStatement("insert into TblArticle values(?,?,?,?,?,?,?,?,?) ");
 			this.ps.setNString(1, url.getUrl());
 			this.ps.setNString(2, url.getUrl_id());
 			this.ps.setNString(3, url.getTitles());
@@ -46,6 +46,7 @@ public class UrlDAO implements SQLDAO {
 			this.ps.setInt(6, url.getTotalComment());
 			this.ps.setInt(7, url.getTotalParComment());
 			this.ps.setNString(8, url.getTag());
+			this.ps.setNString(9, url.getCategory());
 			this.ps.executeUpdate();
 			return true;
 		} catch (SQLException e) {
@@ -56,11 +57,11 @@ public class UrlDAO implements SQLDAO {
 	@Override
 	public ArrayList<Object> getAll() throws SQLException {
 		ArrayList<Object> ac = new ArrayList<>();
-		this.ps = this.con.prepareStatement("select * from TblUrl order by id");
+		this.ps = this.con.prepareStatement("select * from TblArticle order by id");
 		ResultSet rs = this.ps.executeQuery();
 		while (rs.next()) {
-			Url url = new Url(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4),
-					rs.getInt(5), rs.getNString(6), rs.getInt(7), rs.getInt(8), rs.getNString(9));
+			Url url = new Url(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4), rs.getInt(5),
+					rs.getNString(6), rs.getInt(7), rs.getInt(8), rs.getNString(9), rs.getNString(10));
 			ac.add(url);
 		}
 		return ac;
@@ -72,8 +73,8 @@ public class UrlDAO implements SQLDAO {
 		this.ps = this.con.prepareStatement(sql);
 		ResultSet rs = this.ps.executeQuery();
 		while (rs.next()) {
-			Url url = new Url(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4),
-					rs.getInt(5), rs.getNString(6), rs.getInt(7), rs.getInt(8), rs.getNString(9));
+			Url url = new Url(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4), rs.getInt(5),
+					rs.getNString(6), rs.getInt(7), rs.getInt(8), rs.getNString(9), rs.getNString(10));
 			ac.add(url);
 		}
 		return ac;
@@ -92,7 +93,7 @@ public class UrlDAO implements SQLDAO {
 			String sql = "";
 			switch (field) {
 			case UPDATE_TITLES_AND_TAGS:
-				sql = "update TblUrl set titles = ? and tag = ? where id = ?";
+				sql = "update TblArticle set titles = ? and tag = ? where id = ?";
 				this.ps = this.con.prepareStatement(sql);
 				this.ps.setNString(1, url.getTitles());
 				this.ps.setNString(2, url.getTag());
@@ -100,7 +101,7 @@ public class UrlDAO implements SQLDAO {
 				this.ps.executeUpdate();
 				return true;
 			case UPDATE_NEEDED:
-				sql = "update TblUrl set needed = ? where id = ?";
+				sql = "update TblArticle set needed = ? where id = ?";
 
 				this.ps = this.con.prepareStatement(sql);
 				this.ps.setInt(1, url.getNeeded());
@@ -128,25 +129,25 @@ public class UrlDAO implements SQLDAO {
 
 	@Override
 	public Object findByItemId(String id) throws SQLException {
-		String sql = "select * from TblUrl where url_id = ?";
+		String sql = "select * from TblArticle where url_id = ?";
 		this.ps = this.con.prepareStatement(sql);
 		this.ps.setString(1, id);
 		ResultSet rs = this.ps.executeQuery();
 		rs.next();
-		Url url = new Url(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4),
-				rs.getInt(5), rs.getNString(6), rs.getInt(7), rs.getInt(8), rs.getNString(9));
+		Url url = new Url(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4), rs.getInt(5),
+				rs.getNString(6), rs.getInt(7), rs.getInt(8), rs.getNString(9), rs.getNString(10));
 		return url;
 	}
 
 	@Override
 	public Object findById(String id) throws SQLException {
-		String sql = "select * from TblUrl where id = ?";
+		String sql = "select * from TblArticle where id = ?";
 		this.ps = this.con.prepareStatement(sql);
 		this.ps.setString(1, id);
 		ResultSet rs = this.ps.executeQuery();
 		rs.next();
-		Url url = new Url(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4),
-				rs.getInt(5), rs.getNString(6), rs.getInt(7), rs.getInt(8), rs.getNString(9));
+		Url url = new Url(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4), rs.getInt(5),
+				rs.getNString(6), rs.getInt(7), rs.getInt(8), rs.getNString(9), rs.getNString(10));
 		return url;
 	}
 }

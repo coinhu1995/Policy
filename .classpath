@@ -28,7 +28,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry combineaccessrules="false" kind="src" path="/JVnTextPro-v.2.0"/>
 	<classpathentry kind="lib" path="lib/uetsegmenter.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/SVM"/>
 	<classpathentry kind="lib" path="D:/WORK/library/commonlang/commons-lang3-3.5/commons-lang3-3.5.jar"/>
