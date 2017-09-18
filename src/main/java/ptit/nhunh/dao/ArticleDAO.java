@@ -7,10 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import ptit.nhunh.model.Url;
+import ptit.nhunh.model.Article;
 
-public class UrlDAO implements SQLDAO {
-	private static UrlDAO instance = new UrlDAO();
+public class ArticleDAO implements SQLDAO {
+	private static ArticleDAO instance = new ArticleDAO();
 	public static final int UPDATE_NEEDED = 1;
 	public static final int UPDATE_TITLES_AND_TAGS = 2;
 
@@ -20,7 +20,7 @@ public class UrlDAO implements SQLDAO {
 	private String user = "sa";
 	private String pass = "123";
 
-	private UrlDAO() {
+	private ArticleDAO() {
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			this.con = DriverManager.getConnection(this.url, this.user, this.pass);
@@ -29,24 +29,27 @@ public class UrlDAO implements SQLDAO {
 		}
 	}
 
-	public static UrlDAO getInstance() {
-		return UrlDAO.instance;
+	public static ArticleDAO getInstance() {
+		return ArticleDAO.instance;
 	}
 
 	@Override
 	public boolean insert(Object obj) {
 		try {
-			Url url = (Url) obj;
-			this.ps = this.con.prepareStatement("insert into TblArticle values(?,?,?,?,?,?,?,?,?) ");
+			Article url = (Article) obj;
+			this.ps = this.con.prepareStatement("insert into TblArticle values(?,?,?,?,?,?,?,?,?,?,?,?) ");
 			this.ps.setNString(1, url.getUrl());
 			this.ps.setNString(2, url.getUrl_id());
-			this.ps.setNString(3, url.getTitles());
+			this.ps.setNString(3, url.getTitle());
 			this.ps.setInt(4, url.getNeeded());
 			this.ps.setNString(5, url.getSource());
 			this.ps.setInt(6, url.getTotalComment());
 			this.ps.setInt(7, url.getTotalParComment());
 			this.ps.setNString(8, url.getTag());
 			this.ps.setNString(9, url.getCategory());
+			this.ps.setDate(10, url.getCreationTime());
+			this.ps.setNString(11, url.getContentFilePath());
+			this.ps.setNString(12, url.getImageUrl());
 			this.ps.executeUpdate();
 			return true;
 		} catch (SQLException e) {
@@ -60,8 +63,9 @@ public class UrlDAO implements SQLDAO {
 		this.ps = this.con.prepareStatement("select * from TblArticle order by id");
 		ResultSet rs = this.ps.executeQuery();
 		while (rs.next()) {
-			Url url = new Url(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4), rs.getInt(5),
-					rs.getNString(6), rs.getInt(7), rs.getInt(8), rs.getNString(9), rs.getNString(10));
+			Article url = new Article(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4), rs.getInt(5),
+					rs.getNString(6), rs.getInt(7), rs.getInt(8), rs.getNString(9), rs.getNString(10),
+					rs.getDate(11), rs.getNString(12), rs.getNString(13));
 			ac.add(url);
 		}
 		return ac;
@@ -73,8 +77,9 @@ public class UrlDAO implements SQLDAO {
 		this.ps = this.con.prepareStatement(sql);
 		ResultSet rs = this.ps.executeQuery();
 		while (rs.next()) {
-			Url url = new Url(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4), rs.getInt(5),
-					rs.getNString(6), rs.getInt(7), rs.getInt(8), rs.getNString(9), rs.getNString(10));
+			Article url = new Article(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4), rs.getInt(5),
+					rs.getNString(6), rs.getInt(7), rs.getInt(8), rs.getNString(9), rs.getNString(10),
+					rs.getDate(11), rs.getNString(12), rs.getNString(13));
 			ac.add(url);
 		}
 		return ac;
@@ -88,14 +93,14 @@ public class UrlDAO implements SQLDAO {
 	 */
 	@Override
 	public boolean update(Object obj, int field) {
-		Url url = (Url) obj;
+		Article url = (Article) obj;
 		try {
 			String sql = "";
 			switch (field) {
 			case UPDATE_TITLES_AND_TAGS:
-				sql = "update TblArticle set titles = ? and tag = ? where id = ?";
+				sql = "update TblArticle set titles = ?, tag = ? where id = ?";
 				this.ps = this.con.prepareStatement(sql);
-				this.ps.setNString(1, url.getTitles());
+				this.ps.setNString(1, url.getTitle());
 				this.ps.setNString(2, url.getTag());
 				this.ps.setInt(3, url.getId());
 				this.ps.executeUpdate();
@@ -134,8 +139,9 @@ public class UrlDAO implements SQLDAO {
 		this.ps.setString(1, id);
 		ResultSet rs = this.ps.executeQuery();
 		rs.next();
-		Url url = new Url(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4), rs.getInt(5),
-				rs.getNString(6), rs.getInt(7), rs.getInt(8), rs.getNString(9), rs.getNString(10));
+		Article url = new Article(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4), rs.getInt(5),
+				rs.getNString(6), rs.getInt(7), rs.getInt(8), rs.getNString(9), rs.getNString(10), rs.getDate(11),
+				rs.getNString(12), rs.getNString(13));
 		return url;
 	}
 
@@ -146,8 +152,31 @@ public class UrlDAO implements SQLDAO {
 		this.ps.setString(1, id);
 		ResultSet rs = this.ps.executeQuery();
 		rs.next();
-		Url url = new Url(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4), rs.getInt(5),
-				rs.getNString(6), rs.getInt(7), rs.getInt(8), rs.getNString(9), rs.getNString(10));
+		Article url = new Article(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4), rs.getInt(5),
+				rs.getNString(6), rs.getInt(7), rs.getInt(8), rs.getNString(9), rs.getNString(10), rs.getDate(11),
+				rs.getNString(12), rs.getNString(13));
 		return url;
+	}
+
+	@Override
+	public boolean update(Object obj) throws SQLException {
+		Article url = (Article) obj;
+		String sql = "update TblArticle set url = ?, url_id = ?, title = ?, needed = ?, source = ?, totalCmt = ?, totalParCmt = ?, tag = ?, category = ?, creationTime = ?, contentFilePath = ?, imageUrl = ? where id = ?";
+		this.ps = this.con.prepareStatement(sql);
+		this.ps.setNString(1, url.getUrl());
+		this.ps.setNString(2, url.getUrl_id());
+		this.ps.setNString(3, url.getTitle());
+		this.ps.setInt(4, url.getNeeded());
+		this.ps.setNString(5, url.getSource());
+		this.ps.setInt(6, url.getTotalComment());
+		this.ps.setInt(7, url.getTotalParComment());
+		this.ps.setNString(8, url.getTag());
+		this.ps.setNString(9, url.getCategory());
+		this.ps.setDate(10, url.getCreationTime());
+		this.ps.setNString(11, url.getContentFilePath());
+		this.ps.setNString(12, url.getImageUrl());
+		this.ps.setInt(13, url.getId());
+		this.ps.executeUpdate();
+		return true;
 	}
 }

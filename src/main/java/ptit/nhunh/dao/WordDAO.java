@@ -116,4 +116,10 @@ public class WordDAO implements SQLDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public boolean update(Object obj) throws SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

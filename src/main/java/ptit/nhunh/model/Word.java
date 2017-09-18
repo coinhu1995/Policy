@@ -28,7 +28,11 @@ public class Word implements Serializable {
 	@Getter
 	@Setter
 	private int DF;
-
+	
+	/**
+	 * 1: stop word
+	 * 0: not stop word
+	 */
 	@Getter
 	@Setter
 	private int isStopWord;

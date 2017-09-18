@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 import ptit.nhunh.dao.SQLDAO;
 import ptit.nhunh.dao.SQLDAOFactory;
-import ptit.nhunh.dao.UrlDAO;
-import ptit.nhunh.model.Url;
+import ptit.nhunh.dao.ArticleDAO;
+import ptit.nhunh.model.Article;
 
 public class checkRightUrl {
 	private static String[] title = { "chính sách", "quy định", "quyết định" };
@@ -18,16 +18,16 @@ public class checkRightUrl {
 	}
 	
 	private void process() throws SQLException {
-		SQLDAO urlDAO = SQLDAOFactory.getDAO(SQLDAOFactory.URL);
+		SQLDAO urlDAO = SQLDAOFactory.getDAO(SQLDAOFactory.ARTICLE);
 		ArrayList<Object> urls = urlDAO.getData("select * from TblUrl where totalCmt > 0 order by id");
 		for(int i = 0; i < urls.size(); i++){
-			Url url = (Url) urls.get(i);
+			Article url = (Article) urls.get(i);
 			if(this.checkTag(url.getTag())){
-				urlDAO.update("update TblUrl set needed = 1 where id = "+url.getId(), UrlDAO.UPDATE_NEEDED);
+				urlDAO.update("update TblUrl set needed = 1 where id = "+url.getId(), ArticleDAO.UPDATE_NEEDED);
 			}
 			
-			if(this.checkTitles(url.getTitles())){
-				urlDAO.update("update TblUrl set needed = 1 where id = "+url.getId(), UrlDAO.UPDATE_NEEDED);
+			if(this.checkTitles(url.getTitle())){
+				urlDAO.update("update TblUrl set needed = 1 where id = "+url.getId(), ArticleDAO.UPDATE_NEEDED);
 			}
 			
 			System.out.println(url.getId() + " done!");

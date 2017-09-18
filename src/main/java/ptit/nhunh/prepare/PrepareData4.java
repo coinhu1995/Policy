@@ -63,8 +63,8 @@ public class PrepareData4 {
 		String date = LocalDate.now().toString();
 		String time = LocalTime.now().toString();
 
-		String path = "src\\main\\resource\\data\\" + this.labelCount + "label\\"
-				+ date.replaceAll("-", "") + "\\" + time.substring(0, 5).replace(":", "");
+		String path = "src\\main\\resource\\data\\" + this.labelCount + "label\\" + date.replaceAll("-", "") + "\\"
+				+ time.substring(0, 5).replace(":", "");
 		BufferedWriter pathWriter = new BufferedWriter(
 				new OutputStreamWriter(new FileOutputStream(new File("path.txt"))));
 		pathWriter.write(path);
@@ -75,22 +75,21 @@ public class PrepareData4 {
 			folder.mkdirs();
 		}
 
-		this.bw = new BufferedWriter(new OutputStreamWriter(
-				new FileOutputStream(new File(path + "\\train")), StandardCharsets.UTF_8));
-		this.bw1 = new BufferedWriter(new OutputStreamWriter(
-				new FileOutputStream(new File(path + "\\test")), StandardCharsets.UTF_8));
-		this.bw2 = new BufferedWriter(new OutputStreamWriter(
-				new FileOutputStream(new File(path + "\\input.train")), StandardCharsets.UTF_8));
-		this.bw3 = new BufferedWriter(new OutputStreamWriter(
-				new FileOutputStream(new File(path + "\\input.test")), StandardCharsets.UTF_8));
+		this.bw = new BufferedWriter(
+				new OutputStreamWriter(new FileOutputStream(new File(path + "\\train")), StandardCharsets.UTF_8));
+		this.bw1 = new BufferedWriter(
+				new OutputStreamWriter(new FileOutputStream(new File(path + "\\test")), StandardCharsets.UTF_8));
+		this.bw2 = new BufferedWriter(
+				new OutputStreamWriter(new FileOutputStream(new File(path + "\\input.train")), StandardCharsets.UTF_8));
+		this.bw3 = new BufferedWriter(
+				new OutputStreamWriter(new FileOutputStream(new File(path + "\\input.test")), StandardCharsets.UTF_8));
 
 		this.listTestCmt = new ArrayList<>();
 		this.listTrainCmt = new ArrayList<>();
-		this.listTrainCmt = this.cmtTestDao.getData(
-				"select * from TblCommentTest where id <= " + Context.TRAINSIZE + " order by id");
-		this.listTestCmt = this.cmtTestDao.getData(
-				"select * from TblCommentTest where id <= " + (Context.TESTSIZE + Context.TRAINSIZE)
-						+ " and id > " + Context.TRAINSIZE + " order by id");
+		this.listTrainCmt = this.cmtTestDao
+				.getData("select * from TblCommentTest where id <= " + Context.TRAINSIZE + " order by id");
+		this.listTestCmt = this.cmtTestDao.getData("select * from TblCommentTest where id <= "
+				+ (Context.TESTSIZE + Context.TRAINSIZE) + " and id > " + Context.TRAINSIZE + " order by id");
 		// this.read();
 		this.checkAcronymsWord(this.listTestCmt);
 		this.checkAcronymsWord(this.listTrainCmt);
@@ -98,8 +97,8 @@ public class PrepareData4 {
 		this.wordDao.update("DBCC CHECKIDENT ('TblWord', RESEED, 0)");
 	}
 
-	public static void main(String[] args) throws FileNotFoundException, SQLException, IOException,
-			InterruptedException, ClassNotFoundException {
+	public static void main(String[] args)
+			throws FileNotFoundException, SQLException, IOException, InterruptedException, ClassNotFoundException {
 		new PrepareData4().process();
 		new Classifier().execute();
 	}
@@ -129,8 +128,7 @@ public class PrepareData4 {
 	 * @throws IOException
 	 * @throws InterruptedException
 	 */
-	private void genTrainingDataFile(int train)
-			throws SQLException, IOException, InterruptedException {
+	private void genTrainingDataFile(int train) throws SQLException, IOException, InterruptedException {
 		System.out.println("\t+> Training file Generating...");
 
 		this.collect(this.listWord, this.listTrainCmt);
@@ -147,8 +145,7 @@ public class PrepareData4 {
 	 * @throws IOException
 	 * @throws InterruptedException
 	 */
-	private void genTestingDataFile(int train, int test)
-			throws SQLException, IOException, InterruptedException {
+	private void genTestingDataFile(int train, int test) throws SQLException, IOException, InterruptedException {
 		System.out.println("\t+> Testing file Generating...");
 
 		this.collect(this.listWord, this.listTestCmt);
@@ -204,6 +201,15 @@ public class PrepareData4 {
 	 */
 	public void write(ArrayList<Object> listCmt, BufferedWriter bw1, BufferedWriter bw2, int size)
 			throws SQLException, IOException {
+		BufferedWriter bw = new BufferedWriter(
+				new OutputStreamWriter(new FileOutputStream(new File("arff" + listCmt.size() + ".txt"))));
+		bw.write("@relation policy\n");
+		for (int i = 0; i < this.listWord.size(); i++) {
+			bw.write("@attribute " + (i + 1) + " NUMERIC\n");
+		}
+		bw.write("@attribute label {1,2}\n\n");
+		bw.write("@data\n");
+
 		for (Object o : listCmt) {
 			Comment c = (Comment) o;
 			int sumWord = c.getCmt_segment().trim().split(" ").length;
@@ -236,9 +242,22 @@ public class PrepareData4 {
 
 			for (int i = 0; i < words.size(); i++) {
 				if (words.get(i).getIsStopWord() != 1) {
-					show += words.get(i).getWord() + ":" + words.get(i).getTimesOccur() + ":"
-							+ words.get(i).getDF() + ":" + words.get(i).getTFIDF(size, sumWord) + " ";
-					line1 += words.get(i).getId() + ":" + String.valueOf(words.get(i).getTFIDF(size, sumWord)).substring(0, 3) + " ";
+
+					show += words.get(i).getWord() + ":" + words.get(i).getTimesOccur() + ":" + words.get(i).getDF()
+							+ ":" + words.get(i).getTFIDF(size, sumWord) + " ";
+					line1 += words.get(i).getId() + ":"
+							+ String.valueOf(words.get(i).getTFIDF(size, sumWord)).substring(0, 3) + " ";
+					if (i < words.size() - 1) {
+						bw.write(String.valueOf(words.get(i).getTFIDF(size, sumWord)).substring(0, 3) + ",");
+					} else {
+						bw.write(String.valueOf(words.get(i).getTFIDF(size, sumWord)).substring(0, 3) + "");
+					}
+				} else {
+					if (i < words.size() - 1) {
+						bw.write("0,");
+					} else {
+						bw.write("0");
+					}
 				}
 			}
 			if (show.length() > 2) {
@@ -248,8 +267,9 @@ public class PrepareData4 {
 				bw2.write(line1);
 				bw2.newLine();
 			}
+			bw.newLine();
 		}
-
+		bw.close();
 		bw1.close();
 		bw2.close();
 	}
@@ -284,19 +304,16 @@ public class PrepareData4 {
 				String word = " " + acronyms + " ";
 				if (cmt.getCmt_segment().length() > acronyms.length()) {
 					if (cmt.getCmt_segment().indexOf(word) >= 0) {
-						cmt.setCmt_segment(
-								cmt.getCmt_segment().replace(word, " " + replaceWord + " "));
+						cmt.setCmt_segment(cmt.getCmt_segment().replace(word, " " + replaceWord + " "));
 					}
-					if (cmt.getCmt_segment().substring(0, acronyms.length() + 1)
-							.equals(acronyms + " ")) {
-						cmt.setCmt_segment(
-								replaceWord + cmt.getCmt_segment().substring(acronyms.length()));
+					if (cmt.getCmt_segment().substring(0, acronyms.length() + 1).equals(acronyms + " ")) {
+						cmt.setCmt_segment(replaceWord + cmt.getCmt_segment().substring(acronyms.length()));
 					}
-					if (cmt.getCmt_segment()
-							.substring(cmt.getCmt_segment().length() - acronyms.length() - 1).trim()
+					if (cmt.getCmt_segment().substring(cmt.getCmt_segment().length() - acronyms.length() - 1).trim()
 							.equals(" " + acronyms)) {
-						cmt.setCmt_segment(cmt.getCmt_segment().substring(0,
-								cmt.getCmt_segment().length() - acronyms.length()) + replaceWord);
+						cmt.setCmt_segment(
+								cmt.getCmt_segment().substring(0, cmt.getCmt_segment().length() - acronyms.length())
+										+ replaceWord);
 					}
 				}
 			}
@@ -307,19 +324,19 @@ public class PrepareData4 {
 	private void read() throws NumberFormatException, IOException {
 		BufferedReader br1 = null, br2 = null;
 		if (Context.TYPEOFCOPYDATA2DATABASE == 1) {
-			br1 = new BufferedReader(new InputStreamReader(
-					new FileInputStream(new File("src\\main\\resource\\data\\100\\1_150.txt")),
-					StandardCharsets.UTF_8));
-			br2 = new BufferedReader(new InputStreamReader(
-					new FileInputStream(new File("src\\main\\resource\\data\\100\\2_150.txt")),
-					StandardCharsets.UTF_8));
+			br1 = new BufferedReader(
+					new InputStreamReader(new FileInputStream(new File("src\\main\\resource\\data\\100\\1_150.txt")),
+							StandardCharsets.UTF_8));
+			br2 = new BufferedReader(
+					new InputStreamReader(new FileInputStream(new File("src\\main\\resource\\data\\100\\2_150.txt")),
+							StandardCharsets.UTF_8));
 		} else if (Context.TYPEOFCOPYDATA2DATABASE == 2) {
-			br1 = new BufferedReader(new InputStreamReader(
-					new FileInputStream(new File("src\\main\\resource\\data\\100\\1_100.txt")),
-					StandardCharsets.UTF_8));
-			br2 = new BufferedReader(new InputStreamReader(
-					new FileInputStream(new File("src\\main\\resource\\data\\100\\2_100.txt")),
-					StandardCharsets.UTF_8));
+			br1 = new BufferedReader(
+					new InputStreamReader(new FileInputStream(new File("src\\main\\resource\\data\\100\\1_100.txt")),
+							StandardCharsets.UTF_8));
+			br2 = new BufferedReader(
+					new InputStreamReader(new FileInputStream(new File("src\\main\\resource\\data\\100\\2_100.txt")),
+							StandardCharsets.UTF_8));
 		}
 		ArrayList<Comment> label1 = new ArrayList<>();
 		ArrayList<Comment> label2 = new ArrayList<>();

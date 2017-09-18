@@ -17,7 +17,7 @@ import org.jsoup.nodes.Document;
 import com.google.gson.Gson;
 
 import ca.uwo.csd.ai.nlp.libsvm.svm_model;
-import ptit.nhunh.model.Url;
+import ptit.nhunh.model.Article;
 import ptit.nhunh.model.Word;
 
 public class Utils {
@@ -248,9 +248,9 @@ public class Utils {
 		return (int) (d * 100) / (double) 100;
 	}
 
-	public static int contain(ArrayList<Object> urls, Url url) {
+	public static int contain(ArrayList<Object> urls, Article url) {
 		for (int i = 0; i < urls.size(); i++) {
-			Url u = (Url) urls.get(i);
+			Article u = (Article) urls.get(i);
 			if (u.getUrl().equals(url.getUrl())) {
 				return i;
 			}
@@ -279,5 +279,12 @@ public class Utils {
 		long currentTimeMillis = System.currentTimeMillis();
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		return sdf.format(new java.util.Date(currentTimeMillis));
+	}
+	
+	public boolean compare(String s1, String s2) {
+		Collator collator = Collator.getInstance();
+		collator.setStrength(Collator.TERTIARY);
+		
+		return collator.equals(s1, s2);
 	}
 }

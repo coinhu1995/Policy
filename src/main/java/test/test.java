@@ -1,17 +1,63 @@
 package test;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.ParseException;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
+import ptit.nhunh.dao.SQLDAO;
+import ptit.nhunh.dao.SQLDAOFactory;
+import ptit.nhunh.model.Article;
 
 public class test {
-	public static void main(String[] args) throws IOException, SQLException {
-		String s = "<div class=\"fck_detail width_common block_ads_connect\"><p class=\"Normal\">	<strong>Chế độ bồi dưỡng cho cán bộ tiếp công dân</strong></p><p class=\"Normal\">Theo Thông tư 320/2016 của <a href=\"http://vnexpress.net/tin-tuc/phap-luat/tu-van/tien-boi-duong-khi-tiep-cong-dan-3527835-p2.html\">Bộ Tài chính có hiệu lực từ 1/2, những người làm nhiệm vụ tiếp công dân</a>, xử lý đơn khiếu nại, tố cáo, kiến nghị, phản ánh được hưởng chế độ bồi dưỡng như sau:</p><p class=\"Normal\">Cán bộ làm nhiệm vụ ở trụ sở hoặc địa điểm tiếp công dân được b<span>ồi dưỡng 100.000 đồng/ngày/người nếu chưa được hưởng phụ cấp trách nhiệm theo nghề;&nbsp;</span></p><p class=\"Normal\"><span>Cán bộ đang&nbsp;</span><span>hưởng chế độ phụ cấp trách nhiệm theo nghề được b</span><span>ồi dưỡng 80.000 đồng/ngày/người. </span></p><p class=\"Normal\"><span>Cán bộ, công chức được cấp có thẩm quyền giao hoặc phân công làm nhiệm vụ tại trụ sở tiếp công dân Trung ương được bồi dưỡng 150.000 đồng/ ngày/người.</span></p><p class=\"Normal\"><strong><span>Phạt đến 10 triệu đồng nếu chở hàng hóa không che chắn</span></strong></p><p class=\"Normal\">Nghị định 155/2016 của Chính phủ về xử phạt vi phạm hành chính trong lĩnh vực bảo vệ môi trường quy định<span>&nbsp;từ 1/2, mức phạt với hành vi điều khiển phương tiện vận chuyển nguyên liệu, vật liệu, hàng hóa không che chắn hoặc để rơi vãi ra môi trường là từ 7 triệu đến 10 triệu đồng.&nbsp;</span><span>So với quy định cũ, mức</span><span>&nbsp;xử phạt tăng từ 6 triệu đến 8 triệu đồng.</span></p><p class=\"Normal\"><span>Ngoài ra, mức phạt với hành vi không sử dụng thiết bị, phương tiện chuyên dụng trong quá trình vận chuyển nguyên vật liệu, hàng hóa làm rò rỉ, phát tán ra môi trường là từ 10 triệu đến 15 triệu đồng, cũng tăng mạnh so với quy định hiện hành (từ 5 triệu đến 8 triệu đồng).&nbsp;</span></p><p class=\"Normal\"><strong><span>Cấp thị thực điện tử cho người nước ngoài&nbsp;</span></strong></p><p class=\"Normal\">Chính phủ vừa ban hành Nghị định 07/2017 quy định trình tự, thủ tục thực hiện thí điểm <a href=\"http://vnexpress.net/tin-tuc/phap-luat/tu-van/tu-ngay-1-2-cap-thi-thuc-dien-tu-cho-nguoi-nuoc-ngoai-nhap-canh-3533894.html\">cấp thị thực điện tử cho người nước ngoài nhập cảnh Việt Nam.</a>&nbsp;<span>Từ 1/2, người nước ngoài muốn có thị thực điện tử sẽ thực hiện theo các bước sau:</span></p><p class=\"Normal\">Khai thông tin đề nghị cấp thị thực điện tử tại Trang thông tin cấp thị thực điện tử, tải ảnh và mẫu nhân thân hộ chiếu; n<span>hận mã hồ sơ điện tử và nộp phí vào tài khoản quy định.</span></p><p class=\"Normal\">Trong 3 ngày làm việc kể từ ngày nhận đủ hồ sơ, Cục Quản lý xuất nhập cảnh (Bộ Công an) sẽ trả lời người dân.</p><p class=\"Normal\"><strong>Nhiệm vụ, quyền hạn của Trưởng Ban thanh tra nhân dân cấp xã</strong></p><p class=\"Normal\">Nghị định 159 của Chính phủ&nbsp;hướng dẫn Luật thanh tra về tổ chức và hoạt động của Ban thanh tra nhân dân có hiệu lực từ 1/2 quy định cấp&nbsp;Trưởng Ban thanh tra nhân dân xã, phường, thị trấn được giao các nhiệm vụ, quyền hạn triệu tập, chủ trì các cuộc họp, hội nghị; chủ trì các cuộc giám sát, xác minh thuộc thẩm quyền của Ban; phân công nhiệm vụ cho thành viên; đại diện cho Ban trong mối quan hệ với Ban thường trực Ủy ban MTTQ Việt Nam, Chủ tịch UBND, Thường trực HĐND cùng cấp và các cơ quan, tổ chức có liên quan; được mời tham dự các cuộc họp của HĐND, UBND xã, phường, thị trấn có nội dung liên quan đến nhiệm vụ giám sát, xác minh của Ban; tham dự các cuộc họp của Ủy ban MTTQ Việt Nam xã, phường, thị trấn có nội dung có liên quan đến tổ chức và hoạt động của Ban.</p><p class=\"Normal\"><strong><span>Những trường hợp được miễn phí cấp thẻ căn cước công dân</span></strong></p><p class=\"Normal\"><span>Thông tư 331/2016 của Bộ Tài chính</span><span>&nbsp;có hiệu lực từ ngày 10/2 </span>quy định 3 trường hợp không phải nộp lệ phí cấp thẻ căn cước công dân gồm:<br><br>Cấp thẻ căn cước công dân lần đầu; đổi thẻ căn cước khi công dân đủ 25 tuổi, 40 tuổi và 60 tuổi; đổi thẻ căn cước công dân khi có sai sót về thông tin trên thẻ căn cước công dân do lỗi của cơ quan quản lý căn cước công dân.<br><br>Ngoài ra, Thông tư này cũng sửa đổi quy định người nộp lệ phí là công dân Việt Nam \"từ đủ 14 tuổi trở lên\" thay vì \"từ đủ 16 tuổi trở lên khi làm thủ tục cấp mới, đổi, cấp lại thẻ\" như trước đây.</p><p class=\"Normal\" style=\"text-align:right;\"><strong>Bá Đô</strong></p>";
-		Document doc = Jsoup.parse(s);
-		Elements e = doc.getElementsByClass("fck_detail");
-		System.out.println(e.get(0).text());
+	public static void main(String[] args) throws IOException, SQLException, ParseException {
+		BufferedReader br = new BufferedReader(
+				new InputStreamReader(new FileInputStream(new File("temp.txt")), StandardCharsets.UTF_8));
+		SQLDAO articleDao = SQLDAOFactory.getDAO(SQLDAOFactory.ARTICLE);
+
+		int dem = 1;
+		Article article = new Article();
+		while (dem < 13053) {
+			System.out.println(dem);
+			article.setId(Integer.parseInt(br.readLine()));
+			article.setUrl(br.readLine());
+			article.setUrl_id(br.readLine());
+			article.setTitle(br.readLine());
+			article.setNeeded(Integer.parseInt(br.readLine()));
+			article.setSource(br.readLine());
+			article.setTotalComment(Integer.parseInt(br.readLine()));
+			article.setTotalParComment(Integer.parseInt(br.readLine()));
+			article.setTag(br.readLine());
+			String s = "";
+			if ((s = br.readLine()) != null) {
+				article.setCategory(s);
+			} else {
+				article.setCategory(" ");
+			}
+			br.readLine();
+			article.setCreationTime(new Date(12345));
+			if ((s = br.readLine()) != null) {
+				article.setContentFilePath(s);
+			} else {
+				article.setContentFilePath("");
+			}
+			if ((s = br.readLine()) != null) {
+				article.setImageUrl(s);
+			} else {
+				article.setImageUrl("");
+			}
+
+			try {
+				Article a = (Article) articleDao.findByItemId(article.getUrl_id());
+			} catch (Exception e) {
+				articleDao.insert(article);
+			}
+		}
+		br.close();
 	}
 }

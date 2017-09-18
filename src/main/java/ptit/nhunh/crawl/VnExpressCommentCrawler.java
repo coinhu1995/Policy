@@ -16,7 +16,7 @@ import ptit.nhunh.dao.SQLDAOFactory;
 import ptit.nhunh.model.Comment;
 import ptit.nhunh.model.Item;
 import ptit.nhunh.model.ResponseObject;
-import ptit.nhunh.model.Url;
+import ptit.nhunh.model.Article;
 import ptit.nhunh.tool.ConvertJson2Java;;
 
 public class VnExpressCommentCrawler {
@@ -34,7 +34,7 @@ public class VnExpressCommentCrawler {
 
 	public VnExpressCommentCrawler() {
 		this.cmtDAO = SQLDAOFactory.getDAO(SQLDAOFactory.COMMENT);
-		this.urlDAO = SQLDAOFactory.getDAO(SQLDAOFactory.URL);
+		this.urlDAO = SQLDAOFactory.getDAO(SQLDAOFactory.ARTICLE);
 	}
 
 	public void process() throws SQLException, IOException {
@@ -49,7 +49,7 @@ public class VnExpressCommentCrawler {
 				.getData("select * from TblUrl where source = 'vnexpress.vn' order by id");
 
 		for (Object o : listURL) {
-			Url u = (Url) o;
+			Article u = (Article) o;
 			this.crawlParentComment(u.getUrl_id());
 			System.out.println(u.getId() + " done!");
 		}

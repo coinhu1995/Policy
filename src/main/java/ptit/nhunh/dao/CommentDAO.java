@@ -167,4 +167,10 @@ public class CommentDAO implements SQLDAO {
 				rs.getInt(13), rs.getNString(14), rs.getNString(15), rs.getInt(16), rs.getInt(17));
 		return c;
 	}
+
+	@Override
+	public boolean update(Object obj) throws SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

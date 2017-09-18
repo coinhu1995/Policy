@@ -11,7 +11,7 @@ import org.jsoup.select.Elements;
 
 import ptit.nhunh.dao.SQLDAO;
 import ptit.nhunh.dao.SQLDAOFactory;
-import ptit.nhunh.model.Url;
+import ptit.nhunh.model.Article;
 import ptit.nhunh.utils.Utils;
 
 public class VnExpressUrlCrawler {
@@ -20,20 +20,20 @@ public class VnExpressUrlCrawler {
 			"/truyen-hinh/", "/phim/", "news" };
 
 	private ArrayList<Object> urls;
-	private Url url;
+	private Article url;
 	private int dem = 0;
 	private SQLDAO urlDAO;
 
 	public VnExpressUrlCrawler() {
-		this.urlDAO = SQLDAOFactory.getDAO(SQLDAOFactory.URL);
-		this.url = new Url();
+		this.urlDAO = SQLDAOFactory.getDAO(SQLDAOFactory.ARTICLE);
+		this.url = new Article();
 	}
 
 	public void process() throws IOException, SQLException {
 		this.urls = this.urlDAO.getAll();
 		System.out.println("Collecting URL...");
 
-		Url u = new Url();
+		Article u = new Article();
 		u.setUrl(this.baseUrl);
 		this.urls.add(u);
 
@@ -45,7 +45,7 @@ public class VnExpressUrlCrawler {
 	public void getLinks(int i) throws SQLException {
 		Document doc = null;
 		try {
-			Url u = (Url) this.urls.get(i);
+			Article u = (Article) this.urls.get(i);
 			doc = Jsoup.connect(u.getUrl()).timeout(100000).get();
 		} catch (IOException e) {
 			System.out.println(this.urls.get(i));

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import ptit.nhunh.dao.SQLDAO;
 import ptit.nhunh.dao.SQLDAOFactory;
 import ptit.nhunh.model.Comment;
-import ptit.nhunh.model.Url;
+import ptit.nhunh.model.Article;
 
 public class resetIndex {
 	private SQLDAO urlDAO;
@@ -14,7 +14,7 @@ public class resetIndex {
 	private SQLDAO wordDAO;
 
 	public resetIndex() {
-		this.urlDAO = SQLDAOFactory.getDAO(SQLDAOFactory.URL);
+		this.urlDAO = SQLDAOFactory.getDAO(SQLDAOFactory.ARTICLE);
 		this.commentDAO = SQLDAOFactory.getDAO(SQLDAOFactory.COMMENT);
 		this.wordDAO = SQLDAOFactory.getDAO(SQLDAOFactory.WORD);
 	}
@@ -42,7 +42,7 @@ public class resetIndex {
 		this.urlDAO.update("DBCC CHECKIDENT ('TblUrl', RESEED, 0)");
 
 		for (Object o : listCmt) {
-			Url url = (Url) o;
+			Article url = (Article) o;
 			this.urlDAO.insert(url);
 		}
 	}

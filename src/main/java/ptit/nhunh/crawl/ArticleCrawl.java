@@ -13,7 +13,7 @@ import org.jsoup.select.Elements;
 
 import ptit.nhunh.dao.SQLDAO;
 import ptit.nhunh.dao.SQLDAOFactory;
-import ptit.nhunh.model.Url;
+import ptit.nhunh.model.Article;
 import ptit.nhunh.utils.Constants;
 import ptit.nhunh.utils.Utils;
 
@@ -22,7 +22,7 @@ public class ArticleCrawl {
 	private BufferedWriter bw;
 
 	public ArticleCrawl() throws IOException {
-		this.urlDao = SQLDAOFactory.getDAO(SQLDAOFactory.URL);
+		this.urlDao = SQLDAOFactory.getDAO(SQLDAOFactory.ARTICLE);
 		this.bw = new BufferedWriter(new OutputStreamWriter(
 				new FileOutputStream(new File(Constants.LOG_PATH + "ArticleCrawelLog.txt"), true)));
 		this.bw.write(Utils.getCurrentTime() + "\n ------------------------------\n");
@@ -38,7 +38,7 @@ public class ArticleCrawl {
 		String content = "";
 		String category = "";
 		for (Object obj : urls) {
-			Url url = (Url) obj;
+			Article url = (Article) obj;
 			if (url.getSource().trim().equals("vnexpress.vn")) {
 				try {
 					Document html = Utils.getHtml(url.getUrl());

@@ -11,20 +11,20 @@ import org.jsoup.select.Elements;
 
 import ptit.nhunh.dao.SQLDAO;
 import ptit.nhunh.dao.SQLDAOFactory;
-import ptit.nhunh.model.Url;
+import ptit.nhunh.model.Article;
 import ptit.nhunh.utils.Utils;
 
 public class Search_ThanhNienUrlCrawler {
 	private String sourceUrl = "http://thanhnien.vn/search/Y2hpbmggc2FjaA==/chinh-sach/0-result-";
 	private SQLDAO urlDAO;
-	private ArrayList<Url> urls = new ArrayList<>();
+	private ArrayList<Article> urls = new ArrayList<>();
 
 	public static void main(String[] args) throws SQLException, IOException {
 		new Search_ThanhNienUrlCrawler().getUrl();
 	}
 
 	public void getUrl() throws SQLException, IOException {
-		this.urlDAO = SQLDAOFactory.getDAO(SQLDAOFactory.URL);
+		this.urlDAO = SQLDAOFactory.getDAO(SQLDAOFactory.ARTICLE);
 
 		ArrayList<Object> urls = this.urlDAO.getAll();
 
@@ -46,7 +46,7 @@ public class Search_ThanhNienUrlCrawler {
 			for (int j = 0; j < listArticle.size(); j++) {
 				Elements listA = listArticle.get(j).getElementsByTag("a");
 
-				Url u = new Url();
+				Article u = new Article();
 				if (listA.get(0).attr("href").indexOf("http") < 0) {
 					u.setUrl("http://thanhnien.vn" + listA.get(0).attr("href"));
 				} else {
@@ -71,7 +71,7 @@ public class Search_ThanhNienUrlCrawler {
 
 					// Get title
 					Element h1 = subDoc.getElementsByClass("main-title").get(0);
-					u.setTitles(h1.text().replaceAll("'", "\""));
+					u.setTitle(h1.text().replaceAll("'", "\""));
 					// End get title
 
 					// Get comment count
@@ -107,7 +107,7 @@ public class Search_ThanhNienUrlCrawler {
 		}
 	}
 
-	private int indexOf(Url u, ArrayList<Url> list) {
+	private int indexOf(Article u, ArrayList<Article> list) {
 		for (int i = 0; i < list.size(); i++) {
 			if (list.get(i).getSource().equals("thanhnien")) {
 				if (u.getUrl_id().trim().equals(list.get(i).getUrl_id().trim())) {

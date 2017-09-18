@@ -10,9 +10,9 @@ import org.jsoup.select.Elements;
 
 import ptit.nhunh.dao.SQLDAO;
 import ptit.nhunh.dao.SQLDAOFactory;
-import ptit.nhunh.dao.UrlDAO;
+import ptit.nhunh.dao.ArticleDAO;
 import ptit.nhunh.model.ResponseObject;
-import ptit.nhunh.model.Url;
+import ptit.nhunh.model.Article;
 import ptit.nhunh.tool.ConvertJson2Java;
 import ptit.nhunh.utils.Utils;
 
@@ -45,19 +45,19 @@ public class getUrlInfo {
 	}
 
 	public getUrlInfo() {
-		this.urlDAO = SQLDAOFactory.getDAO(SQLDAOFactory.URL);
+		this.urlDAO = SQLDAOFactory.getDAO(SQLDAOFactory.ARTICLE);
 	}
 
 	private void process(int start, int end) throws SQLException, IOException {
 		ArrayList<Object> listURL = this.urlDAO.getData(
 				"select * from TblUrl where id >= " + start + " and id < " + end + "order by id");
 		for (Object o : listURL) {
-			Url url = (Url) o;
+			Article url = (Article) o;
 			try {
 				Document doc = Utils.getHtml(url.getUrl());
 
 				// get tittle
-				url.setTitles(doc.getElementsByTag("title").get(0).text().replaceAll("'", "\""));
+				url.setTitle(doc.getElementsByTag("title").get(0).text().replaceAll("'", "\""));
 
 				// get total number comment
 				try {
@@ -80,7 +80,7 @@ public class getUrlInfo {
 				Elements list = doc.getElementsByClass("block_tag");
 				url.setTag(list.text().replaceAll("'", "\""));
 
-				this.urlDAO.update(url, UrlDAO.UPDATE_TITLES_AND_TAGS);
+				this.urlDAO.update(url, ArticleDAO.UPDATE_TITLES_AND_TAGS);
 
 				System.out.println(url.getId() + " done!");
 			} catch (Exception e2) {

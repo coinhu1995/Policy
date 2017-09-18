@@ -15,7 +15,7 @@ import org.jsoup.select.Elements;
 import ptit.nhunh.dao.SQLDAO;
 import ptit.nhunh.dao.SQLDAOFactory;
 import ptit.nhunh.model.Comment;
-import ptit.nhunh.model.Url;
+import ptit.nhunh.model.Article;
 import ptit.nhunh.utils.Constants;
 import ptit.nhunh.utils.Utils;
 
@@ -30,7 +30,7 @@ public class ThanhNienCommentCrawler {
 	private SQLDAO cmtDAO;
 
 	public static void main(String[] args) throws SQLException, IOException {
-		ArrayList<Object> listUrl = SQLDAOFactory.getDAO(SQLDAOFactory.URL)
+		ArrayList<Object> listUrl = SQLDAOFactory.getDAO(SQLDAOFactory.ARTICLE)
 				.getData("select * from TblUrl where source = 'thanhnien' order by id");
 		new ThanhNienCommentCrawler().process(listUrl);
 		new ThanhNienCommentCrawler().processErrorUrl();
@@ -45,7 +45,7 @@ public class ThanhNienCommentCrawler {
 				"D:\\NHU\\WORKSPACE\\Capstone\\Policy\\src\\main\\resource\\log\\logCrawlThanhNien.txt"));
 
 		for (int i = 0; i < listUrl.size(); i++) {
-			Url url = (Url) listUrl.get(i);
+			Article url = (Article) listUrl.get(i);
 			Document doc = null;
 			try {
 				doc = Utils.getHtml(url.getUrl());
@@ -137,7 +137,7 @@ public class ThanhNienCommentCrawler {
 		String line = "";
 		while ((line = br.readLine()) != null) {
 			if (line.indexOf("http") >= 0) {
-				Url u = new Url();
+				Article u = new Article();
 				u.setUrl(line);
 				u.setUrl_id(Utils.getThanhNienPageId(line));
 				listUrl.add(u);

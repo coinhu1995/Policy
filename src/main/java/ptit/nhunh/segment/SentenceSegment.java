@@ -1,4 +1,4 @@
-package ptit.nhunh.prepare;
+package ptit.nhunh.segment;
 
 import java.io.File;
 import java.io.FileNotFoundException;

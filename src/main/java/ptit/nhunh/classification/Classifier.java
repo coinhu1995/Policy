@@ -15,4 +15,7 @@ public class Classifier {
 		new Classify().classified(path + "\\input.train", path + "\\input.test", path + "\\output");
 		scan.close();
 	}
+	public static void main(String[] args) throws FileNotFoundException, ClassNotFoundException, SQLException, IOException {
+		new Classifier().execute();
+	}
 }

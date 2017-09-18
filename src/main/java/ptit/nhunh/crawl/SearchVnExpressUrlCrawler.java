@@ -11,7 +11,7 @@ import org.jsoup.select.Elements;
 
 import ptit.nhunh.dao.SQLDAO;
 import ptit.nhunh.dao.SQLDAOFactory;
-import ptit.nhunh.model.Url;
+import ptit.nhunh.model.Article;
 import ptit.nhunh.utils.Utils;
 
 /**
@@ -30,7 +30,7 @@ public class SearchVnExpressUrlCrawler {
 	}
 
 	public void getUrl() throws SQLException {
-		this.urlDAO = SQLDAOFactory.getDAO(SQLDAOFactory.URL);
+		this.urlDAO = SQLDAOFactory.getDAO(SQLDAOFactory.ARTICLE);
 
 		this.urls = this.urlDAO.getAll();
 
@@ -46,7 +46,7 @@ public class SearchVnExpressUrlCrawler {
 				Elements list_li = ul.getElementsByTag("li");
 				for (int j = 0; j < list_li.size(); j++) {
 					Elements list_a = list_li.get(j).getElementsByTag("a");
-					Url u = new Url();
+					Article u = new Article();
 					u.setUrl(list_a.get(0).attr("href").replace("?utm_source=search_vne", ""));
 					u.setSource("vnexpress.vn");
 					u.setUrl_id(Utils.getVnExpressPageId(u.getUrl()));

@@ -1,8 +1,10 @@
 package ptit.nhunh.model;
 
+import java.io.Serializable;
+
 import ptit.nhunh.utils.Constants;
 
-public class Comment {
+public class Comment implements Serializable{
 	private int id; 
 	private String cmt_id;
 	private String content;
@@ -59,114 +61,114 @@ public class Comment {
 		this.parent_id = Constants.SPACE;
 	}
 	public int getId() {
-		return id;
+		return this.id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
 	public String getCmt_id() {
-		return cmt_id;
+		return this.cmt_id;
 	}
 	public void setCmt_id(String cmt_id) {
 		this.cmt_id = cmt_id;
 	}
 	public String getContent() {
-		return content;
+		return this.content;
 	}
 	public void setContent(String content) {
 		this.content = content;
 	}
 	public String getCmt_segment() {
-		return cmt_segment;
+		return this.cmt_segment;
 	}
 	public void setCmt_segment(String cmt_segment) {
 		this.cmt_segment = cmt_segment;
 	}
 	public String getTime() {
-		return time;
+		return this.time;
 	}
 	public void setTime(String time) {
 		this.time = time;
 	}
 	public String getPage_id() {
-		return page_id;
+		return this.page_id;
 	}
 	public void setPage_id(String page_id) {
 		this.page_id = page_id;
 	}
 	public String getAvatar_original() {
-		return avatar_original;
+		return this.avatar_original;
 	}
 	public void setAvatar_original(String avatar_original) {
 		this.avatar_original = avatar_original;
 	}
 	public String getLike_ismember() {
-		return like_ismember;
+		return this.like_ismember;
 	}
 	public void setLike_ismember(String like_ismember) {
 		this.like_ismember = like_ismember;
 	}
 	public String getUser_id() {
-		return user_id;
+		return this.user_id;
 	}
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
 	}
 	public String getCreate_time() {
-		return create_time;
+		return this.create_time;
 	}
 	public void setCreate_time(String create_time) {
 		this.create_time = create_time;
 	}
 	public String getAvatar() {
-		return avatar;
+		return this.avatar;
 	}
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
 	public int getType() {
-		return type;
+		return this.type;
 	}
 	public void setType(int type) {
 		this.type = type;
 	}
 	public int getUserlike() {
-		return userlike;
+		return this.userlike;
 	}
 	public void setUserlike(int userlike) {
 		this.userlike = userlike;
 	}
 	public String getFullname() {
-		return fullname;
+		return this.fullname;
 	}
 	public void setFullname(String fullname) {
 		this.fullname = fullname;
 	}
 	public String getParent_id() {
-		return parent_id;
+		return this.parent_id;
 	}
 	public void setParent_id(String parent_id) {
 		this.parent_id = parent_id;
 	}
 	public int getLabel() {
-		return label;
+		return this.label;
 	}
 	public void setLabel(int label) {
 		this.label = label;
 	}
 	public int getLabel2() {
-		return label2;
+		return this.label2;
 	}
 	public void setLabel2(int label2) {
 		this.label2 = label2;
 	}
 	@Override
 	public String toString() {
-		return "Comment [id=" + id + ", cmt_id=" + cmt_id + ", content=" + content
-				+ ", cmt_segment=" + cmt_segment + ", time=" + time + ", page_id=" + page_id
-				+ ", avatar_original=" + avatar_original + ", like_ismember=" + like_ismember
-				+ ", user_id=" + user_id + ", create_time=" + create_time + ", avatar=" + avatar
-				+ ", type=" + type + ", userlike=" + userlike + ", fullname=" + fullname
-				+ ", parent_id=" + parent_id + ", label=" + label + ", label2=" + label2 + "]";
+		return "Comment [id=" + this.id + ", cmt_id=" + this.cmt_id + ", content=" + this.content
+				+ ", cmt_segment=" + this.cmt_segment + ", time=" + this.time + ", page_id=" + this.page_id
+				+ ", avatar_original=" + this.avatar_original + ", like_ismember=" + this.like_ismember
+				+ ", user_id=" + this.user_id + ", create_time=" + this.create_time + ", avatar=" + this.avatar
+				+ ", type=" + this.type + ", userlike=" + this.userlike + ", fullname=" + this.fullname
+				+ ", parent_id=" + this.parent_id + ", label=" + this.label + ", label2=" + this.label2 + "]";
 	}
 }
