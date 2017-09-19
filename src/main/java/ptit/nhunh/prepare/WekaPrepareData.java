@@ -195,7 +195,7 @@ public class WekaPrepareData {
 
 			for (int i = 0; i < words.size(); i++) {
 				int index = Utils.indexOf(listAll, words.get(i));
-				if (listAll.get(index).getIsStopWord() != 1) {
+				if (listAll.get(index).isStopWord()) {
 					listAll.get(index).setTimesOccur(words.get(i).getTimesOccur());
 				} else {
 
@@ -203,7 +203,7 @@ public class WekaPrepareData {
 			}
 
 			for (int i = 0; i < listAll.size(); i++) {
-				bw.write(String.valueOf(listAll.get(i).getTFIDF(size, sumWord)).substring(0, 3) + ",");
+				bw.write(String.valueOf(listAll.get(i).getTFIDF(size)).substring(0, 3) + ",");
 			}
 			bw.write((c.getLabel() + "").toCharArray());
 			bw.newLine();
@@ -220,7 +220,7 @@ public class WekaPrepareData {
 		while ((s = br.readLine()) != null) {
 			for (Word word : listWord) {
 				if (collator.equals(s, word.getWord())) {
-					word.setIsStopWord(1);
+					word.setStopWord(true);
 				}
 			}
 		}

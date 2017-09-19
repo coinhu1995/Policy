@@ -25,7 +25,7 @@ public class ArticleCrawl {
 		this.urlDao = SQLDAOFactory.getDAO(SQLDAOFactory.ARTICLE);
 		this.bw = new BufferedWriter(new OutputStreamWriter(
 				new FileOutputStream(new File(Constants.LOG_PATH + "ArticleCrawelLog.txt"), true)));
-		this.bw.write(Utils.getCurrentTime() + "\n ------------------------------\n");
+		this.bw.write(Utils.getCurrentDateTime() + "\n ------------------------------\n");
 	}
 
 	public static void main(String[] args) throws SQLException, IOException {

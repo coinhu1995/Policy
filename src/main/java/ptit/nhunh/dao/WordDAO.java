@@ -39,7 +39,7 @@ public class WordDAO implements SQLDAO {
 			this.ps = this.con.prepareStatement(sql);
 			this.ps.setNString(1, word.getWord());
 			this.ps.setInt(2, word.getDF());
-			this.ps.setInt(4, word.getIsStopWord());
+			this.ps.setNString(4, (word.isStopWord() ? "true" : "false"));
 			this.ps.setInt(5, word.getCmt_id());
 			this.ps.executeUpdate();
 			return true;
@@ -55,9 +55,10 @@ public class WordDAO implements SQLDAO {
 		this.ps = this.con.prepareStatement("select * from TblWord order by id");
 		ResultSet rs = this.ps.executeQuery();
 		while (rs.next()) {
-//			Word word = new Word(rs.getInt(1), rs.getNString(2), 0, 0, rs.getInt(3), rs.getInt(4),
-//					rs.getFloat(5), 0, rs.getInt(6));
-//			ac.add(word);
+			// Word word = new Word(rs.getInt(1), rs.getNString(2), 0, 0, rs.getInt(3),
+			// rs.getInt(4),
+			// rs.getFloat(5), 0, rs.getInt(6));
+			// ac.add(word);
 		}
 		return ac;
 	}
@@ -68,9 +69,10 @@ public class WordDAO implements SQLDAO {
 		this.ps = this.con.prepareStatement(sql);
 		ResultSet rs = this.ps.executeQuery();
 		while (rs.next()) {
-//			Word word = new Word(rs.getInt(1), rs.getNString(2), 0, 0, rs.getInt(3), rs.getInt(4),
-//					rs.getFloat(5), 0, rs.getInt(6));
-//			ac.add(word);
+			// Word word = new Word(rs.getInt(1), rs.getNString(2), 0, 0, rs.getInt(3),
+			// rs.getInt(4),
+			// rs.getFloat(5), 0, rs.getInt(6));
+			// ac.add(word);
 		}
 		return ac;
 	}
@@ -85,7 +87,7 @@ public class WordDAO implements SQLDAO {
 			String sql = "";
 			sql = "update TblWord set isStop = ? where id = ?";
 			this.ps = this.con.prepareStatement(sql);
-			this.ps.setInt(1, word.getIsStopWord());
+			this.ps.setString(1, (word.isStopWord() ? "true" : "false"));
 			this.ps.setInt(2, word.getId());
 			this.ps.executeUpdate();
 			return true;
