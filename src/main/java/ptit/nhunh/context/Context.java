@@ -26,4 +26,9 @@ public class Context {
 	 */
 	public static int TYPEOFCOPYDATA2DATABASE = 1;
 	
+	/**
+	 * 1: Normal
+	 * 2: ARFF
+	 */
+	public static int TYPEOFFILE = 1;
 }

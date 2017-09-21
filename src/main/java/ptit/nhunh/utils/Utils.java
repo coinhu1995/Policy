@@ -67,7 +67,7 @@ public class Utils {
 				listWord.add(w);
 			}
 		}
-		
+
 		return listWord;
 	}
 
@@ -298,9 +298,9 @@ public class Utils {
 	}
 
 	public static String getCurrentTime() {
-		return LocalTime.now().toString();
+		return LocalTime.now().toString().substring(0, 8).replace(":", "-");
 	}
-	
+
 	public static void sort(ArrayList<Word> listWord) {
 		Collections.sort(listWord, new Comparator<Word>() {
 			@Override
