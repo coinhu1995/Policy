@@ -8,3 +8,5 @@ pó:bó
 vn:việt_nam
 ng:người
 ntn:như_thế_nào
+wa:quá
+zậy:vậy

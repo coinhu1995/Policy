@@ -33,6 +33,7 @@ public class AssignLabel2 extends javax.swing.JFrame {
 	private javax.swing.JButton but_gopy;
 	private javax.swing.JButton but_khongdongy;
 	private javax.swing.JButton b5;
+	private javax.swing.JButton b6;
 	private javax.swing.JButton reload;
 	private javax.swing.JButton but_ykienkhav;
 	private javax.swing.JTextArea cmt;
@@ -65,11 +66,11 @@ public class AssignLabel2 extends javax.swing.JFrame {
 		scan.close();
 
 		this.ac = new ArrayList<>();
-		this.bw = new BufferedWriter(new OutputStreamWriter(
-				new FileOutputStream("LogAssignLabel.txt", true), StandardCharsets.UTF_8));
+		this.bw = new BufferedWriter(
+				new OutputStreamWriter(new FileOutputStream("LogAssignLabel.txt", true), StandardCharsets.UTF_8));
 
-		this.bw2 = new BufferedWriter(new OutputStreamWriter(
-				new FileOutputStream("result.txt", true), StandardCharsets.UTF_8));
+		this.bw2 = new BufferedWriter(
+				new OutputStreamWriter(new FileOutputStream("result.txt", true), StandardCharsets.UTF_8));
 
 		BufferedReader br = new BufferedReader(
 				new InputStreamReader(new FileInputStream("comment.txt"), StandardCharsets.UTF_8));
@@ -109,25 +110,24 @@ public class AssignLabel2 extends javax.swing.JFrame {
 
 	public void process() throws SQLException, IOException {
 		try {
-			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager
-					.getInstalledLookAndFeels()) {
+			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
 				if ("Nimbus".equals(info.getName())) {
 					javax.swing.UIManager.setLookAndFeel(info.getClassName());
 					break;
 				}
 			}
 		} catch (ClassNotFoundException ex) {
-			java.util.logging.Logger.getLogger(AssignLabel2.class.getName())
-					.log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(AssignLabel2.class.getName()).log(java.util.logging.Level.SEVERE, null,
+					ex);
 		} catch (InstantiationException ex) {
-			java.util.logging.Logger.getLogger(AssignLabel2.class.getName())
-					.log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(AssignLabel2.class.getName()).log(java.util.logging.Level.SEVERE, null,
+					ex);
 		} catch (IllegalAccessException ex) {
-			java.util.logging.Logger.getLogger(AssignLabel2.class.getName())
-					.log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(AssignLabel2.class.getName()).log(java.util.logging.Level.SEVERE, null,
+					ex);
 		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-			java.util.logging.Logger.getLogger(AssignLabel2.class.getName())
-					.log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(AssignLabel2.class.getName()).log(java.util.logging.Level.SEVERE, null,
+					ex);
 		}
 
 		java.awt.EventQueue.invokeLater(new Runnable() {
@@ -159,6 +159,7 @@ public class AssignLabel2 extends javax.swing.JFrame {
 		this.but_gopy = new javax.swing.JButton();
 		this.but_khongdongy = new javax.swing.JButton();
 		this.b5 = new javax.swing.JButton();
+		this.b6 = new javax.swing.JButton();
 		this.reload = new javax.swing.JButton();
 		this.jLabel4 = new javax.swing.JLabel();
 		this.ulb = new javax.swing.JTextField();
@@ -234,6 +235,18 @@ public class AssignLabel2 extends javax.swing.JFrame {
 			}
 		});
 
+		this.b6.setText("6");
+		this.b6.addActionListener(new java.awt.event.ActionListener() {
+			@Override
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				try {
+					AssignLabel2.this.b6ActionPerformed(evt);
+				} catch (SQLException | IOException e) {
+					e.printStackTrace();
+				}
+			}
+		});
+
 		this.jLabel4.setText("update");
 
 		this.jButton1.setText("update");
@@ -287,154 +300,110 @@ public class AssignLabel2 extends javax.swing.JFrame {
 
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this.getContentPane());
 		this.getContentPane().setLayout(layout);
-		layout.setHorizontalGroup(layout
-				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(layout.createSequentialGroup()
-						.addGroup(layout
-								.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-								.addGroup(layout.createSequentialGroup().addGap(2, 2, 2)
-										.addComponent(this.jLabel1))
-								.addGroup(layout.createSequentialGroup().addContainerGap()
-										.addComponent(this.ID))
+		layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout
+				.createSequentialGroup().addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(layout.createSequentialGroup().addGap(2, 2, 2).addComponent(this.jLabel1)).addGroup(
+								layout.createSequentialGroup().addContainerGap().addComponent(this.ID))
+						.addGroup(layout.createSequentialGroup().addContainerGap().addComponent(this.jLabel3))
+						.addGroup(layout.createSequentialGroup().addContainerGap().addComponent(this.jLabel2)))
+				.addGap(18, 18,
+						18)
+				.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout
+						.createSequentialGroup()
+						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
 								.addGroup(layout.createSequentialGroup()
-										.addContainerGap().addComponent(this.jLabel3))
-								.addGroup(layout.createSequentialGroup().addContainerGap()
-										.addComponent(this.jLabel2)))
-						.addGap(18, 18, 18)
-						.addGroup(layout
-								.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-								.addGroup(layout.createSequentialGroup().addGroup(layout
-										.createParallelGroup(
-												javax.swing.GroupLayout.Alignment.TRAILING)
-										.addGroup(layout.createSequentialGroup()
-												.addComponent(this.id,
-														javax.swing.GroupLayout.PREFERRED_SIZE, 229,
-														javax.swing.GroupLayout.PREFERRED_SIZE)
-												.addGap(343, 343, 343).addComponent(this.jLabel4))
-										.addGroup(layout
-												.createParallelGroup(
-														javax.swing.GroupLayout.Alignment.LEADING,
-														false)
-												.addComponent(this.jScrollPane1,
-														javax.swing.GroupLayout.DEFAULT_SIZE, 606,
-														Short.MAX_VALUE)
-												.addComponent(this.url)))
-										.addGroup(layout
-												.createParallelGroup(
-														javax.swing.GroupLayout.Alignment.LEADING)
-												.addGroup(layout.createSequentialGroup()
-														.addGap(36, 36, 36)
-														.addGroup(layout
-																.createParallelGroup(
-																		javax.swing.GroupLayout.Alignment.LEADING)
-																.addComponent(this.jButton2)
-																.addComponent(this.did,
-																		javax.swing.GroupLayout.PREFERRED_SIZE,
-																		77,
-																		javax.swing.GroupLayout.PREFERRED_SIZE))
-														.addGap(0, 0, Short.MAX_VALUE))
-												.addGroup(layout.createSequentialGroup()
-														.addGap(18, 18, 18)
-														.addComponent(this.uid,
-																javax.swing.GroupLayout.PREFERRED_SIZE,
-																56,
-																javax.swing.GroupLayout.PREFERRED_SIZE)
-														.addPreferredGap(
-																javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-														.addComponent(this.ulb,
-																javax.swing.GroupLayout.PREFERRED_SIZE,
-																62,
-																javax.swing.GroupLayout.PREFERRED_SIZE)
-														.addPreferredGap(
-																javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-														.addGroup(layout
-																.createParallelGroup(
-																		javax.swing.GroupLayout.Alignment.LEADING)
-																.addComponent(this.b2)
-																.addComponent(this.jButton1))
-														.addContainerGap(98, Short.MAX_VALUE))))
-								.addGroup(layout.createSequentialGroup().addGroup(layout
-										.createParallelGroup(
-												javax.swing.GroupLayout.Alignment.LEADING)
-										.addComponent(this.label,
-												javax.swing.GroupLayout.PREFERRED_SIZE, 91,
+										.addComponent(this.id, javax.swing.GroupLayout.PREFERRED_SIZE, 229,
 												javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addGroup(layout.createSequentialGroup()
-												.addComponent(this.but_dongy)
-												.addPreferredGap(
-														javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+										.addGap(343, 343, 343).addComponent(this.jLabel4))
+								.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+										.addComponent(this.jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 606,
+												Short.MAX_VALUE)
+										.addComponent(this.url)))
+						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+								.addGroup(layout.createSequentialGroup().addGap(36, 36, 36)
+										.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+												.addComponent(this.jButton2).addComponent(this.did,
+														javax.swing.GroupLayout.PREFERRED_SIZE, 77,
+														javax.swing.GroupLayout.PREFERRED_SIZE))
+										.addGap(0, 0, Short.MAX_VALUE))
+								.addGroup(layout.createSequentialGroup().addGap(18, 18, 18)
+										.addComponent(this.uid, javax.swing.GroupLayout.PREFERRED_SIZE, 56,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+										.addComponent(this.ulb, javax.swing.GroupLayout.PREFERRED_SIZE, 62,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+										.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+												.addComponent(this.b2).addComponent(this.jButton1))
+										.addContainerGap(98, Short.MAX_VALUE))))
+						.addGroup(layout.createSequentialGroup()
+								.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+										.addComponent(this.label, javax.swing.GroupLayout.PREFERRED_SIZE, 91,
+												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addGroup(layout.createSequentialGroup().addComponent(this.but_dongy)
+												.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
 												.addComponent(this.but_gopy)
-												.addPreferredGap(
-														javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-												.addComponent(this.but_khongdongy)
-												.addGap(27, 27, 27).addComponent(this.but_ykienkhav)
-												.addGap(102, 102, 102).addComponent(this.b5).addGap(102, 102, 102).addComponent(this.reload)))
-										.addContainerGap()))));
-		layout.setVerticalGroup(layout
-				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(layout.createSequentialGroup().addGroup(layout
-						.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-						.addGroup(layout.createSequentialGroup().addGap(58, 58, 58)
-								.addComponent(this.jLabel1))
+												.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+												.addComponent(this.but_khongdongy).addGap(27, 27, 27)
+												.addComponent(this.but_ykienkhav).addGap(102, 102, 102)
+												.addComponent(this.b5).addGap(102, 102, 102).addComponent(this.reload)
+												.addComponent(this.b6).addGap(102, 102, 102)))
+								.addContainerGap()))));
+		layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout
+				.createSequentialGroup()
+				.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(layout.createSequentialGroup().addGap(58, 58, 58).addComponent(this.jLabel1))
 						.addGroup(layout.createSequentialGroup().addGap(66, 66, 66)
 								.addComponent(this.did, javax.swing.GroupLayout.PREFERRED_SIZE,
-										javax.swing.GroupLayout.DEFAULT_SIZE,
-										javax.swing.GroupLayout.PREFERRED_SIZE)
+										javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
 								.addGap(18, 18, 18).addComponent(this.jButton2))
-						.addGroup(layout.createSequentialGroup().addContainerGap().addComponent(
-								this.jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217,
-								javax.swing.GroupLayout.PREFERRED_SIZE)))
-						.addGap(18, 18, 18)
-						.addGroup(layout
-								.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-								.addGroup(layout
-										.createParallelGroup(
-												javax.swing.GroupLayout.Alignment.BASELINE)
-										.addComponent(this.id,
-												javax.swing.GroupLayout.PREFERRED_SIZE,
-												javax.swing.GroupLayout.DEFAULT_SIZE,
-												javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addComponent(this.ID))
-								.addGroup(layout
-										.createParallelGroup(
-												javax.swing.GroupLayout.Alignment.BASELINE)
-										.addComponent(this.jLabel4)
-										.addComponent(this.uid,
-												javax.swing.GroupLayout.PREFERRED_SIZE,
-												javax.swing.GroupLayout.DEFAULT_SIZE,
-												javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addComponent(this.ulb,
-												javax.swing.GroupLayout.PREFERRED_SIZE,
-												javax.swing.GroupLayout.DEFAULT_SIZE,
-												javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addComponent(this.jButton1)))
-						.addGap(28, 28, 28)
-						.addGroup(layout
-								.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-								.addComponent(this.url, javax.swing.GroupLayout.PREFERRED_SIZE,
-										javax.swing.GroupLayout.DEFAULT_SIZE,
-										javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addComponent(this.jLabel3))
-						.addGap(18, 18, 18)
-						.addGroup(layout
-								.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-								.addComponent(this.jLabel2).addComponent(this.label,
-										javax.swing.GroupLayout.PREFERRED_SIZE,
-										javax.swing.GroupLayout.DEFAULT_SIZE,
-										javax.swing.GroupLayout.PREFERRED_SIZE))
-						.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-								javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addGroup(layout
-								.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-								.addComponent(this.but_dongy).addComponent(this.but_gopy)
-								.addComponent(this.but_khongdongy).addComponent(this.b5).addComponent(this.reload)
-								.addComponent(this.but_ykienkhav).addComponent(this.b2).addComponent(this.reload))
-						.addGap(24, 24, 24)));
+						.addGroup(layout.createSequentialGroup().addContainerGap().addComponent(this.jScrollPane1,
+								javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
+				.addGap(18, 18, 18)
+				.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+								.addComponent(this.id, javax.swing.GroupLayout.PREFERRED_SIZE,
+										javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+								.addComponent(this.ID))
+						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+								.addComponent(this.jLabel4)
+								.addComponent(this.uid, javax.swing.GroupLayout.PREFERRED_SIZE,
+										javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+								.addComponent(this.ulb, javax.swing.GroupLayout.PREFERRED_SIZE,
+										javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+								.addComponent(this.jButton1)))
+				.addGap(28, 28, 28)
+				.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+						.addComponent(this.url, javax.swing.GroupLayout.PREFERRED_SIZE,
+								javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addComponent(this.jLabel3))
+				.addGap(18, 18, 18)
+				.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+						.addComponent(this.jLabel2).addComponent(this.label, javax.swing.GroupLayout.PREFERRED_SIZE,
+								javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+				.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+						javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+				.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+						.addComponent(this.but_dongy).addComponent(this.but_gopy).addComponent(this.but_khongdongy)
+						.addComponent(this.b5).addComponent(this.reload).addComponent(this.but_ykienkhav)
+						.addComponent(this.b2).addComponent(this.reload).addComponent(this.b6))
+				.addGap(24, 24, 24)));
 
 		this.pack();
 	}
 
-	protected void butreloadActionPerformed(ActionEvent evt) throws SQLException{
+	protected void b6ActionPerformed(ActionEvent evt) throws IOException, SQLException {
+		this.bw2.write(String.format("%-12s", this.ma) + "6");
+		this.bw2.newLine();
+		if (this.chay < this.ac.size()) {
+			this.chay++;
+			this.load();
+		} else {
+			JOptionPane.showMessageDialog(this, "het roi");
+		}
+	}
+
+	protected void butreloadActionPerformed(ActionEvent evt) throws SQLException {
 		if (this.chay < this.ac.size()) {
 			this.chay++;
 			this.load();
@@ -454,8 +423,7 @@ public class AssignLabel2 extends javax.swing.JFrame {
 		}
 	}
 
-	private void b1ActionPerformed(java.awt.event.ActionEvent evt)
-			throws SQLException, IOException {
+	private void b1ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException, IOException {
 		this.bw2.write(String.format("%-12s", this.ma) + "1");
 		this.bw2.newLine();
 		if (this.chay < this.ac.size()) {
@@ -474,8 +442,7 @@ public class AssignLabel2 extends javax.swing.JFrame {
 								+ this.url.getText() });
 	}
 
-	private void b3ActionPerformed(java.awt.event.ActionEvent evt)
-			throws SQLException, IOException {
+	private void b3ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException, IOException {
 		this.bw2.write(String.format("%-12s", this.ma) + "3");
 		this.bw2.newLine();
 		if (this.chay < this.ac.size()) {
@@ -486,8 +453,7 @@ public class AssignLabel2 extends javax.swing.JFrame {
 		}
 	}
 
-	private void b4ActionPerformed(java.awt.event.ActionEvent evt)
-			throws SQLException, IOException {
+	private void b4ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException, IOException {
 		this.bw2.write(String.format("%-12s", this.ma) + "2");
 		this.bw2.newLine();
 		if (this.chay < this.ac.size()) {
@@ -530,10 +496,8 @@ public class AssignLabel2 extends javax.swing.JFrame {
 		this.bw.flush();
 	}
 
-	private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)
-			throws SQLException, IOException {
-		this.bw2.write(
-				"update:" + String.format("%-12s", this.uid.getText()) + this.ulb.getText() + "\n");
+	private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException, IOException {
+		this.bw2.write("update:" + String.format("%-12s", this.uid.getText()) + this.ulb.getText() + "\n");
 	}
 
 }

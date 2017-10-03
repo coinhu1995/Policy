@@ -66,6 +66,7 @@ public class PrepareData {
 				.getData("select * from TblCommentTest where id <= " + Context.TRAINSIZE + " order by id");
 		this.listTestCmt = this.cmtTestDao.getData("select * from TblCommentTest where id <= "
 				+ (Context.TESTSIZE + Context.TRAINSIZE) + " and id > " + Context.TRAINSIZE + " order by id");
+		// this.listTestCmt = this.cmtDao.getData("select top 100 * from TblComment");
 		this.listWordForTrain = new ArrayList<>();
 
 		this.openFile();
@@ -219,10 +220,10 @@ public class PrepareData {
 				if (!word.isStopWord()) {
 					if (word.getDF() != 0) {
 						detailLine += word.getWord() + ":" + word.getTimesOccur() + ":" + word.getDF() + ":"
-								+ word.getTFIDF(totalDocument) + " ";
-						tfidfLine += word.getId() + ":" + String.valueOf(word.getTFIDF(totalDocument)).substring(0, 3)
-								+ " ";
-						bw.write(String.valueOf(word.getTFIDF(totalDocument)).substring(0, 3));
+								+ word.getTFIDF(totalDocument, 0) + " ";
+						tfidfLine += word.getId() + ":"
+								+ String.valueOf(word.getTFIDF(totalDocument, 0)).substring(0, 3) + " ";
+						bw.write(String.valueOf(word.getTFIDF(totalDocument, 0)).substring(0, 3));
 					} else {
 						bw.write("0");
 					}

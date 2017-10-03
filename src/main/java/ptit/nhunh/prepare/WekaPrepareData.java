@@ -203,7 +203,7 @@ public class WekaPrepareData {
 			}
 
 			for (int i = 0; i < listAll.size(); i++) {
-				bw.write(String.valueOf(listAll.get(i).getTFIDF(size)).substring(0, 3) + ",");
+				bw.write(String.valueOf(listAll.get(i).getTFIDF(size, 0)).substring(0, 3) + ",");
 			}
 			bw.write((c.getLabel() + "").toCharArray());
 			bw.newLine();

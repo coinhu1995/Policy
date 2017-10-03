@@ -11,7 +11,7 @@ public class SQLDAOFactory {
 		case COMMENT:
 			return CommentDAO.getInstance();
 		case ARTICLE:
-			return ArticleDAO.getInstance();
+			return UrlDAO.getInstance();
 		case WORD:
 			return WordDAO.getInstance();
 		case COMMENTTEST:

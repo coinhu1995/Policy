@@ -25,7 +25,7 @@ public class SentenceSegment {
 	private SQLDAO cmtDAO;
 
 	private HashMap<String, String> acronymWords = new HashMap<>();
-	
+
 	public static void main(String[] args) {
 		try {
 			new SentenceSegment().process(VNTOKENIZER);
@@ -33,7 +33,7 @@ public class SentenceSegment {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public SentenceSegment() throws FileNotFoundException {
 		this.cmtDAO = SQLDAOFactory.getDAO(SQLDAOFactory.COMMENT);
 		this.vietTokenizer = new VietTokenizer();
@@ -49,8 +49,8 @@ public class SentenceSegment {
 	}
 
 	/**
-	 * <strong>VNTOKENIZER</strong>: to use vntokenizer
-	 * <strong>UETSEGMENT</strong>: to use UETsegment
+	 * <strong>VNTOKENIZER</strong>: to use vntokenizer <strong>UETSEGMENT</strong>:
+	 * to use UETsegment
 	 * 
 	 * @param kernel
 	 * @throws SQLException
@@ -60,8 +60,8 @@ public class SentenceSegment {
 	}
 
 	/**
-	 * Chuyển các comment thành dạng 1 câu gồm các từ đã được phân đoạn. Và thêm
-	 * vào database
+	 * Chuyển các comment thành dạng 1 câu gồm các từ đã được phân đoạn. Và thêm vào
+	 * database
 	 * 
 	 * @param sentence
 	 * @return
@@ -107,18 +107,22 @@ public class SentenceSegment {
 		return sentence;
 	}
 
+	/**
+	 * thay thế các từ viết tắt hoặc từ lóng.
+	 * 
+	 * @param sentence
+	 *            câu cần loại bỏ các từ viết tắt, từ lóng.
+	 * @return câu đã được thay thế các từ viết tắt, từ lóng.
+	 */
 	public String replaceAcronymWord(String sentence) {
 		for (String key : this.acronymWords.keySet()) {
 			sentence = sentence.replace(" " + key + " ", " " + this.acronymWords.get(key) + " ");
 
-			if (sentence.indexOf(" ") > 0
-					&& sentence.substring(0, sentence.indexOf(" ")).equals(key)) {
+			if (sentence.indexOf(" ") > 0 && sentence.substring(0, sentence.indexOf(" ")).equals(key)) {
 				sentence = this.acronymWords.get(key) + sentence.substring(sentence.indexOf(" "));
 			}
-			if (sentence.indexOf(" ") > 0
-					&& sentence.substring(sentence.lastIndexOf(" ") + 1).equals(key)) {
-				sentence = sentence.substring(0, sentence.lastIndexOf(" ") + 1)
-						+ this.acronymWords.get(key);
+			if (sentence.indexOf(" ") > 0 && sentence.substring(sentence.lastIndexOf(" ") + 1).equals(key)) {
+				sentence = sentence.substring(0, sentence.lastIndexOf(" ") + 1) + this.acronymWords.get(key);
 			}
 		}
 		return sentence;

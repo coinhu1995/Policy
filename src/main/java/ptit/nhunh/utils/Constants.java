@@ -10,11 +10,16 @@ public class Constants {
 	// SPACE
 	public static final String SPACE = new String(" ");
 	/**
-	 * Url to crawl comment thanhnien.vn
-	 * VD: http://thanhnien.vn/ajax/comment-657775-3-like.html
+	 * Url to crawl comment thanhnien.vn VD:
+	 * http://thanhnien.vn/ajax/comment-657775-3-like.html
 	 */
-	public static final String TNURL = new String("http://thanhnien.vn/ajax/comment-");	
-	
+	public static final String TNURL = new String("http://thanhnien.vn/ajax/comment-");
+
 	public static final String LOG_PATH = "src\\main\\resource\\log\\";
 	public static final String DATA_PATH = "src\\main\\resource\\data\\";
+	public static final String CSS = "src\\main\\webapp\\resources\\css\\";
+	public static final String VNEXPRESS_ARTICLE_PATH = "src\\main\\resource\\article\\vnexpress\\";
+	public static final String THANHNIEN_ARTICLE_PATH = "src\\main\\resource\\article\\thanhnien\\";
+	public static final String PREFIX_CONTENT = "<!DOCTYPE html [ <!ENTITY nbsp \"&#160;\"> ]><html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:f=\"http://java.sun.com/jsf/core\" xmlns:h=\"http://java.sun.com/jsf/html\" xmlns:ui=\"http://java.sun.com/jsf/facelets\"><h:head><style>.sidebar_1 {width: 100% !important;}</style></h:head><h:body>";
+	public static final String SUFFIX_CONTENT = "</h:body></html>";
 }

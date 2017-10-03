@@ -39,7 +39,7 @@ public class WordDAO implements SQLDAO {
 			this.ps = this.con.prepareStatement(sql);
 			this.ps.setNString(1, word.getWord());
 			this.ps.setInt(2, word.getDF());
-			this.ps.setNString(4, (word.isStopWord() ? "true" : "false"));
+			this.ps.setInt(4, word.isStopWord() == true ? 1 : 0);
 			this.ps.setInt(5, word.getCmt_id());
 			this.ps.executeUpdate();
 			return true;
@@ -87,7 +87,7 @@ public class WordDAO implements SQLDAO {
 			String sql = "";
 			sql = "update TblWord set isStop = ? where id = ?";
 			this.ps = this.con.prepareStatement(sql);
-			this.ps.setString(1, (word.isStopWord() ? "true" : "false"));
+			this.ps.setInt(1, word.isStopWord() == true ? 1 : 0);
 			this.ps.setInt(2, word.getId());
 			this.ps.executeUpdate();
 			return true;

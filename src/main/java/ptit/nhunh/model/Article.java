@@ -54,5 +54,17 @@ public class Article implements Serializable{
 	@Getter
 	@Setter
 	private String imageUrl;
+	@Getter
+	@Setter
+	private int dongy;
+	@Getter
+	@Setter
+	private int gopy;
+	@Getter
+	@Setter
+	private int khongdongy;
+	@Getter
+	@Setter
+	private int ykienkhac;
 	
 }

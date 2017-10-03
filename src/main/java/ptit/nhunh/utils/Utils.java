@@ -8,11 +8,7 @@ import java.io.OutputStreamWriter;
 import java.sql.SQLException;
 import java.text.Collator;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Scanner;
 
 import org.jsoup.Jsoup;
@@ -26,7 +22,7 @@ import ptit.nhunh.model.Word;
 
 public class Utils {
 	public static Document getHtml(String url) throws IOException {
-		return Jsoup.connect(url).timeout(15000).get();
+		return Jsoup.connect(url).timeout(5000).get();
 	}
 
 	public static String removeSymbol(String sentence) {
@@ -45,10 +41,10 @@ public class Utils {
 	}
 
 	/**
-	 * Chuyển một sentence đã được phân đoạn thành 1 List các từ.
+	 * Chuyển một sentence đã được phân đoạn thành 1 List các từ. 
 	 * 
 	 * @param segmentSentence
-	 * @return ArrayList<Word> tập các từ duy nhất
+	 * @return
 	 * @throws SQLException
 	 */
 	public static ArrayList<Word> sentence2Words(String segmentSentence) throws SQLException {
@@ -89,8 +85,7 @@ public class Utils {
 	}
 
 	/**
-	 * Kiểm tra String w có thuộc listWord hay không nếu có thì return lại vị trí từ
-	 * chứa String đấy.
+	 * Kiểm tra String w có thuộc listWord hay không nếu có thì return lại vị trí từ chứa String đấy.
 	 * 
 	 * @param listWord
 	 * @param w
@@ -264,8 +259,8 @@ public class Utils {
 	}
 
 	public static void writeSvmModel(svm_model model) throws IOException {
-		BufferedWriter bw = new BufferedWriter(
-				new OutputStreamWriter(new FileOutputStream(new File("src\\main\\resource\\svmmodel\\model.txt"))));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
+				new FileOutputStream(new File("src\\main\\resource\\svmmodel\\model.txt"))));
 		bw.write(new Gson().toJson(model));
 		bw.close();
 	}
@@ -279,38 +274,16 @@ public class Utils {
 		scan.close();
 		return new Gson().fromJson(json, svm_model.class);
 	}
-
-	public static String getCurrentDateTime() {
+	
+	public static String getCurrentTime(){
 		long currentTimeMillis = System.currentTimeMillis();
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		SimpleDateFormat sdf = new SimpleDateFormat("HH-mm");
 		return sdf.format(new java.util.Date(currentTimeMillis));
 	}
-
-	public boolean compare(String s1, String s2) {
-		Collator collator = Collator.getInstance();
-		collator.setStrength(Collator.TERTIARY);
-
-		return collator.equals(s1, s2);
-	}
-
-	public static String getCurrentDate() {
-		return LocalDate.now().toString();
-	}
-
-	public static String getCurrentTime() {
-		return LocalTime.now().toString().substring(0, 8).replace(":", "-");
-	}
-
-	public static void sort(ArrayList<Word> listWord) {
-		Collections.sort(listWord, new Comparator<Word>() {
-			@Override
-			public int compare(Word o1, Word o2) {
-				if (o1.getId() > o2.getId())
-					return 1;
-				if (o1.getId() < o2.getId())
-					return -1;
-				return 0;
-			}
-		});
+	
+	public static String getCurrentDate(){
+		long currentTimeMillis = System.currentTimeMillis();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		return sdf.format(new java.util.Date(currentTimeMillis));
 	}
 }
