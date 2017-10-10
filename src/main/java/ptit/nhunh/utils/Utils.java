@@ -43,7 +43,7 @@ public class Utils {
 	}
 
 	/**
-	 * Chuyển một sentence đã được phân đoạn thành 1 List các từ. 
+	 * Chuyển một sentence đã được phân đoạn thành 1 List các từ.
 	 * 
 	 * @param segmentSentence
 	 * @return
@@ -87,7 +87,8 @@ public class Utils {
 	}
 
 	/**
-	 * Kiểm tra String w có thuộc listWord hay không nếu có thì return lại vị trí từ chứa String đấy.
+	 * Kiểm tra String w có thuộc listWord hay không nếu có thì return lại vị trí từ
+	 * chứa String đấy.
 	 * 
 	 * @param listWord
 	 * @param w
@@ -261,8 +262,8 @@ public class Utils {
 	}
 
 	public static void writeSvmModel(svm_model model) throws IOException {
-		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
-				new FileOutputStream(new File("src\\main\\resource\\svmmodel\\model.txt"))));
+		BufferedWriter bw = new BufferedWriter(
+				new OutputStreamWriter(new FileOutputStream(new File("src\\main\\resource\\svmmodel\\model.txt"))));
 		bw.write(new Gson().toJson(model));
 		bw.close();
 	}
@@ -276,26 +277,36 @@ public class Utils {
 		scan.close();
 		return new Gson().fromJson(json, svm_model.class);
 	}
-	
-	public static String getCurrentTime(){
+
+	public static String getCurrentTime() {
 		long currentTimeMillis = System.currentTimeMillis();
 		SimpleDateFormat sdf = new SimpleDateFormat("HH-mm");
 		return sdf.format(new java.util.Date(currentTimeMillis));
 	}
-	
-	public static String getCurrentDate(){
+
+	public static String getCurrentDate() {
 		long currentTimeMillis = System.currentTimeMillis();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		return sdf.format(new java.util.Date(currentTimeMillis));
 	}
-	
-	public static ArrayList<Comment> object2Word(List<Object> objs) {
-		ArrayList<Comment> listWord = new ArrayList<>();
-		
-		for(Object obj : objs) {
-			listWord.add((Comment) obj );
+
+	public static ArrayList<Comment> object2Comment(List<Object> objs) {
+		ArrayList<Comment> listComment = new ArrayList<>();
+
+		for (Object obj : objs) {
+			listComment.add((Comment) obj);
 		}
-		
-		return listWord;
+
+		return listComment;
+	}
+
+	public static ArrayList<Article> object2Article(List<Object> objs) {
+		ArrayList<Article> listArticle = new ArrayList<>();
+
+		for (Object obj : objs) {
+			listArticle.add((Article) obj);
+		}
+
+		return listArticle;
 	}
 }

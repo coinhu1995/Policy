@@ -29,7 +29,7 @@ public class ReadResult {
 			String id = line.substring(0, 6).trim();
 			String label = line.substring(6).trim();
 
-			System.out.println(this.articleDao.update("update TblComment set label = " + label + "where id = " + id));
+			System.out.println(this.articleDao.update("update TblComment set label2 = " + label + "where id = " + id));
 		}
 	}
 }
