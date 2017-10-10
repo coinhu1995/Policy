@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.text.Collator;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import org.jsoup.Jsoup;
@@ -18,6 +19,7 @@ import com.google.gson.Gson;
 
 import ca.uwo.csd.ai.nlp.libsvm.svm_model;
 import ptit.nhunh.model.Article;
+import ptit.nhunh.model.Comment;
 import ptit.nhunh.model.Word;
 
 public class Utils {
@@ -285,5 +287,15 @@ public class Utils {
 		long currentTimeMillis = System.currentTimeMillis();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		return sdf.format(new java.util.Date(currentTimeMillis));
+	}
+	
+	public static ArrayList<Comment> object2Word(List<Object> objs) {
+		ArrayList<Comment> listWord = new ArrayList<>();
+		
+		for(Object obj : objs) {
+			listWord.add((Comment) obj );
+		}
+		
+		return listWord;
 	}
 }

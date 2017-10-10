@@ -62,14 +62,17 @@ public class PrepareData {
 
 		this.listTestCmt = new ArrayList<>();
 		this.listTrainCmt = new ArrayList<>();
-//		this.listTrainCmt = this.cmtTestDao
-//				.getData("select * from TblCommentTest where id <= " + Context.TRAINSIZE + " order by id");
-//		this.listTestCmt = this.cmtTestDao.getData("select * from TblCommentTest where id <= "
-//				+ (Context.TESTSIZE + Context.TRAINSIZE) + " and id > " + Context.TRAINSIZE + " order by id");
+		// this.listTrainCmt = this.cmtTestDao
+		// .getData("select * from TblCommentTest where id <= " + Context.TRAINSIZE + "
+		// order by id");
+		// this.listTestCmt = this.cmtTestDao.getData("select * from TblCommentTest
+		// where id <= "
+		// + (Context.TESTSIZE + Context.TRAINSIZE) + " and id > " + Context.TRAINSIZE +
+		// " order by id");
 		// this.listTestCmt = this.cmtDao.getData("select top 100 * from TblComment");
-		
+
 		this.readFromDB();
-		
+
 		this.listWordForTrain = new ArrayList<>();
 
 		this.openFile();
@@ -227,17 +230,17 @@ public class PrepareData {
 								+ word.getTFIDF(totalDocument, 0) + " ";
 						tfidfLine += word.getId() + ":"
 								+ String.valueOf(word.getTFIDF(totalDocument, 0)).substring(0, 3) + " ";
-//						bw.write(String.valueOf(word.getTFIDF(totalDocument, 0)).substring(0, 3));
+						// bw.write(String.valueOf(word.getTFIDF(totalDocument, 0)).substring(0, 3));
 					} else {
-//						bw.write("0");
+						// bw.write("0");
 					}
 				} else {
-//					bw.write("0");
+					// bw.write("0");
 				}
-//				bw.write(",");
+				// bw.write(",");
 			}
-//			bw.write(c.getLabel() + "");
-//			bw.newLine();
+			// bw.write(c.getLabel() + "");
+			// bw.newLine();
 
 			if (detailLine.length() > 2) {
 				detailWriter.write(detailLine);
@@ -246,6 +249,8 @@ public class PrepareData {
 				writer.write(tfidfLine);
 				writer.newLine();
 			}
+
+			System.out.println(c.getId() + " done");
 		}
 		bw.close();
 		detailWriter.close();
@@ -387,28 +392,8 @@ public class PrepareData {
 	}
 
 	public void readFromDB() throws SQLException {
-		ArrayList<Object> listCmt = this.cmtDao.getData("select * from TblComment where id < 5000 and label2 = 1");
-		
-		for(int i = 0; i < listCmt.size(); i++) {
-			if(i < 2000) {
-				this.listTrainCmt.add(listCmt.get(i));
-			}else {
-				this.listTestCmt.add(listCmt.get(i));
-			}
-			System.out.println(i);
-		}
-		
-		listCmt = this.cmtDao.getData("select * from TblComment where id < 5000 and label2 = -1");
-		
-		for(int i = 0; i < listCmt.size(); i++) {
-			if(i < 2000) {
-				this.listTrainCmt.add(listCmt.get(i));
-			}else {
-				this.listTestCmt.add(listCmt.get(i));
-			}
-			System.out.println(i);
-		}
+		this.listTrainCmt = this.cmtDao.getData("select * from TblComment where id < 5350 order by id");
 
-
+		this.listTestCmt = this.cmtDao.getData("select * from TblComment where id >= 5350 order by id");
 	}
 }
