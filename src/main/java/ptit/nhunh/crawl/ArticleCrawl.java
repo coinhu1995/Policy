@@ -50,14 +50,19 @@ public class ArticleCrawl {
 //
 //						Elements imgs = divs.get(0).getElementsByTag("img");
 //						for (int i = 0; i < imgs.size(); i++) {
+//							Element e = imgs.get(i);
 //							content = content.replace(imgs.get(i).toString(), imgs.get(i).toString() + "</img>");
 //						}
 //						Elements brs = divs.get(0).getElementsByTag("br");
-//						for (int i = 0; i < brs.size(); i++) {
-//							if(brs.get(i).toString().indexOf("</br>") < 0) {
-//								content = content.replace(brs.get(i).toString(), brs.get(i).toString() + "</br>");
-//							}
-//						}
+//						content = content.replace("</br>", "");
+//						content = content.replace("<br>", "<br></br>");
+//						// for (int i = 0; i < brs.size(); i++) {
+//						// if (brs.get(i).toString().indexOf("</br>") < 0) {
+//						// content = content.replace(brs.get(i).toString(), brs.get(i).toString() +
+//						// "</br>");
+//						// break;
+//						// }
+//						// }
 //						if (html.getElementsByClass("start").size() > 0) {
 //							category = html.getElementsByClass("start").get(0).text().trim();
 //							url.setCategory(category);
@@ -78,13 +83,14 @@ public class ArticleCrawl {
 //
 //						File f = new File(
 //								Constants.VNEXPRESS_ARTICLE_PATH + url.getUrl_id() + "\\" + url.getUrl_id() + ".xhtml");
+//						f.createNewFile();
 //						BufferedWriter bw2 = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(f)));
-//						
+//
 //						content = content.replace("href=\"javascript:;\"", "");
 //						content = content.replace("data-href", "href");
-//						
+//
 //						bw2.write(Constants.PREFIX_CONTENT);
-//						bw2.write(content.replace("<br>", "<br></br>"));
+//						bw2.write(content);
 //						bw2.write(Constants.SUFFIX_CONTENT);
 //
 //						url.setContentFilePath(f.getPath().replace("src\\main\\webapp\\", ""));
@@ -100,6 +106,7 @@ public class ArticleCrawl {
 //					}
 //					System.out.println(url.getId() + " done!");
 //				} catch (IOException e) {
+//					e.printStackTrace();
 //					this.bw.write(String.format("%-10s", url.getId()) + "\t" + e.getMessage() + "\t" + url.getUrl());
 //				}
 			} else {
@@ -115,19 +122,20 @@ public class ArticleCrawl {
 							content = content.replace(imgs.get(i).toString(), imgs.get(i).toString() + "</img>");
 						}
 						Elements brs = divs.get(0).getElementsByTag("br");
-						if(url.getUrl_id().equals("tn379085")) {
-							System.out.println("asd");
-						}
+						content = content.replace("</br>", "");
 						for (int i = 0; i < brs.size(); i++) {
-							if(brs.get(i).toString().indexOf("</br>") < 0) {
+							if (brs.get(i).attributes().size() > 0) {
 								content = content.replace(brs.get(i).toString(), brs.get(i).toString() + "</br>");
+								break;
 							}
 						}
+						content = content.replace("<br>", "<br></br>");
 						File f = new File(Constants.THANHNIEN_ARTICLE_PATH + url.getUrl_id() + ".xhtml");
+						f.createNewFile();
 						BufferedWriter bw2 = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(f)));
-						
+
 						content = content.replace("<a href=\"/", "<a href=\"/http://thanhnien.vn/");
-						
+
 						bw2.write(Constants.PREFIX_CONTENT);
 						bw2.write(content);
 						bw2.write(Constants.SUFFIX_CONTENT);
@@ -143,6 +151,7 @@ public class ArticleCrawl {
 					}
 					System.out.println(url.getId() + " done!");
 				} catch (IOException e) {
+					e.printStackTrace();
 					this.bw.write(String.format("%-10s", url.getId()) + "\t" + e.getMessage() + "\t" + url.getUrl());
 				}
 			}

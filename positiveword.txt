@@ -1,0 +1,5 @@
+ủng_hộ
+hoan_hô
+đồng_ý
+không_đồng_ý
+phản_đối

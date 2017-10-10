@@ -22,7 +22,7 @@ import ptit.nhunh.model.Word;
 
 public class Utils {
 	public static Document getHtml(String url) throws IOException {
-		return Jsoup.connect(url).timeout(5000).get();
+		return Jsoup.connect(url).ignoreContentType(true).timeout(15000).get();
 	}
 
 	public static String removeSymbol(String sentence) {

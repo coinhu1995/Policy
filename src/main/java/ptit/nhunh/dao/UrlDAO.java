@@ -103,7 +103,7 @@ public class UrlDAO implements SQLDAO {
 			String sql = "";
 			switch (field) {
 			case UPDATE_TITLES_AND_TAGS:
-				sql = "update TblArticle set titles = ?, tag = ? where id = ?";
+				sql = "update TblArticle set title = ?, tag = ? where id = ?";
 				this.ps = this.con.prepareStatement(sql);
 				this.ps.setNString(1, url.getTitle());
 				this.ps.setNString(2, url.getTag());

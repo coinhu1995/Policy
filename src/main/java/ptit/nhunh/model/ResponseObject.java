@@ -8,7 +8,7 @@ public class ResponseObject {
 	private String errorDescription;
 
 	public String getError() {
-		return error;
+		return this.error;
 	}
 
 	public void setError(String error) {
@@ -16,7 +16,7 @@ public class ResponseObject {
 	}
 
 	public Data getData() {
-		return data;
+		return this.data;
 	}
 
 	public void setData(Data data) {
@@ -24,7 +24,7 @@ public class ResponseObject {
 	}
 
 	public String getErrorDescription() {
-		return errorDescription;
+		return this.errorDescription;
 	}
 
 	public void setErrorDescription(String errorDescription) {
@@ -33,6 +33,6 @@ public class ResponseObject {
 
 	@Override
 	public String toString() {
-		return "ClassPojo [error = " + error + ", data = " + data + ", errorDescription = " + errorDescription + "]";
+		return "ClassPojo [error = " + this.error + ", data = " + this.data + ", errorDescription = " + this.errorDescription + "]";
 	}
 }

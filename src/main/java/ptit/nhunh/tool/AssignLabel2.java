@@ -102,6 +102,8 @@ public class AssignLabel2 extends javax.swing.JFrame {
 		});
 
 		this.load();
+		this.getRootPane().setDefaultButton(this.reload);
+		this.reload.requestFocus();
 	}
 
 	public static void main(String[] args) throws SQLException, IOException {

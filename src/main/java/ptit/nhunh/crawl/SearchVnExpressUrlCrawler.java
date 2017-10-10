@@ -21,7 +21,8 @@ import ptit.nhunh.utils.Utils;
  *
  */
 public class SearchVnExpressUrlCrawler {
-	private String sourceUrl = "http://timkiem.vnexpress.net/?q=ch%C3%ADnh%20s%C3%A1ch&media_type=all&fromdate=0&todate=0&latest=&cate_code=&search_f=title,tag_list&date_format=all&page=";
+	private String sourceUrl = "http://timkiem.vnexpress.net/?q=ch%C3%ADnh%20s%C3%A1ch&"
+			+ "media_type=all&fromdate=0&todate=0&latest=&cate_code=&search_f=title,tag_list&date_format=all&page=";
 	private SQLDAO urlDAO;
 	private ArrayList<Object> urls = new ArrayList<>();
 
@@ -34,9 +35,9 @@ public class SearchVnExpressUrlCrawler {
 
 		this.urls = this.urlDAO.getAll();
 
-//		this.dbc.updateData("delete from TblUrl");
-//		this.dbc.updateData("DBCC CHECKIDENT ('TblUrl', RESEED, 0)");
-		for (int i = 1; i <= 37; i++) {
+		// this.dbc.updateData("delete from TblUrl");
+		// this.dbc.updateData("DBCC CHECKIDENT ('TblUrl', RESEED, 0)");
+		for (int i = 1; i <= 41; i++) {
 			System.out.println(i);
 			String url = this.sourceUrl + i;
 			Document doc = null;

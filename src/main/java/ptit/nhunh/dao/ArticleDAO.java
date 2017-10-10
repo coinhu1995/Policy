@@ -98,7 +98,7 @@ public class ArticleDAO implements SQLDAO {
 			String sql = "";
 			switch (field) {
 			case UPDATE_TITLES_AND_TAGS:
-				sql = "update TblArticle set titles = ?, tag = ? where id = ?";
+				sql = "update TblArticle set title = ?, tag = ? where id = ?";
 				this.ps = this.con.prepareStatement(sql);
 				this.ps.setNString(1, url.getTitle());
 				this.ps.setNString(2, url.getTag());
@@ -161,7 +161,7 @@ public class ArticleDAO implements SQLDAO {
 	@Override
 	public boolean update(Object obj) throws SQLException {
 		Article url = (Article) obj;
-		String sql = "update TblArticle set url = ?, url_id = ?, title = ?, needed = ?, source = ?, totalCmt = ?, totalParCmt = ?, tag = ?, category = ?, creationTime = ?, contentFilePath = ?, imageUrl = ? where id = ?";
+		String sql = "update TblArticle set url = ?, url_id = ?, title = ?, needed = ?, source = ?, totalCmt = ?, totalParCmt = ?, tag = ?, category = ?, creationTime = ?, contentFilePath = ?, imageUrl = ?, dongy = ?, khongdongy = ?, gopy = ?, ykienkhac = ? where id = ?";
 		this.ps = this.con.prepareStatement(sql);
 		this.ps.setNString(1, url.getUrl());
 		this.ps.setNString(2, url.getUrl_id());
@@ -175,7 +175,11 @@ public class ArticleDAO implements SQLDAO {
 		this.ps.setDate(10, url.getCreationTime());
 		this.ps.setNString(11, url.getContentFilePath());
 		this.ps.setNString(12, url.getImageUrl());
-		this.ps.setInt(13, url.getId());
+		this.ps.setInt(13, url.getDongy());
+		this.ps.setInt(14, url.getKhongdongy());
+		this.ps.setInt(15, url.getGopy());
+		this.ps.setInt(16, url.getYkienkhac());
+		this.ps.setInt(17, url.getId());
 		this.ps.executeUpdate();
 		return true;
 	}

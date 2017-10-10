@@ -3,13 +3,13 @@ package ptit.nhunh.crawl;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import ptit.nhunh.dao.ArticleDAO;
 import ptit.nhunh.dao.SQLDAO;
 import ptit.nhunh.dao.SQLDAOFactory;
-import ptit.nhunh.dao.ArticleDAO;
 import ptit.nhunh.model.Article;
 
 public class checkRightUrl {
-	private static String[] title = { "chính sách", "quy định", "quyết định" };
+	private static String[] title = { "chính sách", "quy định", "quyết định", "phản đối" };
 	private static String[] tags = { "chính sách", "chỉ đạo", "ra lệnh", "chiến dịch",
 			"đòi vỉa hè", "bộ nội vụ", "quyết định", "quy định", "đòi lại vỉa hè" };
 	

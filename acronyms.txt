@@ -10,3 +10,4 @@ ng:người
 ntn:như_thế_nào
 wa:quá
 zậy:vậy
+t:tôi
