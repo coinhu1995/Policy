@@ -65,7 +65,8 @@ public class ArticleDAO implements SQLDAO {
 		while (rs.next()) {
 			Article url = new Article(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4), rs.getInt(5),
 					rs.getNString(6), rs.getInt(7), rs.getInt(8), rs.getNString(9), rs.getNString(10), rs.getDate(11),
-					rs.getNString(12), rs.getNString(13), rs.getInt(14), rs.getInt(15), rs.getInt(16), rs.getInt(17));
+					rs.getNString(12), rs.getNString(13), rs.getInt(14), rs.getInt(15), rs.getInt(16), rs.getInt(17),
+					rs.getInt(18));
 			ac.add(url);
 		}
 		return ac;
@@ -79,7 +80,8 @@ public class ArticleDAO implements SQLDAO {
 		while (rs.next()) {
 			Article url = new Article(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4), rs.getInt(5),
 					rs.getNString(6), rs.getInt(7), rs.getInt(8), rs.getNString(9), rs.getNString(10), rs.getDate(11),
-					rs.getNString(12), rs.getNString(13), rs.getInt(14), rs.getInt(15), rs.getInt(16), rs.getInt(17));
+					rs.getNString(12), rs.getNString(13), rs.getInt(14), rs.getInt(15), rs.getInt(16), rs.getInt(17),
+					rs.getInt(18));
 			ac.add(url);
 		}
 		return ac;
@@ -141,7 +143,8 @@ public class ArticleDAO implements SQLDAO {
 		rs.next();
 		Article url = new Article(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4), rs.getInt(5),
 				rs.getNString(6), rs.getInt(7), rs.getInt(8), rs.getNString(9), rs.getNString(10), rs.getDate(11),
-				rs.getNString(12), rs.getNString(13), rs.getInt(14), rs.getInt(15), rs.getInt(16), rs.getInt(17));
+				rs.getNString(12), rs.getNString(13), rs.getInt(14), rs.getInt(15), rs.getInt(16), rs.getInt(17),
+				rs.getInt(18));
 		return url;
 	}
 
@@ -154,7 +157,8 @@ public class ArticleDAO implements SQLDAO {
 		rs.next();
 		Article url = new Article(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4), rs.getInt(5),
 				rs.getNString(6), rs.getInt(7), rs.getInt(8), rs.getNString(9), rs.getNString(10), rs.getDate(11),
-				rs.getNString(12), rs.getNString(13), rs.getInt(14), rs.getInt(15), rs.getInt(16), rs.getInt(17));
+				rs.getNString(12), rs.getNString(13), rs.getInt(14), rs.getInt(15), rs.getInt(16), rs.getInt(17),
+				rs.getInt(18));
 		return url;
 	}
 

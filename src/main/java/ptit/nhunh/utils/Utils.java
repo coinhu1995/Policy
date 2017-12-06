@@ -268,7 +268,7 @@ public class Utils {
 		bw.close();
 	}
 
-	public static svm_model readSvmModel(svm_model model) throws IOException {
+	public static svm_model readSvmModel() throws IOException {
 		Scanner scan = new Scanner(new File("src\\main\\resource\\svmmodel\\model.txt"));
 		String json = "";
 		while (scan.hasNext()) {

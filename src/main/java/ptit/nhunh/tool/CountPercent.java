@@ -12,11 +12,11 @@ import ptit.nhunh.utils.Utils;
 public class CountPercent {
 	private SQLDAO articleDao = SQLDAOFactory.getDAO(SQLDAOFactory.ARTICLE);
 	private SQLDAO cmtDao = SQLDAOFactory.getDAO(SQLDAOFactory.COMMENT);
-	
+
 	public static void main(String[] args) throws SQLException {
 		new CountPercent().execute();
 	}
-	
+
 	private void execute() throws SQLException {
 		List<Article> listArticle = Utils.object2Article(this.articleDao.getAll());
 		List<Comment> listCmt = Utils.object2Comment(this.cmtDao.getAll());
@@ -33,10 +33,19 @@ public class CountPercent {
 					}
 				}
 			}
-			int dongY = positiveLabel / (positiveLabel + negativeLabel) * 100;
-			listArticle.get(i).setDongy(dongY);
-			listArticle.get(i).setYkienkhac(100 - dongY);
+			int dongY = 0;
+			try {
+				dongY = (int) (positiveLabel / (float) (positiveLabel + negativeLabel) * 100);
+				listArticle.get(i).setDongy(dongY);
+				listArticle.get(i).setYkienkhac(100 - dongY);
+			} catch (Exception e) {
+				listArticle.get(i).setDongy(0);
+				listArticle.get(i).setYkienkhac(0);
+				System.out.println(listArticle.get(i).getId() + " " + e.getMessage());
+			}
+			
 			this.articleDao.update(listArticle.get(i));
+			System.out.println(i + " done");
 		}
 	}
 }

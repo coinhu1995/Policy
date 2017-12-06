@@ -66,5 +66,7 @@ public class Article implements Serializable{
 	@Getter
 	@Setter
 	private int ykienkhac;
-	
+	@Getter
+	@Setter
+	private int isCrawled;
 }

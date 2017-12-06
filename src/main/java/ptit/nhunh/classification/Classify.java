@@ -7,11 +7,8 @@ import java.io.IOException;
 import ca.uwo.csd.ai.nlp.kernel.KernelManager;
 import ca.uwo.csd.ai.nlp.kernel.LinearKernel;
 import ca.uwo.csd.ai.nlp.libsvm.svm_model;
-import ca.uwo.csd.ai.nlp.libsvm.svm_parameter;
 import ca.uwo.csd.ai.nlp.libsvm.ex.Instance;
 import ca.uwo.csd.ai.nlp.libsvm.ex.SVMPredictor;
-import ca.uwo.csd.ai.nlp.libsvm.ex.SVMTrainer;
-import ptit.nhunh.utils.Utils;
 import utils.DataFileReader;
 
 public class Classify {
@@ -22,12 +19,16 @@ public class Classify {
 
 	private void LinearKernel(String trainFile, String testFile, String outFile)
 			throws IOException, ClassNotFoundException {
-		Instance[] trainingInstances = DataFileReader.readDataFile(trainFile);
-		svm_parameter param = new svm_parameter();
+//		Instance[] trainingInstances = DataFileReader.readDataFile(trainFile);
+//		svm_parameter param = new svm_parameter();
 		KernelManager.setCustomKernel(new LinearKernel());
-		System.out.println("Training started...");
-		svm_model model = SVMTrainer.train(trainingInstances, param);
-		Utils.writeSvmModel(model);
+//		System.out.println("Training started...");
+//		svm_model model = SVMTrainer.train(trainingInstances, param);
+//		SVMTrainer.saveModel(model, "model.txt");
+		svm_model model = SVMPredictor.loadModel("model.txt");
+//		Utils.writeSvmModel(model);
+		// svm_model model = Utils.readSvmModel();
+
 		System.out.println("Training completed.");
 		Instance[] testingInstances = DataFileReader.readDataFile(testFile);
 		double[] predictions = SVMPredictor.predict(testingInstances, model, true);
