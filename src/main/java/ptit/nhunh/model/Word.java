@@ -2,10 +2,14 @@ package ptit.nhunh.model;
 
 import java.io.Serializable;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ptit.nhunh.context.Context;
 
+@AllArgsConstructor
+@NoArgsConstructor
 public class Word implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -19,10 +23,6 @@ public class Word implements Serializable {
 
 	@Getter
 	@Setter
-	private float frequency;
-
-	@Getter
-	@Setter
 	private int timesOccur;
 
 	@Getter
@@ -32,23 +32,9 @@ public class Word implements Serializable {
 	@Getter
 	@Setter
 	private boolean isStopWord;
-	
-	@Getter
-	@Setter
-	private int cmt_id;
 
-	public float getTF(int sumWord) {
-		if (Context.TYPEOFTF == 1) {
-			return 1;
-		} else if (Context.TYPEOFTF == 2) {
-			return this.timesOccur;
-		} else if (Context.TYPEOFTF == 3) {
-			return (float) (1 + Math.log10(this.timesOccur));
-		} else if (Context.TYPEOFTF == 4) {
-			return this.timesOccur / (float)sumWord;
-		} else {
-			return 0;
-		}
+	public float getTF() {
+		return this.timesOccur;
 	}
 
 	/**
@@ -75,23 +61,8 @@ public class Word implements Serializable {
 	 *            so luong ban ghi trong tap.
 	 * @return
 	 */
-	public float getTFIDF(int N, int sumWord) {
-		return this.getTF(sumWord) * this.getIDF(N);
+	public float getTFIDF(int N) {
+		return this.getTF() * this.getIDF(N);
 	}
 
-	public Word(int id, String word, float frequency, int timesOccur, int dF, boolean isStop,
-			int cmt_id) {
-		super();
-		this.id = id;
-		this.word = word;
-		this.frequency = frequency;
-		this.timesOccur = timesOccur;
-		this.DF = dF;
-		this.isStopWord = isStop;
-		this.cmt_id = cmt_id;
-	}
-
-	public Word() {
-		super();
-	}
 }

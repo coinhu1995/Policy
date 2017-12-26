@@ -37,7 +37,7 @@ public class CommentDAO implements SQLDAO {
 	@Override
 	public boolean insert(Object obj) throws SQLException {
 		Comment c = (Comment) obj;
-		String sql = "insert into TblComment values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
+		String sql = "insert into TblComment values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
 		this.ps = this.con.prepareStatement(sql);
 		this.ps.setNString(1, c.getCmt_id());
 		this.ps.setNString(2, c.getContent());
@@ -55,6 +55,7 @@ public class CommentDAO implements SQLDAO {
 		this.ps.setNString(14, c.getParent_id());
 		this.ps.setInt(15, c.getLabel());
 		this.ps.setInt(16, c.getLabel2());
+		this.ps.setInt(17, c.getArticleid());
 		this.ps.executeUpdate();
 		return true;
 	}
@@ -65,11 +66,10 @@ public class CommentDAO implements SQLDAO {
 		this.ps = this.con.prepareStatement("select * from TblComment order by id");
 		ResultSet rs = this.ps.executeQuery();
 		while (rs.next()) {
-			Comment c = new Comment(rs.getInt(1), rs.getNString(2), rs.getNString(3),
-					rs.getNString(4), rs.getNString(5), rs.getNString(6), rs.getNString(7),
-					rs.getNString(8), rs.getNString(9), rs.getNString(10), rs.getNString(11),
-					rs.getInt(12), rs.getInt(13), rs.getNString(14), rs.getNString(15),
-					rs.getInt(16), rs.getInt(17));
+			Comment c = new Comment(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4),
+					rs.getNString(5), rs.getNString(6), rs.getNString(7), rs.getNString(8), rs.getNString(9),
+					rs.getNString(10), rs.getNString(11), rs.getInt(12), rs.getInt(13), rs.getNString(14),
+					rs.getNString(15), rs.getInt(16), rs.getInt(17), rs.getInt(18));
 			ac.add(c);
 		}
 		return ac;
@@ -81,18 +81,17 @@ public class CommentDAO implements SQLDAO {
 		this.ps = this.con.prepareStatement(sql);
 		ResultSet rs = this.ps.executeQuery();
 		while (rs.next()) {
-			Comment c = new Comment(rs.getInt(1), rs.getNString(2), rs.getNString(3),
-					rs.getNString(4), rs.getNString(5), rs.getNString(6), rs.getNString(7),
-					rs.getNString(8), rs.getNString(9), rs.getNString(10), rs.getNString(11),
-					rs.getInt(12), rs.getInt(13), rs.getNString(14), rs.getNString(15),
-					rs.getInt(16), rs.getInt(17));
+			Comment c = new Comment(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4),
+					rs.getNString(5), rs.getNString(6), rs.getNString(7), rs.getNString(8), rs.getNString(9),
+					rs.getNString(10), rs.getNString(11), rs.getInt(12), rs.getInt(13), rs.getNString(14),
+					rs.getNString(15), rs.getInt(16), rs.getInt(17), rs.getInt(18));
 			ac.add(c);
 		}
 		return ac;
 	}
 
 	/**
-	 *  field: <br>
+	 * field: <br>
 	 * <strong>UPDATE_COMMENT_SEGMENT<strong> for update field cmt_segment
 	 * <strong>UPDATE_COMMENT_LABEL<strong> for update field label
 	 * <strong>UPDATE_COMMENT_LABEL_2<strong> for update field label2
@@ -127,6 +126,7 @@ public class CommentDAO implements SQLDAO {
 			}
 			return true;
 		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 			return false;
 		}
 	}
@@ -137,6 +137,7 @@ public class CommentDAO implements SQLDAO {
 			this.ps = this.con.prepareStatement(sql);
 			this.ps.executeUpdate();
 		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 			return false;
 		}
 		return true;
@@ -148,23 +149,23 @@ public class CommentDAO implements SQLDAO {
 		this.ps.setString(1, id);
 		ResultSet rs = this.ps.executeQuery();
 		rs.next();
-		Comment c = new Comment(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4),
-				rs.getNString(5), rs.getNString(6), rs.getNString(7), rs.getNString(8),
-				rs.getNString(9), rs.getNString(10), rs.getNString(11), rs.getInt(12),
-				rs.getInt(13), rs.getNString(14), rs.getNString(15), rs.getInt(16), rs.getInt(17));
+		Comment c = new Comment(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4), rs.getNString(5),
+				rs.getNString(6), rs.getNString(7), rs.getNString(8), rs.getNString(9), rs.getNString(10),
+				rs.getNString(11), rs.getInt(12), rs.getInt(13), rs.getNString(14), rs.getNString(15), rs.getInt(16),
+				rs.getInt(17), rs.getInt(18));
 		return c;
 	}
-	
+
 	@Override
 	public Object findById(String id) throws SQLException {
 		this.ps = this.con.prepareStatement("select * from TblComment where id = ?");
 		this.ps.setString(1, id);
 		ResultSet rs = this.ps.executeQuery();
 		rs.next();
-		Comment c = new Comment(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4),
-				rs.getNString(5), rs.getNString(6), rs.getNString(7), rs.getNString(8),
-				rs.getNString(9), rs.getNString(10), rs.getNString(11), rs.getInt(12),
-				rs.getInt(13), rs.getNString(14), rs.getNString(15), rs.getInt(16), rs.getInt(17));
+		Comment c = new Comment(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4), rs.getNString(5),
+				rs.getNString(6), rs.getNString(7), rs.getNString(8), rs.getNString(9), rs.getNString(10),
+				rs.getNString(11), rs.getInt(12), rs.getInt(13), rs.getNString(14), rs.getNString(15), rs.getInt(16),
+				rs.getInt(17), rs.getInt(18));
 		return c;
 	}
 

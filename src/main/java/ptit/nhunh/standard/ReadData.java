@@ -28,11 +28,11 @@ public class ReadData {
 		this.cmtTestDao
 				.update("delete from TblCommentTest DBCC CHECKIDENT ('TblCommentTest', RESEED, 0)");
 
-		Scanner scan1 = new Scanner(new File("src\\main\\resource\\data\\100\\1_150.txt"));
-		Scanner scan2 = new Scanner(new File("src\\main\\resource\\data\\100\\2_150.txt"));
+		Scanner scan1 = new Scanner(new File("src\\main\\resources\\data\\100\\1_150.txt"));
+		Scanner scan2 = new Scanner(new File("src\\main\\resources\\data\\100\\2_150.txt"));
 		
-//		Scanner scan1 = new Scanner(new File("src\\main\\resource\\data\\100\\1_100.txt"));
-//		Scanner scan2 = new Scanner(new File("src\\main\\resource\\data\\100\\2_100.txt"));
+//		Scanner scan1 = new Scanner(new File("src\\main\\resources\\data\\100\\1_100.txt"));
+//		Scanner scan2 = new Scanner(new File("src\\main\\resources\\data\\100\\2_100.txt"));
 		
 		ArrayList<Comment> listCmt1 = new ArrayList<>();
 		ArrayList<Comment> listCmt2 = new ArrayList<>();

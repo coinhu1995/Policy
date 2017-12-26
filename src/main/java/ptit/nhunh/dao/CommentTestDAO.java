@@ -65,11 +65,10 @@ public class CommentTestDAO implements SQLDAO {
 		this.ps = this.con.prepareStatement("select * from TblCommentTest order by id");
 		ResultSet rs = this.ps.executeQuery();
 		while (rs.next()) {
-			Comment c = new Comment(rs.getInt(1), rs.getNString(2), rs.getNString(3),
-					rs.getNString(4), rs.getNString(5), rs.getNString(6), rs.getNString(7),
-					rs.getNString(8), rs.getNString(9), rs.getNString(10), rs.getNString(11),
-					rs.getInt(12), rs.getInt(13), rs.getNString(14), rs.getNString(15),
-					rs.getInt(16), rs.getInt(17));
+			Comment c = new Comment(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4),
+					rs.getNString(5), rs.getNString(6), rs.getNString(7), rs.getNString(8), rs.getNString(9),
+					rs.getNString(10), rs.getNString(11), rs.getInt(12), rs.getInt(13), rs.getNString(14),
+					rs.getNString(15), rs.getInt(16), rs.getInt(17), rs.getInt(18));
 			ac.add(c);
 		}
 		return ac;
@@ -81,18 +80,17 @@ public class CommentTestDAO implements SQLDAO {
 		this.ps = this.con.prepareStatement(sql);
 		ResultSet rs = this.ps.executeQuery();
 		while (rs.next()) {
-			Comment c = new Comment(rs.getInt(1), rs.getNString(2), rs.getNString(3),
-					rs.getNString(4), rs.getNString(5), rs.getNString(6), rs.getNString(7),
-					rs.getNString(8), rs.getNString(9), rs.getNString(10), rs.getNString(11),
-					rs.getInt(12), rs.getInt(13), rs.getNString(14), rs.getNString(15),
-					rs.getInt(16), rs.getInt(17));
+			Comment c = new Comment(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4),
+					rs.getNString(5), rs.getNString(6), rs.getNString(7), rs.getNString(8), rs.getNString(9),
+					rs.getNString(10), rs.getNString(11), rs.getInt(12), rs.getInt(13), rs.getNString(14),
+					rs.getNString(15), rs.getInt(16), rs.getInt(17), rs.getInt(18));
 			ac.add(c);
 		}
 		return ac;
 	}
 
 	/**
-	 *  field: <br>
+	 * field: <br>
 	 * <strong>UPDATE_COMMENT_SEGMENT<strong> for update field cmt_segment
 	 * <strong>UPDATE_COMMENT_LABEL<strong> for update field label
 	 * <strong>UPDATE_COMMENT_LABEL_2<strong> for update field label2
@@ -148,10 +146,10 @@ public class CommentTestDAO implements SQLDAO {
 		this.ps.setString(1, id);
 		ResultSet rs = this.ps.executeQuery();
 		rs.next();
-		Comment c = new Comment(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4),
-				rs.getNString(5), rs.getNString(6), rs.getNString(7), rs.getNString(8),
-				rs.getNString(9), rs.getNString(10), rs.getNString(11), rs.getInt(12),
-				rs.getInt(13), rs.getNString(14), rs.getNString(15), rs.getInt(16), rs.getInt(17));
+		Comment c = new Comment(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4), rs.getNString(5),
+				rs.getNString(6), rs.getNString(7), rs.getNString(8), rs.getNString(9), rs.getNString(10),
+				rs.getNString(11), rs.getInt(12), rs.getInt(13), rs.getNString(14), rs.getNString(15), rs.getInt(16),
+				rs.getInt(17), rs.getInt(18));
 		return c;
 	}
 
@@ -161,10 +159,10 @@ public class CommentTestDAO implements SQLDAO {
 		this.ps.setString(1, id);
 		ResultSet rs = this.ps.executeQuery();
 		rs.next();
-		Comment c = new Comment(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4),
-				rs.getNString(5), rs.getNString(6), rs.getNString(7), rs.getNString(8),
-				rs.getNString(9), rs.getNString(10), rs.getNString(11), rs.getInt(12),
-				rs.getInt(13), rs.getNString(14), rs.getNString(15), rs.getInt(16), rs.getInt(17));
+		Comment c = new Comment(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4), rs.getNString(5),
+				rs.getNString(6), rs.getNString(7), rs.getNString(8), rs.getNString(9), rs.getNString(10),
+				rs.getNString(11), rs.getInt(12), rs.getInt(13), rs.getNString(14), rs.getNString(15), rs.getInt(16),
+				rs.getInt(17), rs.getInt(18));
 		return c;
 	}
 

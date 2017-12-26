@@ -171,6 +171,10 @@ public class PrepareData {
 				}
 			}
 		}
+		
+		for(Word w : listWord) {
+			this.wordDao.insert(w);
+		}
 	}
 
 	/**
@@ -227,9 +231,9 @@ public class PrepareData {
 				if (!word.isStopWord()) {
 					if (word.getDF() != 0) {
 						detailLine += word.getWord() + ":" + word.getTimesOccur() + ":" + word.getDF() + ":"
-								+ word.getTFIDF(totalDocument, 0) + " ";
+								+ word.getTFIDF(totalDocument) + " ";
 						tfidfLine += word.getId() + ":"
-								+ String.valueOf(word.getTFIDF(totalDocument, 0)).substring(0, 3) + " ";
+								+ String.valueOf(word.getTFIDF(totalDocument)).substring(0, 3) + " ";
 						// bw.write(String.valueOf(word.getTFIDF(totalDocument, 0)).substring(0, 3));
 					} else {
 						// bw.write("0");
@@ -309,17 +313,17 @@ public class PrepareData {
 		BufferedReader br1 = null, br2 = null;
 		if (Context.TYPEOFCOPYDATA2DATABASE == 1) {
 			br1 = new BufferedReader(
-					new InputStreamReader(new FileInputStream(new File("src\\main\\resource\\data\\100\\1_150.txt")),
+					new InputStreamReader(new FileInputStream(new File("src\\main\\resources\\data\\100\\1_150.txt")),
 							StandardCharsets.UTF_8));
 			br2 = new BufferedReader(
-					new InputStreamReader(new FileInputStream(new File("src\\main\\resource\\data\\100\\2_150.txt")),
+					new InputStreamReader(new FileInputStream(new File("src\\main\\resources\\data\\100\\2_150.txt")),
 							StandardCharsets.UTF_8));
 		} else if (Context.TYPEOFCOPYDATA2DATABASE == 2) {
 			br1 = new BufferedReader(
-					new InputStreamReader(new FileInputStream(new File("src\\main\\resource\\data\\100\\1_100.txt")),
+					new InputStreamReader(new FileInputStream(new File("src\\main\\resources\\data\\100\\1_100.txt")),
 							StandardCharsets.UTF_8));
 			br2 = new BufferedReader(
-					new InputStreamReader(new FileInputStream(new File("src\\main\\resource\\data\\100\\2_100.txt")),
+					new InputStreamReader(new FileInputStream(new File("src\\main\\resources\\data\\100\\2_100.txt")),
 							StandardCharsets.UTF_8));
 		}
 		ArrayList<Comment> label1 = new ArrayList<>();
@@ -392,8 +396,8 @@ public class PrepareData {
 	}
 
 	public void readFromDB() throws SQLException {
-		this.listTrainCmt = this.cmtDao.getData("select * from TblComment where id < 5350 order by id");
+		this.listTrainCmt = this.cmtDao.getData("select * from TblComment where id <= 7890 order by id");
 
-		this.listTestCmt = this.cmtDao.getData("select * from TblComment where id >= 5350 order by id");
+		this.listTestCmt = this.cmtDao.getData("select * from TblComment where id > 7890 order by id");
 	}
 }

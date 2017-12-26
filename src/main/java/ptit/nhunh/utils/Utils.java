@@ -61,7 +61,7 @@ public class Utils {
 			if (index > -1) {
 				listWord.get(index).setTimesOccur(listWord.get(index).getTimesOccur() + 1);
 			} else {
-				Word w = new Word(-1, words[i], 0, 1, 0, false, 0);
+				Word w = new Word(-1, words[i], 1, 0, false);
 				listWord.add(w);
 			}
 		}
@@ -263,13 +263,13 @@ public class Utils {
 
 	public static void writeSvmModel(svm_model model) throws IOException {
 		BufferedWriter bw = new BufferedWriter(
-				new OutputStreamWriter(new FileOutputStream(new File("src\\main\\resource\\svmmodel\\model.txt"))));
+				new OutputStreamWriter(new FileOutputStream(new File("src\\main\\resources\\svmmodel\\model.txt"))));
 		bw.write(new Gson().toJson(model));
 		bw.close();
 	}
 
 	public static svm_model readSvmModel() throws IOException {
-		Scanner scan = new Scanner(new File("src\\main\\resource\\svmmodel\\model.txt"));
+		Scanner scan = new Scanner(new File("src\\main\\resources\\svmmodel\\model.txt"));
 		String json = "";
 		while (scan.hasNext()) {
 			json = json + scan.nextLine();

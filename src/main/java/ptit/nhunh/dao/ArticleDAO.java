@@ -37,7 +37,7 @@ public class ArticleDAO implements SQLDAO {
 	public boolean insert(Object obj) {
 		try {
 			Article url = (Article) obj;
-			this.ps = this.con.prepareStatement("insert into TblArticle values(?,?,?,?,?,?,?,?,?,?,?,?) ");
+			this.ps = this.con.prepareStatement("insert into TblArticle values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ");
 			this.ps.setNString(1, url.getUrl());
 			this.ps.setNString(2, url.getUrl_id());
 			this.ps.setNString(3, url.getTitle());
@@ -50,9 +50,15 @@ public class ArticleDAO implements SQLDAO {
 			this.ps.setDate(10, url.getCreationTime());
 			this.ps.setNString(11, url.getContentFilePath());
 			this.ps.setNString(12, url.getImageUrl());
+			this.ps.setInt(13, url.getDongy());
+			this.ps.setInt(14, url.getKhongdongy());
+			this.ps.setInt(15, url.getGopy());
+			this.ps.setInt(16, url.getYkienkhac());
+			this.ps.setInt(17, url.getIsCrawled());
 			this.ps.executeUpdate();
 			return true;
 		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 			return false;
 		}
 	}
@@ -119,6 +125,7 @@ public class ArticleDAO implements SQLDAO {
 				return false;
 			}
 		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 			return false;
 		}
 	}
@@ -129,6 +136,7 @@ public class ArticleDAO implements SQLDAO {
 			this.ps = this.con.prepareStatement(sql);
 			this.ps.executeUpdate();
 		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 			return false;
 		}
 		return true;
@@ -165,7 +173,7 @@ public class ArticleDAO implements SQLDAO {
 	@Override
 	public boolean update(Object obj) throws SQLException {
 		Article url = (Article) obj;
-		String sql = "update TblArticle set url = ?, url_id = ?, title = ?, needed = ?, source = ?, totalCmt = ?, totalParCmt = ?, tag = ?, category = ?, creationTime = ?, contentFilePath = ?, imageUrl = ?, dongy = ?, khongdongy = ?, gopy = ?, ykienkhac = ? where id = ?";
+		String sql = "update TblArticle set url = ?, url_id = ?, title = ?, needed = ?, source = ?, totalCmt = ?, totalParCmt = ?, tag = ?, category = ?, creationTime = ?, contentFilePath = ?, imageUrl = ?, dongy = ?, khongdongy = ?, gopy = ?, ykienkhac = ?, isCrawled = ? where id = ?";
 		this.ps = this.con.prepareStatement(sql);
 		this.ps.setNString(1, url.getUrl());
 		this.ps.setNString(2, url.getUrl_id());
@@ -183,7 +191,8 @@ public class ArticleDAO implements SQLDAO {
 		this.ps.setInt(14, url.getKhongdongy());
 		this.ps.setInt(15, url.getGopy());
 		this.ps.setInt(16, url.getYkienkhac());
-		this.ps.setInt(17, url.getId());
+		this.ps.setInt(17, url.getIsCrawled());
+		this.ps.setInt(18, url.getId());
 		this.ps.executeUpdate();
 		return true;
 	}

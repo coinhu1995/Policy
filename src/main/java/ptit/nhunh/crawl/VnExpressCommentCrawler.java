@@ -13,10 +13,10 @@ import org.jsoup.nodes.Document;
 
 import ptit.nhunh.dao.SQLDAO;
 import ptit.nhunh.dao.SQLDAOFactory;
+import ptit.nhunh.model.Article;
 import ptit.nhunh.model.Comment;
 import ptit.nhunh.model.Item;
 import ptit.nhunh.model.ResponseObject;
-import ptit.nhunh.model.Article;
 import ptit.nhunh.tool.ConvertJson2Java;;
 
 public class VnExpressCommentCrawler {
@@ -50,14 +50,14 @@ public class VnExpressCommentCrawler {
 
 		for (Object o : listURL) {
 			Article u = (Article) o;
-			this.crawlParentComment(u.getUrl_id());
+			this.crawlParentComment(u.getUrl_id(), u.getId());
 			System.out.println(u.getId() + " done!");
 		}
 
 		this.bw.close();
 	}
 
-	private void crawlParentComment(String pageId) {
+	private void crawlParentComment(String pageId, int id) {
 		Document doc = null;
 		try {
 			doc = Jsoup.connect(urlComment + pageId).ignoreContentType(true).get();
@@ -81,7 +81,7 @@ public class VnExpressCommentCrawler {
 				Comment c = it.convert2Comment();
 				c.setContent(c.getContent().replaceAll("'", ""));
 				c.setFullname(c.getFullname().replaceAll("'", ""));
-
+				c.setArticleid(id);
 				try {
 					this.cmtDAO.insert(c);
 				} catch (SQLException e) {

@@ -63,7 +63,7 @@ public class LibSvm_Prepare {
 		String date = LocalDate.now().toString();
 		String time = LocalTime.now().toString();
 
-		String path = "src\\main\\resource\\data\\" + this.labelCount + "label\\" + date.replaceAll("-", "") + "\\"
+		String path = "src\\main\\resources\\data\\" + this.labelCount + "label\\" + date.replaceAll("-", "") + "\\"
 				+ time.substring(0, 5).replace(":", "");
 		BufferedWriter pathWriter = new BufferedWriter(
 				new OutputStreamWriter(new FileOutputStream(new File("path.txt"))));
@@ -176,7 +176,6 @@ public class LibSvm_Prepare {
 					aw.get(i).setId(listWord.size() + 1);
 					aw.get(i).setDF(1);
 					aw.get(i).setId(listWord.size() + 1);
-					aw.get(i).setCmt_id(c.getId());
 					listWord.add(aw.get(i));
 				} else {
 					listWord.get(pos).setDF(listWord.get(pos).getDF() + 1);
@@ -235,9 +234,9 @@ public class LibSvm_Prepare {
 			for (int i = 0; i < words.size(); i++) {
 				if (!words.get(i).isStopWord()) {
 					show += words.get(i).getWord() + ":" + words.get(i).getTimesOccur() + ":" + words.get(i).getDF()
-							+ ":" + words.get(i).getTFIDF(size, sumWord) + " ";
+							+ ":" + words.get(i).getTFIDF(size) + " ";
 					line1 += words.get(i).getId() + ":"
-							+ String.valueOf(words.get(i).getTFIDF(size, sumWord)).substring(0, 3) + " ";
+							+ String.valueOf(words.get(i).getTFIDF(size)).substring(0, 3) + " ";
 				}
 			}
 			if (show.length() > 2) {
@@ -304,17 +303,17 @@ public class LibSvm_Prepare {
 		BufferedReader br1 = null, br2 = null;
 		if (Context.TYPEOFCOPYDATA2DATABASE == 1) {
 			br1 = new BufferedReader(
-					new InputStreamReader(new FileInputStream(new File("src\\main\\resource\\data\\100\\1_150.txt")),
+					new InputStreamReader(new FileInputStream(new File("src\\main\\resources\\data\\100\\1_150.txt")),
 							StandardCharsets.UTF_8));
 			br2 = new BufferedReader(
-					new InputStreamReader(new FileInputStream(new File("src\\main\\resource\\data\\100\\2_150.txt")),
+					new InputStreamReader(new FileInputStream(new File("src\\main\\resources\\data\\100\\2_150.txt")),
 							StandardCharsets.UTF_8));
 		} else if (Context.TYPEOFCOPYDATA2DATABASE == 2) {
 			br1 = new BufferedReader(
-					new InputStreamReader(new FileInputStream(new File("src\\main\\resource\\data\\100\\1_100.txt")),
+					new InputStreamReader(new FileInputStream(new File("src\\main\\resources\\data\\100\\1_100.txt")),
 							StandardCharsets.UTF_8));
 			br2 = new BufferedReader(
-					new InputStreamReader(new FileInputStream(new File("src\\main\\resource\\data\\100\\2_100.txt")),
+					new InputStreamReader(new FileInputStream(new File("src\\main\\resources\\data\\100\\2_100.txt")),
 							StandardCharsets.UTF_8));
 		}
 		ArrayList<Comment> label1 = new ArrayList<>();

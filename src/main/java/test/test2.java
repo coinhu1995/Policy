@@ -17,11 +17,11 @@ public class test2 {
 		SQLDAO cmtTestDao = SQLDAOFactory.getDAO(SQLDAOFactory.COMMENTTEST);
 		Scanner scan1 = null, scan2 = null;
 		if (Context.TYPEOFCOPYDATA2DATABASE == 1) {
-			scan1 = new Scanner(new File("src\\main\\resource\\data\\100\\1_150.txt"));
-			scan2 = new Scanner(new File("src\\main\\resource\\data\\100\\2_150.txt"));
+			scan1 = new Scanner(new File("src\\main\\resources\\data\\100\\1_150.txt"));
+			scan2 = new Scanner(new File("src\\main\\resources\\data\\100\\2_150.txt"));
 		} else if (Context.TYPEOFCOPYDATA2DATABASE == 2) {
-			scan1 = new Scanner(new File("src\\main\\resource\\data\\100\\1_100.txt"));
-			scan2 = new Scanner(new File("src\\main\\resource\\data\\100\\2_100.txt"));
+			scan1 = new Scanner(new File("src\\main\\resources\\data\\100\\1_100.txt"));
+			scan2 = new Scanner(new File("src\\main\\resources\\data\\100\\2_100.txt"));
 		}
 		cmtTestDao
 				.update("delete from TblCommentTest DBCC CHECKIDENT ('TblCommentTest', RESEED, 0)");

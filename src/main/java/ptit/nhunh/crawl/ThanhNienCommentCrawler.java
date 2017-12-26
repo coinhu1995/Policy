@@ -14,8 +14,8 @@ import org.jsoup.select.Elements;
 
 import ptit.nhunh.dao.SQLDAO;
 import ptit.nhunh.dao.SQLDAOFactory;
-import ptit.nhunh.model.Comment;
 import ptit.nhunh.model.Article;
+import ptit.nhunh.model.Comment;
 import ptit.nhunh.utils.Constants;
 import ptit.nhunh.utils.Utils;
 
@@ -42,7 +42,7 @@ public class ThanhNienCommentCrawler {
 
 	private void process(ArrayList<Object> listUrl) throws SQLException, IOException {
 		BufferedWriter bw = new BufferedWriter(new FileWriter(
-				"D:\\NHU\\WORKSPACE\\Capstone\\Policy\\src\\main\\resource\\log\\logCrawlThanhNien.txt"));
+				"D:\\NHU\\WORKSPACE\\Capstone\\Policy\\src\\main\\resources\\log\\logCrawlThanhNien.txt"));
 
 		for (int i = 0; i < listUrl.size(); i++) {
 			Article url = (Article) listUrl.get(i);
@@ -101,6 +101,7 @@ public class ThanhNienCommentCrawler {
 							c.setCmt_id("tn" + listComment.get(j).attr("rel"));
 							c.setParent_id("tn" + listComment.get(j).attr("rel"));
 							c.setPage_id("tn" + url.getUrl_id());
+							c.setArticleid(url.getId());
 							this.cmtDAO.insert(c);
 						}
 					} else {
@@ -132,7 +133,7 @@ public class ThanhNienCommentCrawler {
 	private void processErrorUrl() throws IOException, SQLException {
 		System.out.println("\n\nProcess log file\n\n");
 		BufferedReader br = new BufferedReader(new FileReader(
-				"D:\\NHU\\WORKSPACE\\Capstone\\Policy\\src\\main\\resource\\log\\logCrawlThanhNien.txt"));
+				"D:\\NHU\\WORKSPACE\\Capstone\\Policy\\src\\main\\resources\\log\\logCrawlThanhNien.txt"));
 		ArrayList<Object> listUrl = new ArrayList<>();
 		String line = "";
 		while ((line = br.readLine()) != null) {

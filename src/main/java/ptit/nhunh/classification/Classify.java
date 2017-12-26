@@ -21,14 +21,13 @@ public class Classify {
 			throws IOException, ClassNotFoundException {
 //		Instance[] trainingInstances = DataFileReader.readDataFile(trainFile);
 //		svm_parameter param = new svm_parameter();
-		KernelManager.setCustomKernel(new LinearKernel());
+		
 //		System.out.println("Training started...");
 //		svm_model model = SVMTrainer.train(trainingInstances, param);
 //		SVMTrainer.saveModel(model, "model.txt");
 		svm_model model = SVMPredictor.loadModel("model.txt");
-//		Utils.writeSvmModel(model);
-		// svm_model model = Utils.readSvmModel();
-
+		KernelManager.setCustomKernel(new LinearKernel());
+		
 		System.out.println("Training completed.");
 		Instance[] testingInstances = DataFileReader.readDataFile(testFile);
 		double[] predictions = SVMPredictor.predict(testingInstances, model, true);
