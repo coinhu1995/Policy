@@ -1,23 +1,15 @@
 package ptit.nhunh.utils;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.sql.SQLException;
 import java.text.Collator;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-import com.google.gson.Gson;
-
-import ca.uwo.csd.ai.nlp.libsvm.svm_model;
 import ptit.nhunh.model.Article;
 import ptit.nhunh.model.Comment;
 import ptit.nhunh.model.Word;
@@ -261,23 +253,6 @@ public class Utils {
 		return -1;
 	}
 
-	public static void writeSvmModel(svm_model model) throws IOException {
-		BufferedWriter bw = new BufferedWriter(
-				new OutputStreamWriter(new FileOutputStream(new File("src\\main\\resources\\svmmodel\\model.txt"))));
-		bw.write(new Gson().toJson(model));
-		bw.close();
-	}
-
-	public static svm_model readSvmModel() throws IOException {
-		Scanner scan = new Scanner(new File("src\\main\\resources\\svmmodel\\model.txt"));
-		String json = "";
-		while (scan.hasNext()) {
-			json = json + scan.nextLine();
-		}
-		scan.close();
-		return new Gson().fromJson(json, svm_model.class);
-	}
-
 	public static String getCurrentTime() {
 		long currentTimeMillis = System.currentTimeMillis();
 		SimpleDateFormat sdf = new SimpleDateFormat("HH-mm");
@@ -308,5 +283,15 @@ public class Utils {
 		}
 
 		return listArticle;
+	}
+	
+	public static ArrayList<Word> object2Word(List<Object> objs) {
+		ArrayList<Word> listWord = new ArrayList<>();
+
+		for (Object obj : objs) {
+			listWord.add((Word) obj);
+		}
+
+		return listWord;
 	}
 }

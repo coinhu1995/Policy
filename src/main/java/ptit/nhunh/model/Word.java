@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ptit.nhunh.context.Context;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -45,13 +44,7 @@ public class Word implements Serializable {
 	 * @return
 	 */
 	public float getIDF(int totalComment) {
-		if (Context.TYPEOFIDF == 1) {
-			return (float) Math.log10(totalComment / (float) this.DF);
-		} else if (Context.TYPEOFIDF == 2) {
-			return (float) Math.log10(1 + totalComment / (float) this.DF);
-		} else {
-			return 1;
-		}
+		return (float) Math.log10(1 + totalComment / (float) this.DF);
 	}
 
 	/**

@@ -41,9 +41,11 @@ public class WriteComment2File {
 
 			} catch (Exception e) {
 				System.out.println(c.getId());
+				bw.close();
 				throw e;
 			}
 		}
+		
 		bw.close();
 	}
 }

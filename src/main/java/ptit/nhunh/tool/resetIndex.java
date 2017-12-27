@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 import ptit.nhunh.dao.SQLDAO;
 import ptit.nhunh.dao.SQLDAOFactory;
-import ptit.nhunh.model.Comment;
 import ptit.nhunh.model.Article;
+import ptit.nhunh.model.Comment;
 
 public class resetIndex {
 	private SQLDAO urlDAO;
@@ -21,9 +21,11 @@ public class resetIndex {
 
 	public static void main(String[] args) throws SQLException {
 		new resetIndex().resetIndexTblComment();
+		new resetIndex().resetIndexTblUrl();
+		new resetIndex().resetIndexTblWord();
 	}
 
-	private void resetIndexTblComment() throws SQLException {
+	public void resetIndexTblComment() throws SQLException {
 		ArrayList<Object> listCmt = this.commentDAO.getAll();
 
 		this.commentDAO.update("delete from TblComment");
@@ -35,7 +37,7 @@ public class resetIndex {
 		}
 	}
 
-	private void resetIndexTblUrl() throws SQLException {
+	public void resetIndexTblUrl() throws SQLException {
 		ArrayList<Object> listCmt = this.urlDAO.getAll();
 
 		this.urlDAO.update("delete from TblUrl");
@@ -44,6 +46,18 @@ public class resetIndex {
 		for (Object o : listCmt) {
 			Article url = (Article) o;
 			this.urlDAO.insert(url);
+		}
+	}
+	
+	public void resetIndexTblWord() throws SQLException {
+		ArrayList<Object> listCmt = this.wordDAO.getAll();
+
+		this.wordDAO.update("delete from TblWord");
+		this.wordDAO.update("DBCC CHECKIDENT ('TblWord', RESEED, 0)");
+
+		for (Object o : listCmt) {
+			Article url = (Article) o;
+			this.wordDAO.insert(url);
 		}
 	}
 }

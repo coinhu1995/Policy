@@ -1,8 +1,10 @@
 package ptit.nhunh.classification;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 
 import ca.uwo.csd.ai.nlp.kernel.KernelManager;
 import ca.uwo.csd.ai.nlp.kernel.LinearKernel;
@@ -12,23 +14,20 @@ import ca.uwo.csd.ai.nlp.libsvm.ex.SVMPredictor;
 import utils.DataFileReader;
 
 public class Classify {
-	public void classified(String trainFile, String testFile, String outFile)
-			throws ClassNotFoundException, IOException {
-		this.LinearKernel(trainFile, testFile, outFile);
+
+	public void execute() throws ClassNotFoundException, IOException {
+		System.out.println("Processing...");
+		Scanner scan = new Scanner(new File("src\\main\\resources\\path.txt"));
+		String path = scan.nextLine();
+		new Classify().LinearKernel(path + "data.arff", path + "output.txt");
+		scan.close();
 	}
 
-	private void LinearKernel(String trainFile, String testFile, String outFile)
-			throws IOException, ClassNotFoundException {
-//		Instance[] trainingInstances = DataFileReader.readDataFile(trainFile);
-//		svm_parameter param = new svm_parameter();
-		
-//		System.out.println("Training started...");
-//		svm_model model = SVMTrainer.train(trainingInstances, param);
-//		SVMTrainer.saveModel(model, "model.txt");
-		svm_model model = SVMPredictor.loadModel("model.txt");
+	private void LinearKernel(String testFile, String outFile) throws IOException, ClassNotFoundException {
+
+		svm_model model = SVMPredictor.loadModel("src\\main\\resources\\model\\model.txt");
 		KernelManager.setCustomKernel(new LinearKernel());
-		
-		System.out.println("Training completed.");
+
 		Instance[] testingInstances = DataFileReader.readDataFile(testFile);
 		double[] predictions = SVMPredictor.predict(testingInstances, model, true);
 		this.writeOutputs(outFile, predictions);

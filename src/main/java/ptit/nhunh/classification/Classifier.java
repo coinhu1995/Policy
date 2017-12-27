@@ -10,7 +10,7 @@ public class Classifier {
 	public void execute()
 			throws SQLException, FileNotFoundException, IOException, ClassNotFoundException {
 		System.out.println("Processing...");
-		Scanner scan = new Scanner(new File("path.txt"));
+		Scanner scan = new Scanner(new File("src\\main\\resources\\path.txt"));
 		String path = scan.nextLine();
 		new Classify().classified(path + "\\input.train", path + "\\input.test", path + "\\output");
 		scan.close();
