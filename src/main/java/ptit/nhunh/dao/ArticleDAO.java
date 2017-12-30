@@ -37,7 +37,7 @@ public class ArticleDAO implements SQLDAO {
 	public boolean insert(Object obj) {
 		try {
 			Article url = (Article) obj;
-			this.ps = this.con.prepareStatement("insert into TblArticle values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ");
+			this.ps = this.con.prepareStatement("insert into TblArticle values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ");
 			this.ps.setNString(1, url.getUrl());
 			this.ps.setNString(2, url.getUrl_id());
 			this.ps.setNString(3, url.getTitle());
@@ -52,9 +52,7 @@ public class ArticleDAO implements SQLDAO {
 			this.ps.setNString(12, url.getImageUrl());
 			this.ps.setInt(13, url.getDongy());
 			this.ps.setInt(14, url.getKhongdongy());
-			this.ps.setInt(15, url.getGopy());
-			this.ps.setInt(16, url.getYkienkhac());
-			this.ps.setInt(17, url.getIsCrawled());
+			this.ps.setInt(15, url.getIsCrawled());
 			this.ps.executeUpdate();
 			return true;
 		} catch (SQLException e) {
@@ -71,8 +69,7 @@ public class ArticleDAO implements SQLDAO {
 		while (rs.next()) {
 			Article url = new Article(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4), rs.getInt(5),
 					rs.getNString(6), rs.getInt(7), rs.getInt(8), rs.getNString(9), rs.getNString(10), rs.getDate(11),
-					rs.getNString(12), rs.getNString(13), rs.getInt(14), rs.getInt(15), rs.getInt(16), rs.getInt(17),
-					rs.getInt(18));
+					rs.getNString(12), rs.getNString(13), rs.getInt(14), rs.getInt(15), rs.getInt(16));
 			ac.add(url);
 		}
 		return ac;
@@ -86,8 +83,7 @@ public class ArticleDAO implements SQLDAO {
 		while (rs.next()) {
 			Article url = new Article(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4), rs.getInt(5),
 					rs.getNString(6), rs.getInt(7), rs.getInt(8), rs.getNString(9), rs.getNString(10), rs.getDate(11),
-					rs.getNString(12), rs.getNString(13), rs.getInt(14), rs.getInt(15), rs.getInt(16), rs.getInt(17),
-					rs.getInt(18));
+					rs.getNString(12), rs.getNString(13), rs.getInt(14), rs.getInt(15), rs.getInt(16));
 			ac.add(url);
 		}
 		return ac;
@@ -97,7 +93,6 @@ public class ArticleDAO implements SQLDAO {
 	 * field: <br>
 	 * <strong>UPDATE_COMMENT_SEGMENT<strong> for update field cmt_segment
 	 * <strong>UPDATE_COMMENT_LABEL<strong> for update field label
-	 * <strong>UPDATE_COMMENT_LABEL_2<strong> for update field label2
 	 */
 	@Override
 	public boolean update(Object obj, int field) {
@@ -151,8 +146,7 @@ public class ArticleDAO implements SQLDAO {
 		rs.next();
 		Article url = new Article(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4), rs.getInt(5),
 				rs.getNString(6), rs.getInt(7), rs.getInt(8), rs.getNString(9), rs.getNString(10), rs.getDate(11),
-				rs.getNString(12), rs.getNString(13), rs.getInt(14), rs.getInt(15), rs.getInt(16), rs.getInt(17),
-				rs.getInt(18));
+				rs.getNString(12), rs.getNString(13), rs.getInt(14), rs.getInt(15), rs.getInt(16));
 		return url;
 	}
 
@@ -165,15 +159,14 @@ public class ArticleDAO implements SQLDAO {
 		rs.next();
 		Article url = new Article(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4), rs.getInt(5),
 				rs.getNString(6), rs.getInt(7), rs.getInt(8), rs.getNString(9), rs.getNString(10), rs.getDate(11),
-				rs.getNString(12), rs.getNString(13), rs.getInt(14), rs.getInt(15), rs.getInt(16), rs.getInt(17),
-				rs.getInt(18));
+				rs.getNString(12), rs.getNString(13), rs.getInt(14), rs.getInt(15), rs.getInt(16));
 		return url;
 	}
 
 	@Override
 	public boolean update(Object obj) throws SQLException {
 		Article url = (Article) obj;
-		String sql = "update TblArticle set url = ?, url_id = ?, title = ?, needed = ?, source = ?, totalCmt = ?, totalParCmt = ?, tag = ?, category = ?, creationTime = ?, contentFilePath = ?, imageUrl = ?, dongy = ?, khongdongy = ?, gopy = ?, ykienkhac = ?, isCrawled = ? where id = ?";
+		String sql = "update TblArticle set url = ?, url_id = ?, title = ?, needed = ?, source = ?, totalCmt = ?, totalParCmt = ?, tag = ?, category = ?, creationTime = ?, contentFilePath = ?, imageUrl = ?, dongy = ?, ykienkhac = ?, isCrawled = ? where id = ?";
 		this.ps = this.con.prepareStatement(sql);
 		this.ps.setNString(1, url.getUrl());
 		this.ps.setNString(2, url.getUrl_id());
@@ -189,10 +182,8 @@ public class ArticleDAO implements SQLDAO {
 		this.ps.setNString(12, url.getImageUrl());
 		this.ps.setInt(13, url.getDongy());
 		this.ps.setInt(14, url.getKhongdongy());
-		this.ps.setInt(15, url.getGopy());
-		this.ps.setInt(16, url.getYkienkhac());
-		this.ps.setInt(17, url.getIsCrawled());
-		this.ps.setInt(18, url.getId());
+		this.ps.setInt(15, url.getIsCrawled());
+		this.ps.setInt(16, url.getId());
 		this.ps.executeUpdate();
 		return true;
 	}

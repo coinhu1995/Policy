@@ -26,7 +26,7 @@ public class CountPercent {
 			for (int j = 0; j < listCmt.size(); j++) {
 				Comment c = listCmt.get(j);
 				if (c.getPage_id().equals(listArticle.get(i).getUrl_id())) {
-					if (c.getLabel2() == 1) {
+					if (c.getLabel() == 1) {
 						positiveLabel++;
 					} else {
 						negativeLabel++;
@@ -37,10 +37,10 @@ public class CountPercent {
 			try {
 				dongY = (int) (positiveLabel / (float) (positiveLabel + negativeLabel) * 100);
 				listArticle.get(i).setDongy(dongY);
-				listArticle.get(i).setYkienkhac(100 - dongY);
+				listArticle.get(i).setKhongdongy(100 - dongY);
 			} catch (Exception e) {
 				listArticle.get(i).setDongy(0);
-				listArticle.get(i).setYkienkhac(0);
+				listArticle.get(i).setKhongdongy(0);
 				System.out.println(listArticle.get(i).getId() + " " + e.getMessage());
 			}
 			

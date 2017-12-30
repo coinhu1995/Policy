@@ -14,8 +14,6 @@ public class SQLDAOFactory {
 			return ArticleDAO.getInstance();
 		case WORD:
 			return WordDAO.getInstance();
-		case COMMENTTEST:
-			return CommentTestDAO.getInstance();
 		}
 		return null;
 	}

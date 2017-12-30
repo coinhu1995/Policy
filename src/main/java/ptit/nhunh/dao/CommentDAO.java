@@ -37,7 +37,7 @@ public class CommentDAO implements SQLDAO {
 	@Override
 	public boolean insert(Object obj) throws SQLException {
 		Comment c = (Comment) obj;
-		String sql = "insert into TblComment values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
+		String sql = "insert into TblComment values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
 		this.ps = this.con.prepareStatement(sql);
 		this.ps.setNString(1, c.getCmt_id());
 		this.ps.setNString(2, c.getContent());
@@ -54,8 +54,7 @@ public class CommentDAO implements SQLDAO {
 		this.ps.setNString(13, c.getFullname());
 		this.ps.setNString(14, c.getParent_id());
 		this.ps.setInt(15, c.getLabel());
-		this.ps.setInt(16, c.getLabel2());
-		this.ps.setInt(17, c.getArticleid());
+		this.ps.setInt(16, c.getArticleid());
 		this.ps.executeUpdate();
 		return true;
 	}
@@ -69,7 +68,7 @@ public class CommentDAO implements SQLDAO {
 			Comment c = new Comment(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4),
 					rs.getNString(5), rs.getNString(6), rs.getNString(7), rs.getNString(8), rs.getNString(9),
 					rs.getNString(10), rs.getNString(11), rs.getInt(12), rs.getInt(13), rs.getNString(14),
-					rs.getNString(15), rs.getInt(16), rs.getInt(17), rs.getInt(18));
+					rs.getNString(15), rs.getInt(16), rs.getInt(17));
 			ac.add(c);
 		}
 		return ac;
@@ -84,7 +83,7 @@ public class CommentDAO implements SQLDAO {
 			Comment c = new Comment(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4),
 					rs.getNString(5), rs.getNString(6), rs.getNString(7), rs.getNString(8), rs.getNString(9),
 					rs.getNString(10), rs.getNString(11), rs.getInt(12), rs.getInt(13), rs.getNString(14),
-					rs.getNString(15), rs.getInt(16), rs.getInt(17), rs.getInt(18));
+					rs.getNString(15), rs.getInt(16), rs.getInt(17));
 			ac.add(c);
 		}
 		return ac;
@@ -94,7 +93,6 @@ public class CommentDAO implements SQLDAO {
 	 * field: <br>
 	 * <strong>UPDATE_COMMENT_SEGMENT<strong> for update field cmt_segment
 	 * <strong>UPDATE_COMMENT_LABEL<strong> for update field label
-	 * <strong>UPDATE_COMMENT_LABEL_2<strong> for update field label2
 	 */
 	@Override
 	public boolean update(Object obj, int field) {
@@ -113,13 +111,6 @@ public class CommentDAO implements SQLDAO {
 				sql = "update TblComment set label = ? where id = ?";
 				this.ps = this.con.prepareStatement(sql);
 				this.ps.setInt(1, c.getLabel());
-				this.ps.setInt(2, c.getId());
-				this.ps.executeUpdate();
-				break;
-			case UPDATE_COMMENT_LABEL_2:
-				sql = "update TblComment set label2 = ? where id = ?";
-				this.ps = this.con.prepareStatement(sql);
-				this.ps.setInt(1, c.getLabel2());
 				this.ps.setInt(2, c.getId());
 				this.ps.executeUpdate();
 				break;
@@ -152,7 +143,7 @@ public class CommentDAO implements SQLDAO {
 		Comment c = new Comment(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4), rs.getNString(5),
 				rs.getNString(6), rs.getNString(7), rs.getNString(8), rs.getNString(9), rs.getNString(10),
 				rs.getNString(11), rs.getInt(12), rs.getInt(13), rs.getNString(14), rs.getNString(15), rs.getInt(16),
-				rs.getInt(17), rs.getInt(18));
+				rs.getInt(17));
 		return c;
 	}
 
@@ -165,7 +156,7 @@ public class CommentDAO implements SQLDAO {
 		Comment c = new Comment(rs.getInt(1), rs.getNString(2), rs.getNString(3), rs.getNString(4), rs.getNString(5),
 				rs.getNString(6), rs.getNString(7), rs.getNString(8), rs.getNString(9), rs.getNString(10),
 				rs.getNString(11), rs.getInt(12), rs.getInt(13), rs.getNString(14), rs.getNString(15), rs.getInt(16),
-				rs.getInt(17), rs.getInt(18));
+				rs.getInt(17));
 		return c;
 	}
 

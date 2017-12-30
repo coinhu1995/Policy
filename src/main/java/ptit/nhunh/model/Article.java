@@ -59,13 +59,7 @@ public class Article implements Serializable{
 	private int dongy;
 	@Getter
 	@Setter
-	private int gopy;
-	@Getter
-	@Setter
 	private int khongdongy;
-	@Getter
-	@Setter
-	private int ykienkhac;
 	@Getter
 	@Setter
 	private int isCrawled;

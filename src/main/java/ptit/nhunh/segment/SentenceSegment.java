@@ -25,7 +25,7 @@ public class SentenceSegment {
 	public SentenceSegment() throws FileNotFoundException {
 		this.cmtDAO = SQLDAOFactory.getDAO(SQLDAOFactory.COMMENT);
 		this.vietTokenizer = new VietTokenizer();
-
+		
 		Scanner scan = new Scanner(new File("acronyms.txt"));
 
 		while (scan.hasNextLine()) {

@@ -151,7 +151,6 @@ public class Item {
 		c.setFullname(this.full_name);
 		c.setId(-1);
 		c.setLabel(0);
-		c.setLabel2(0);
 		c.setLike_ismember(this.like_ismember);
 		c.setPage_id(this.article_id);
 		c.setParent_id(this.parent_id);

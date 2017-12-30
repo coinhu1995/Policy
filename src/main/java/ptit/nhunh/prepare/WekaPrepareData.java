@@ -34,7 +34,7 @@ public class WekaPrepareData {
 		this.wordDao = SQLDAOFactory.getDAO(SQLDAOFactory.WORD);
 		this.listWord = new ArrayList<>();
 
-		this.listCmt = this.cmtDao.getData("select * from TblComment where label = 0 order by id");
+		this.listCmt = this.cmtDao.getData("select * from TblComment where id < 1165 order by id");
 
 		this.path = "src\\main\\resources\\data\\" + this.date.replaceAll("-", "") + "\\"
 				+ this.time.substring(0, 5).replace(":", "") + "\\";
@@ -77,7 +77,7 @@ public class WekaPrepareData {
 		String idFileName = this.path + "id.txt";
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(fileName))));
 		BufferedWriter bw1 = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(idFileName))));
-
+		
 		bw.write("@relation policy\n");
 		for (int i = 0; i < this.listWord.size(); i++) {
 			bw.write("@attribute " + (i + 1) + " NUMERIC\n");
@@ -100,7 +100,7 @@ public class WekaPrepareData {
 			for (int i = 0; i < listAll.size(); i++) {
 				bw.write(String.valueOf(listAll.get(i).getTFIDF(listCmt.size())).substring(0, 3) + ",");
 			}
-			bw.write((c.getLabel2() + "").toCharArray());
+			bw.write((c.getLabel() + "").toCharArray());
 			bw.newLine();
 			bw1.write(c.getId());
 			bw1.newLine();

@@ -30,9 +30,7 @@ public class WekaPrepareData2 {
 	private ArrayList<Object> listTrainCmt;
 
 	private ArrayList<Word> listWord;
-
-	private int labelCount = 2;
-
+	private String path;
 	public WekaPrepareData2() throws SQLException, IOException {
 		this.cmtDao = SQLDAOFactory.getDAO(SQLDAOFactory.COMMENT);
 		this.wordDao = SQLDAOFactory.getDAO(SQLDAOFactory.WORD);
@@ -41,14 +39,14 @@ public class WekaPrepareData2 {
 		String date = LocalDate.now().toString();
 		String time = LocalTime.now().toString();
 
-		String path = "src\\main\\resources\\data\\" + this.labelCount + "label\\" + date.replaceAll("-", "") + "\\"
+		this.path = "src\\main\\resources\\data\\" + date.replaceAll("-", "") + "\\"
 				+ time.substring(0, 5).replace(":", "");
 		BufferedWriter pathWriter = new BufferedWriter(
 				new OutputStreamWriter(new FileOutputStream(new File("path.txt"))));
-		pathWriter.write(path);
+		pathWriter.write(this.path);
 		pathWriter.close();
 
-		File folder = new File(path);
+		File folder = new File(this.path);
 		if (!folder.exists()) {
 			folder.mkdirs();
 		}
@@ -120,6 +118,10 @@ public class WekaPrepareData2 {
 				}
 			}
 		}
+		
+		for (int i = 0; i < listWord.size(); i++) {
+			this.wordDao.insert(listWord.get(i));
+		}
 	}
 
 	/**
@@ -164,7 +166,7 @@ public class WekaPrepareData2 {
 			for (int i = 0; i < listAll.size(); i++) {
 				bw.write(String.valueOf(listAll.get(i).getTFIDF(listCmt.size())).substring(0, 3) + ",");
 			}
-			bw.write((c.getLabel2() + "").toCharArray());
+			bw.write((c.getLabel() + "").toCharArray());
 			bw.newLine();
 		}
 		bw.close();

@@ -17,9 +17,9 @@ public class Constants {
 
 	public static final String LOG_PATH = "src\\main\\resources\\log\\";
 	public static final String DATA_PATH = "src\\main\\resources\\data\\";
-	public static final String CSS = "src\\main\\resources\\css\\vnexpress\\";
-	public static final String VNEXPRESS_ARTICLE_PATH = "src\\main\\resources\\article\\vnexpress\\";
-	public static final String THANHNIEN_ARTICLE_PATH = "src\\main\\resources\\article\\thanhnien\\";
+	public static final String CSS = "src\\main\\webapp\\resources\\css\\vnexpress\\";
+	public static final String VNEXPRESS_ARTICLE_PATH = "src\\main\\webapp\\resources\\article\\vnexpress\\";
+	public static final String THANHNIEN_ARTICLE_PATH = "src\\main\\webapp\\resources\\article\\thanhnien\\";
 	public static final String PREFIX_CONTENT = "<!DOCTYPE html [ <!ENTITY nbsp \"&#160;\"> ]><html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:f=\"http://java.sun.com/jsf/core\" xmlns:h=\"http://java.sun.com/jsf/html\" xmlns:ui=\"http://java.sun.com/jsf/facelets\"><h:head><style>.sidebar_1 {width: 100% !important;}</style></h:head><h:body>";
 	public static final String SUFFIX_CONTENT = "</h:body></html>";
 }

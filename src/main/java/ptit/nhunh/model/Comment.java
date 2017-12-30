@@ -58,9 +58,6 @@ public class Comment {
 	private int label;
 	@Getter
 	@Setter
-	private int label2;
-	@Getter
-	@Setter
 	private int articleid;
 
 	@Override
@@ -70,6 +67,6 @@ public class Comment {
 				+ this.avatar_original + ", like_ismember=" + this.like_ismember + ", user_id=" + this.user_id
 				+ ", create_time=" + this.create_time + ", avatar=" + this.avatar + ", type=" + this.type
 				+ ", userlike=" + this.userlike + ", fullname=" + this.fullname + ", parent_id=" + this.parent_id
-				+ ", label=" + this.label + ", label2=" + this.label2 + "]";
+				+ ", label=" + this.label + "]";
 	}
 }

@@ -231,7 +231,7 @@ public class Utils {
 
 	public static String getVnExpressPageId(String url) {
 		try {
-			return url.substring(url.lastIndexOf("-") + 1, url.lastIndexOf("-") + 8);
+			return "ve" + url.substring(url.lastIndexOf("-") + 1, url.lastIndexOf("-") + 8);
 		} catch (Exception e) {
 			System.out.println(url);
 			e.printStackTrace();
@@ -284,7 +284,7 @@ public class Utils {
 
 		return listArticle;
 	}
-	
+
 	public static ArrayList<Word> object2Word(List<Object> objs) {
 		ArrayList<Word> listWord = new ArrayList<>();
 
